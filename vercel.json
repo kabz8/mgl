@@ -1,0 +1,9 @@
+{
+  "buildCommand": "pnpm --filter @workspace/milespace run build",
+  "outputDirectory": "artifacts/milespace/dist/public",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

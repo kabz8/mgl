@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-primary text-primary-foreground py-20 lg:py-32">
+      <section className="relative overflow-hidden bg-primary text-primary-foreground py-16 md:py-24 lg:py-32">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] opacity-10 bg-cover bg-center mix-blend-overlay" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent" />
         

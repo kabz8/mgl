@@ -1,38 +1,75 @@
 import { Link } from "wouter";
+import { WHATSAPP_DIRECT_LINK } from "@/lib/whatsapp";
+import { MessageSquare } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground py-12 md:py-16">
+    <footer className="bg-primary text-primary-foreground pt-14 pb-8">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="inline-block mb-4">
-              <span className="font-bold text-2xl tracking-tight text-white">Milespace</span>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+          <div className="col-span-2">
+            <Link href="/" className="inline-block mb-5">
+              <img src="/logo.png" alt="Milespace" className="h-10 w-auto brightness-0 invert" />
             </Link>
-            <p className="text-primary-foreground/70 max-w-sm">
-              A premium Kenyan digital agency specializing in high-performance web development, mobile apps, and custom software solutions that drive growth.
+            <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-xs mb-6">
+              A premium Kenyan digital agency. We engineer experiences, orchestrate revolutions, and build digital products that dominate.
             </p>
+            <a
+              href={WHATSAPP_DIRECT_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors"
+            >
+              <MessageSquare size={16} />
+              WhatsApp Us
+            </a>
           </div>
+
           <div>
-            <h3 className="font-semibold text-lg mb-4 text-white">Quick Links</h3>
-            <ul className="space-y-2 text-primary-foreground/70">
-              <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
-              <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
-              <li><Link href="/portfolio" className="hover:text-white transition-colors">Portfolio</Link></li>
+            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/50 mb-4">Navigate</h3>
+            <ul className="space-y-3 text-sm">
+              {[
+                { href: "/about", label: "About Us" },
+                { href: "/services", label: "Services" },
+                { href: "/pricing", label: "Pricing" },
+                { href: "/portfolio", label: "Portfolio" },
+                { href: "/contact", label: "Contact" },
+              ].map(link => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-primary-foreground/60 hover:text-white transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
           <div>
-            <h3 className="font-semibold text-lg mb-4 text-white">Contact</h3>
-            <ul className="space-y-2 text-primary-foreground/70">
+            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/50 mb-4">Contact</h3>
+            <ul className="space-y-3 text-sm text-primary-foreground/60">
               <li>Nairobi, Kenya</li>
-              <li><a href="tel:+254720176247" className="hover:text-white transition-colors">+254 720 176 247</a></li>
-              <li><a href="mailto:hello@milespace.co.ke" className="hover:text-white transition-colors">hello@milespace.co.ke</a></li>
+              <li>
+                <a href="tel:+254720176247" className="hover:text-white transition-colors">
+                  +254 720 176 247
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@milespace.co.ke" className="hover:text-white transition-colors break-all">
+                  hello@milespace.co.ke
+                </a>
+              </li>
+              <li>
+                <a href="https://milespace.co.ke" className="hover:text-white transition-colors">
+                  milespace.co.ke
+                </a>
+              </li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-primary-foreground/50">
-          <p>&copy; {new Date().getFullYear()} Milespace. All rights reserved.</p>
+
+        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-primary-foreground/40">
+          <p>&copy; {new Date().getFullYear()} Milespace Group. All rights reserved.</p>
+          <p>Where vision meets velocity.</p>
         </div>
       </div>
     </footer>

@@ -52,16 +52,16 @@ export default function Pricing() {
       </section>
 
       {/* Sticky Controls */}
-      <div className="sticky top-[64px] z-40 bg-background/95 backdrop-blur border-b border-border shadow-sm py-4 mb-12">
-        <div className="container mx-auto px-4 md:px-8 flex flex-col md:flex-row gap-4 items-center justify-between">
-          <div className="w-full md:w-72">
+      <div className="sticky top-[64px] z-40 bg-background border-b border-border shadow-sm py-3 mb-10">
+        <div className="container mx-auto px-4 md:px-8 flex flex-row gap-3 items-center justify-between">
+          <div className="flex-1 min-w-0">
             <Select value={category} onValueChange={(val) => setCategory(val as ServiceCategory)}>
-              <SelectTrigger className="w-full h-12 text-base font-medium">
-                <SelectValue placeholder="Select service category" />
+              <SelectTrigger className="w-full h-11 text-sm md:text-base font-medium">
+                <SelectValue placeholder="Select service" />
               </SelectTrigger>
               <SelectContent>
                 {categories.map((cat) => (
-                  <SelectItem key={cat} value={cat} className="text-base py-3">
+                  <SelectItem key={cat} value={cat} className="text-sm md:text-base py-2.5">
                     {cat}
                   </SelectItem>
                 ))}
@@ -69,17 +69,17 @@ export default function Pricing() {
             </Select>
           </div>
 
-          <div className="flex items-center space-x-3 bg-muted p-2 rounded-xl">
-            <Label htmlFor="currency-toggle" className={`font-semibold ${currency === 'KES' ? 'text-primary' : 'text-muted-foreground'}`}>
+          <div className="flex items-center gap-2 bg-muted px-3 py-2 rounded-lg shrink-0">
+            <Label htmlFor="currency-toggle" className={`text-sm font-bold cursor-pointer ${currency === 'KES' ? 'text-primary' : 'text-muted-foreground'}`}>
               KES
             </Label>
-            <Switch 
-              id="currency-toggle" 
+            <Switch
+              id="currency-toggle"
               checked={currency === "USD"}
               onCheckedChange={(checked) => setCurrency(checked ? "USD" : "KES")}
               className="data-[state=checked]:bg-primary"
             />
-            <Label htmlFor="currency-toggle" className={`font-semibold ${currency === 'USD' ? 'text-primary' : 'text-muted-foreground'}`}>
+            <Label htmlFor="currency-toggle" className={`text-sm font-bold cursor-pointer ${currency === 'USD' ? 'text-primary' : 'text-muted-foreground'}`}>
               USD
             </Label>
           </div>

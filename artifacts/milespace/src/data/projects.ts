@@ -13,7 +13,7 @@ export const projects: Project[] = [
     id: '1',
     client: 'Azania Africa',
     category: 'website',
-    description: 'A professional corporate website for Azania Africa, built for impact and reach across the continent.',
+    description: 'A professional corporate website for Azania Africa — built for impact and reach across the continent.',
     url: 'https://www.azaniafrica.com/',
     featured: true,
     tags: ['Corporate', 'Africa'],
