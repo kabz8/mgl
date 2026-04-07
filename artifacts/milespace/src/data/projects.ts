@@ -6,7 +6,7 @@ export interface Project {
   url: string;
   featured: boolean;
   tags: string[];
-  previewBlocked?: boolean;
+  noPreview?: boolean;
 }
 
 export const projects: Project[] = [
@@ -21,13 +21,12 @@ export const projects: Project[] = [
   },
   {
     id: '2',
-    client: 'Njane Company',
+    client: 'Moods Fragrances',
     category: 'website',
-    description: 'Clean, modern business website for Njane Company showcasing their services and driving client engagement.',
-    url: 'https://njanecompany.com/',
+    description: 'Luxury fragrance brand website for Moods Fragrances — an immersive, elegant online presence designed to captivate and convert fragrance enthusiasts.',
+    url: 'https://moodsfragrances.co.ke/',
     featured: true,
-    tags: ['Business', 'Corporate'],
-    previewBlocked: true,
+    tags: ['Luxury', 'E-commerce', 'Lifestyle'],
   },
   {
     id: '3',
@@ -40,15 +39,35 @@ export const projects: Project[] = [
   },
   {
     id: '4',
-    client: 'Sunbeam Innovations',
+    client: 'Njane Company',
     category: 'website',
-    description: 'Dynamic business website for Sunbeam Innovations, designed to attract leads and communicate value.',
-    url: 'https://sunbeaminnovations.com/',
+    description: 'Clean, modern business website for Njane Company showcasing their services and driving client engagement.',
+    url: 'https://njanecompany.com/',
     featured: false,
-    tags: ['Business', 'Innovations'],
+    tags: ['Business', 'Corporate'],
   },
   {
     id: '5',
+    client: 'Milespace Sacco App',
+    category: 'app',
+    description: 'A fully-featured SACCO management mobile app — enabling members to manage savings, loans, contributions, and statements right from their phone.',
+    url: '#',
+    featured: false,
+    tags: ['Mobile App', 'Finance', 'SACCO'],
+    noPreview: true,
+  },
+  {
+    id: '6',
+    client: 'Afyacode',
+    category: 'app',
+    description: 'An AI-powered health and nutrition app focused on diabetes management — analyzes meals using AI, tracks glucose-impacting foods, and guides healthier lifestyle choices.',
+    url: '#',
+    featured: false,
+    tags: ['Mobile App', 'AI', 'Healthcare', 'Diabetes'],
+    noPreview: true,
+  },
+  {
+    id: '7',
     client: 'Hu-Jambo',
     category: 'website',
     description: 'A vibrant, engaging website for Hu-Jambo, connecting communities with a fresh digital presence.',
@@ -57,7 +76,7 @@ export const projects: Project[] = [
     tags: ['Community', 'Lifestyle'],
   },
   {
-    id: '6',
+    id: '8',
     client: 'Biblical Financial Courses',
     category: 'website',
     description: 'Educational platform website for Biblical Financial Courses, designed for course discovery and enrollment.',
@@ -66,7 +85,7 @@ export const projects: Project[] = [
     tags: ['Education', 'E-learning'],
   },
   {
-    id: '7',
+    id: '9',
     client: 'UIP Sacco',
     category: 'software',
     description: 'Professional web presence for UIP Sacco, building trust and enabling member engagement online.',
@@ -75,7 +94,7 @@ export const projects: Project[] = [
     tags: ['Finance', 'SACCO'],
   },
   {
-    id: '8',
+    id: '10',
     client: 'Vision Tech Ventures',
     category: 'website',
     description: 'Tech-forward website for Vision Tech Ventures, showcasing innovative technology solutions in Kenya.',
@@ -84,7 +103,7 @@ export const projects: Project[] = [
     tags: ['Technology', 'Kenya'],
   },
   {
-    id: '9',
+    id: '11',
     client: 'Nurses4Nurses Worldwide',
     category: 'website',
     description: 'A global platform website for Nurses4Nurses Worldwide, connecting nursing professionals across the world.',

@@ -52,7 +52,7 @@ export default function Pricing() {
       </section>
 
       {/* Sticky Controls */}
-      <div className="sticky top-[64px] z-40 bg-background border-b border-border shadow-sm py-3 mb-10">
+      <div className="sticky top-[64px] z-30 bg-background border-b border-border shadow-sm py-3 mb-10">
         <div className="container mx-auto px-4 md:px-8 flex flex-row gap-3 items-center justify-between">
           <div className="flex-1 min-w-0">
             <Select value={category} onValueChange={(val) => setCategory(val as ServiceCategory)}>
