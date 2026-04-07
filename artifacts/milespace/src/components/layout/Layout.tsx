@@ -1,5 +1,6 @@
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import { CookieBanner } from "@/components/CookieBanner";
 import { ReactNode } from "react";
 
 export function Layout({ children }: { children: ReactNode }) {
@@ -8,6 +9,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />
+      <CookieBanner />
     </div>
   );
 }

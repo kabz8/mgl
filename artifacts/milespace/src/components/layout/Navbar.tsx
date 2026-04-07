@@ -26,8 +26,8 @@ export function Navbar() {
             <img
               src="/logo.png"
               alt="Milespace"
-              className="h-12 w-auto object-contain"
-              style={{ maxHeight: "3rem" }}
+              className="w-auto object-contain"
+              style={{ height: "76px" }}
             />
           </Link>
 

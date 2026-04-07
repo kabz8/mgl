@@ -32,10 +32,10 @@ export const projects: Project[] = [
     id: '3',
     client: 'Malkia Africa',
     category: 'website',
-    description: 'Elegant and powerful website for Malkia Africa, reflecting strength, culture, and African excellence.',
+    description: 'A sophisticated brand website for Malkia Africa — a premium African makeup artist brand celebrating beauty, culture, and self-expression.',
     url: 'https://www.malkiaafrica.com/',
     featured: true,
-    tags: ['Corporate', 'Africa'],
+    tags: ['Beauty', 'Makeup', 'Africa'],
   },
   {
     id: '4',

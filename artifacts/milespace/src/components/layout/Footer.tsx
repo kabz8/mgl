@@ -67,8 +67,19 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-primary-foreground/40">
+        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/40">
           <p>&copy; {new Date().getFullYear()} Milespace Group. All rights reserved.</p>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <Link href="/legal?tab=privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <span className="text-white/20">·</span>
+            <Link href="/legal?tab=terms" className="hover:text-white transition-colors">Terms & Conditions</Link>
+            <span className="text-white/20">·</span>
+            <Link href="/legal?tab=refund" className="hover:text-white transition-colors">Refund Policy</Link>
+            <span className="text-white/20">·</span>
+            <Link href="/legal?tab=changes" className="hover:text-white transition-colors">Change Policy</Link>
+          </div>
+
           <p>Where vision meets velocity.</p>
         </div>
       </div>
