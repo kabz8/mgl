@@ -6,17 +6,18 @@ export interface Project {
   url: string;
   featured: boolean;
   tags: string[];
+  previewBlocked?: boolean;
 }
 
 export const projects: Project[] = [
   {
     id: '1',
-    client: 'Azania Africa',
+    client: 'Azani Africa',
     category: 'website',
-    description: 'A professional corporate website for Azania Africa — built for impact and reach across the continent.',
+    description: 'A bold e-commerce and brand website for Azani Africa — a vibrant African fashion label celebrating culture through contemporary clothing designs.',
     url: 'https://www.azaniafrica.com/',
     featured: true,
-    tags: ['Corporate', 'Africa'],
+    tags: ['Fashion', 'E-commerce', 'Africa'],
   },
   {
     id: '2',
@@ -26,6 +27,7 @@ export const projects: Project[] = [
     url: 'https://njanecompany.com/',
     featured: true,
     tags: ['Business', 'Corporate'],
+    previewBlocked: true,
   },
   {
     id: '3',
