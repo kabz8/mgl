@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm --filter @workspace/milespace run build && cp -r artifacts/milespace/dist/public public",
+  "buildCommand": "pnpm --filter @workspace/milespace run build",
   "outputDirectory": "public",
   "installCommand": "pnpm install",
   "framework": null,
