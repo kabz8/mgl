@@ -34,7 +34,7 @@ export const projects: Project[] = [
     category: 'website',
     description: 'A sophisticated brand website for Malkia Africa — a premium African makeup artist brand celebrating beauty, culture, and self-expression.',
     url: 'https://www.malkiaafrica.com/',
-    featured: true,
+    featured: false,
     tags: ['Beauty', 'Makeup', 'Africa'],
   },
   {
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     category: 'website',
     description: 'A vibrant, engaging website for Hu-Jambo, connecting communities with a fresh digital presence.',
     url: 'https://hu-jambo.com/',
-    featured: false,
+    featured: true,
     tags: ['Community', 'Lifestyle'],
   },
   {
