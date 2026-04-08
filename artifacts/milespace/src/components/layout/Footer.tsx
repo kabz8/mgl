@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           <div className="col-span-2">
             <Link href="/" className="inline-block mb-5">
-              <img src="/logo.png" alt="Milespace" className="h-10 w-auto brightness-0 invert" />
+              <img src="/logo.png" alt="Milespace" className="h-[120px] w-auto brightness-0 invert" />
             </Link>
             <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-xs mb-6">
               A premium Kenyan digital agency. We engineer experiences, orchestrate revolutions, and build digital products that dominate.
@@ -18,10 +18,12 @@ export function Footer() {
               href={WHATSAPP_DIRECT_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors"
+              className="group inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] active:scale-95 text-white font-semibold text-base px-6 py-3.5 rounded-full shadow-lg shadow-[#25D366]/30 hover:shadow-[#25D366]/50 transition-all duration-300"
             >
-              <MessageSquare size={16} />
-              WhatsApp Us
+              <span className="bg-white/20 group-hover:bg-white/30 rounded-full p-1.5 transition-colors">
+                <MessageSquare size={18} className="fill-white" />
+              </span>
+              Chat on WhatsApp
             </a>
           </div>
 
