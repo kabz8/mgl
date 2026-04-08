@@ -21,7 +21,7 @@ export function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b border-border bg-background shadow-sm">
-        <div className="container mx-auto px-4 md:px-8 flex h-16 items-center justify-between">
+        <div className="container mx-auto px-4 md:px-8 relative flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 overflow-visible" onClick={() => setIsOpen(false)}>
             <img
               src="/logo.png"
@@ -32,7 +32,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -44,12 +44,15 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
+          </nav>
+
+          <div className="hidden md:block">
             <Button asChild className="bg-primary text-white hover:bg-primary/90">
               <a href={WHATSAPP_DIRECT_LINK} target="_blank" rel="noopener noreferrer">
                 Get Started
               </a>
             </Button>
-          </nav>
+          </div>
 
           {/* Mobile Hamburger */}
           <button
