@@ -29,7 +29,7 @@ import { submitLeadViaWhatsAppAndEmail } from "@/lib/leadSubmission";
 
 type CountryCode = "UK" | "USA";
 
-interface CountryLandingConfig {
+export interface CountryLandingConfig {
   code: CountryCode;
   heroTitle: string;
   heroSubtitle: string;
@@ -39,32 +39,61 @@ interface CountryLandingConfig {
   finalCtaBody: string;
   whyIntro: string;
   processIntro: string;
+  servicesIntro: string;
+  challengeSectionTitle: string;
+  challengeSectionBody: string;
+  challenges: Array<{ title: string; description: string }>;
+  outcomeHighlights: string[];
+  credibilityStats: Array<{ value: string; label: string }>;
+  fitPoints: string[];
   faq: Array<{ q: string; a: string }>;
 }
 
-const services = [
-  { title: "Custom Software Development", description: "Bespoke systems built around your operations, workflows, and growth goals.", icon: Cog },
-  { title: "Web App Development", description: "Fast, secure, and intuitive web apps your team and customers actually enjoy using.", icon: Smartphone },
-  { title: "Website Development", description: "Conversion-focused websites designed for trust, speed, and measurable results.", icon: Sparkles },
-  { title: "Shopify Development", description: "Modern Shopify builds with custom features, integrations, and conversion improvements.", icon: ShoppingCart },
-  { title: "Business Systems & Automation", description: "Automate repetitive workflows and connect tools to remove operational friction.", icon: Settings2 },
-  { title: "Admin Dashboards & Portals", description: "Purpose-built dashboards and internal portals for better control and reporting.", icon: LayoutDashboard },
-];
-
-const whyMilespaceItems = [
-  "Direct communication with the team building your product",
-  "Tailored solutions instead of one-size-fits-all templates",
-  "Premium UI with reliable architecture and clean code",
-  "Strong execution from planning to production launch",
-  "Scalable builds suited for startups and established businesses",
+const serviceCatalog = [
+  {
+    title: "Custom Software Development",
+    description: "Bespoke systems built around your workflows, teams, and long-term business model.",
+    icon: Cog,
+    deliverables: ["Business logic architecture", "Role-based workflows", "Integration-ready APIs"],
+  },
+  {
+    title: "Web App Development",
+    description: "High-performance web applications designed for reliability, adoption, and maintainability.",
+    icon: Smartphone,
+    deliverables: ["Responsive interfaces", "Secure auth and permissions", "Scalable backend services"],
+  },
+  {
+    title: "Website Development",
+    description: "Premium websites that position your brand clearly and convert qualified inbound traffic.",
+    icon: Sparkles,
+    deliverables: ["Conversion-first structure", "Technical SEO foundation", "Fast Core Web Vitals"],
+  },
+  {
+    title: "Shopify Development",
+    description: "Shopify experiences with custom UX, app integrations, and performance-focused checkout flows.",
+    icon: ShoppingCart,
+    deliverables: ["Theme customization", "App and ERP integration", "Conversion optimization"],
+  },
+  {
+    title: "Business Systems & Automation",
+    description: "Automation-first systems that reduce manual work and improve operating efficiency.",
+    icon: Settings2,
+    deliverables: ["Workflow automation", "Data sync between tools", "Operational reporting"],
+  },
+  {
+    title: "Admin Dashboards & Portals",
+    description: "Internal portals and dashboards that help teams make faster, better-informed decisions.",
+    icon: LayoutDashboard,
+    deliverables: ["Live KPI dashboards", "Team and role controls", "Action-oriented reporting"],
+  },
 ];
 
 const processSteps = [
-  { title: "Discovery", description: "We align on goals, users, and business outcomes.", icon: MessageSquare },
-  { title: "Planning & Scope", description: "We define scope, timeline, and technical approach.", icon: ClipboardCheck },
-  { title: "Design & Development", description: "We ship polished interfaces backed by robust engineering.", icon: Webhook },
-  { title: "Testing & Launch", description: "We test thoroughly, deploy smoothly, and monitor rollout.", icon: Rocket },
-  { title: "Support & Iteration", description: "We refine based on usage and keep improving your product.", icon: CheckCircle2 },
+  { title: "Discovery", description: "We map business goals, users, priorities, and conversion targets.", icon: MessageSquare },
+  { title: "Planning & Scope", description: "We lock delivery scope, milestones, architecture, and ownership.", icon: ClipboardCheck },
+  { title: "Design & Development", description: "We build polished interfaces and stable backend systems in parallel.", icon: Webhook },
+  { title: "Testing & Launch", description: "We run QA, release with confidence, and verify post-launch health.", icon: Rocket },
+  { title: "Support & Iteration", description: "We improve based on user behavior, feedback, and growth goals.", icon: CheckCircle2 },
 ];
 
 function LeadFormSection({ countryCode }: { countryCode: CountryCode }) {
@@ -110,6 +139,7 @@ function LeadFormSection({ countryCode }: { countryCode: CountryCode }) {
       title: "Thanks - your enquiry has been captured",
       description: "We opened WhatsApp and email so your enquiry is sent through both channels.",
     });
+
     setFormData({
       fullName: "",
       companyName: "",
@@ -127,7 +157,7 @@ function LeadFormSection({ countryCode }: { countryCode: CountryCode }) {
         <div className="max-w-5xl mx-auto rounded-2xl border border-border bg-card p-8 md:p-10 shadow-sm">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">Start Your Project</h2>
           <p className="text-muted-foreground mb-8">
-            Share your requirements and we will respond with a clear implementation direction, timeline, and next steps.
+            Tell us what you need to build and we will come back with practical next steps, timeline guidance, and implementation clarity.
           </p>
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-2 gap-5">
@@ -160,12 +190,11 @@ function LeadFormSection({ countryCode }: { countryCode: CountryCode }) {
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Custom Software Development">Custom Software Development</SelectItem>
-                    <SelectItem value="Web App Development">Web App Development</SelectItem>
-                    <SelectItem value="Website Development">Website Development</SelectItem>
-                    <SelectItem value="Shopify Development">Shopify Development</SelectItem>
-                    <SelectItem value="Business Systems & Automation">Business Systems & Automation</SelectItem>
-                    <SelectItem value="Admin Dashboards & Portals">Admin Dashboards & Portals</SelectItem>
+                    {serviceCatalog.map((service) => (
+                      <SelectItem key={service.title} value={service.title}>
+                        {service.title}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
@@ -193,8 +222,8 @@ function LeadFormSection({ countryCode }: { countryCode: CountryCode }) {
                 required
                 value={formData.projectDetails}
                 onChange={handleChange}
-                className="min-h-[140px] bg-background resize-none"
-                placeholder="Tell us what you need built, your timeline, and desired outcome."
+                className="min-h-[150px] bg-background resize-none"
+                placeholder="Tell us what you need built, deadlines, dependencies, and what success looks like."
               />
             </div>
 
@@ -217,6 +246,7 @@ function LeadFormSection({ countryCode }: { countryCode: CountryCode }) {
 
 export function CountryLandingPage({ config }: { config: CountryLandingConfig }) {
   const countrySlug = config.code.toLowerCase();
+
   const featuredProof = useMemo(
     () => projects.filter((project) => project.category === "website" || project.category === "software").slice(0, 3),
     [],
@@ -230,7 +260,7 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
   return (
     <div className="flex flex-col w-full bg-background">
       <section className="relative overflow-hidden bg-primary text-primary-foreground py-24 md:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.09),transparent_45%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.05),transparent_42%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.09),transparent_45%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.06),transparent_42%)]" />
         <div className="container relative z-10 mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
             <div>
@@ -247,24 +277,25 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
               </div>
               <p className="mt-5 text-sm text-primary-foreground/70">{config.heroTrustLine}</p>
             </div>
+
             <Card className="border-white/15 bg-white/[0.06] backdrop-blur-sm text-white shadow-2xl">
               <CardHeader>
-                <CardTitle className="text-2xl leading-tight">Built for outcomes, not just deliverables.</CardTitle>
-                <CardDescription className="text-primary-foreground/70">Premium engineering and design for international teams that need reliable execution.</CardDescription>
+                <CardTitle className="text-2xl leading-tight">Serious product delivery, without the usual agency friction.</CardTitle>
+                <CardDescription className="text-primary-foreground/70">
+                  Clear communication, strong engineering, and outcomes aligned to commercial goals.
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Globe2 className="h-5 w-5 text-secondary mt-0.5" />
-                  <p className="text-sm text-primary-foreground/90">Cross-timezone collaboration with clear weekly visibility.</p>
+                  <p className="text-sm text-primary-foreground/90">International collaboration built for distributed teams and fast-moving priorities.</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-secondary mt-0.5" />
-                  <p className="text-sm text-primary-foreground/90">Conversion-focused UX with scalable backend architecture.</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Rocket className="h-5 w-5 text-secondary mt-0.5" />
-                  <p className="text-sm text-primary-foreground/90">Faster release cycles with robust quality checks.</p>
-                </div>
+                {config.outcomeHighlights.slice(0, 2).map((highlight) => (
+                  <div key={highlight} className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-secondary mt-0.5 shrink-0" />
+                    <p className="text-sm text-primary-foreground/90">{highlight}</p>
+                  </div>
+                ))}
               </CardContent>
             </Card>
           </div>
@@ -273,10 +304,11 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
 
       <section className="py-10 bg-background border-b border-border">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {["Custom-built solutions", "Clear communication", "Fast turnaround", "International delivery", "Clean UI + solid backend"].map((item) => (
-              <div key={item} className="rounded-xl bg-muted/40 border border-border px-4 py-3 text-sm font-medium text-foreground text-center">
-                {item}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {config.credibilityStats.map((stat) => (
+              <div key={stat.label} className="rounded-xl bg-muted/40 border border-border px-4 py-4">
+                <p className="text-2xl font-bold text-foreground">{stat.value}</p>
+                <p className="text-sm text-muted-foreground">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -286,23 +318,54 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Services for {config.code} Companies</h2>
-            <p className="text-muted-foreground">We help teams ship reliable digital products and business systems that support growth and operations.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{config.challengeSectionTitle}</h2>
+            <p className="text-muted-foreground">{config.challengeSectionBody}</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {config.challenges.map((challenge, index) => (
+              <motion.div key={challenge.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: index * 0.05 }}>
+                <Card className="h-full border-border/70 shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-xl">{challenge.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-sm leading-relaxed">{challenge.description}</CardDescription>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-muted/30 border-y border-border">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="max-w-3xl mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Services Built Around Real Commercial Needs</h2>
+            <p className="text-muted-foreground">{config.servicesIntro}</p>
           </div>
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {services.map((service, index) => {
+            {serviceCatalog.map((service, index) => {
               const Icon = service.icon;
               return (
                 <motion.div key={service.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: index * 0.05 }}>
-                  <Card className="h-full border-border/70 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  <Card className="h-full border-border/70 hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <div className="h-12 w-12 rounded-xl bg-primary/5 flex items-center justify-center mb-4">
                         <Icon className="h-6 w-6 text-secondary" />
                       </div>
                       <CardTitle className="text-xl leading-snug">{service.title}</CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="space-y-4">
                       <CardDescription className="text-sm leading-relaxed">{service.description}</CardDescription>
+                      <ul className="space-y-2">
+                        {service.deliverables.map((deliverable) => (
+                          <li key={deliverable} className="text-sm text-foreground flex items-start gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-secondary mt-0.5 shrink-0" />
+                            <span>{deliverable}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -312,7 +375,7 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
         </div>
       </section>
 
-      <section className="py-24 bg-muted/30 border-y border-border">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             <Card className="border-border/70 shadow-sm">
@@ -321,7 +384,7 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
                 <CardDescription className="text-base">{config.whyIntro}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
-                {whyMilespaceItems.map((item) => (
+                {config.fitPoints.map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-secondary mt-0.5 shrink-0" />
                     <p className="text-foreground">{item}</p>
@@ -329,9 +392,10 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
                 ))}
               </CardContent>
             </Card>
+
             <Card className="border-border/70 shadow-sm">
               <CardHeader>
-                <CardTitle className="text-2xl">Our Process</CardTitle>
+                <CardTitle className="text-2xl">Delivery Process</CardTitle>
                 <CardDescription>{config.processIntro}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -355,14 +419,16 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
         </div>
       </section>
 
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Recent Project Proof</h2>
-            <p className="text-muted-foreground">A sample of projects we have delivered. Replace or expand these cards with campaign-specific case studies as needed.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Portfolio Proof</h2>
+            <p className="text-muted-foreground">
+              Real projects from our delivery pipeline. Replace or expand with market-specific case studies as your campaigns mature.
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {featuredProof.map((project) => (
+            {featuredProof.map((project, index) => (
               <Card key={project.id} className="h-full border-border/70 shadow-sm hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-lg">{project.client}</CardTitle>
@@ -370,7 +436,7 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <p className="text-sm text-muted-foreground">{project.description}</p>
-                  <p className="text-sm font-medium text-foreground">Outcome: Improved clarity, trust, and digital presence for target users.</p>
+                  <p className="text-sm font-medium text-foreground">{config.outcomeHighlights[index % config.outcomeHighlights.length]}</p>
                   {project.url && project.url !== "#" ? (
                     <a href={project.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-semibold text-primary hover:underline">
                       View project <ArrowRight className="ml-1 h-4 w-4" />
@@ -385,11 +451,11 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
         </div>
       </section>
 
-      <section className="py-24 bg-muted/30 border-y border-border">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-3xl mx-auto text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-muted-foreground">Everything you need to know before starting your project with Milespace.</p>
+            <p className="text-muted-foreground">Answers to common questions before starting delivery with Milespace.</p>
           </div>
           <div className="max-w-4xl mx-auto grid gap-4">
             {config.faq.map((item) => (

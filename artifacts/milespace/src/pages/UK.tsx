@@ -15,16 +15,56 @@ export default function UK() {
         code: "UK",
         heroTitle: "Custom Software Development for UK Businesses",
         heroSubtitle:
-          "Milespace helps UK companies launch tailored software, high-performing websites, and scalable internal systems with smooth remote collaboration and clear delivery across time zones.",
-        heroTrustLine: "Custom builds, not templates - clear communication, practical delivery, and ongoing support.",
+          "Milespace helps UK teams ship tailored software, premium websites, and internal systems that are engineered for practical outcomes, operational clarity, and long-term scalability.",
+        heroTrustLine: "Tailored solutions, clear communication, practical execution, and ongoing support across UK time zones.",
         quoteCtaLabel: "Request a Project Quote",
         finalCtaTitle: "Need a Reliable Tech Partner for Your Growing UK Business?",
         finalCtaBody:
-          "Share your goals and we will map out the right tailored solution - from discovery to launch and long-term improvement.",
+          "Tell us your goals and current bottlenecks. We will map the right tailored solution and delivery plan from scope to launch.",
         whyIntro:
-          "We combine premium design standards with practical engineering so your solution looks excellent, works reliably, and supports real business outcomes.",
+          "We blend premium product design with dependable engineering discipline, so what we build is polished, stable, and commercially useful.",
         processIntro:
-          "Our structured delivery process keeps scope, communication, and deadlines aligned from day one.",
+          "Our process keeps scope, communication, and deadlines aligned from the first discovery call through post-launch iteration.",
+        servicesIntro:
+          "From discovery websites to complex internal tooling, we build practical digital solutions that help UK businesses serve customers faster and operate with less friction.",
+        challengeSectionTitle: "Common UK Delivery Gaps We Help Fix",
+        challengeSectionBody:
+          "Most teams do not struggle with ideas - they struggle with execution quality, timeline drift, and fragmented systems. We solve those delivery gaps with clear ownership.",
+        challenges: [
+          {
+            title: "Legacy systems slowing growth",
+            description:
+              "We modernize outdated tools and workflows so your team can move faster without carrying technical debt that blocks execution.",
+          },
+          {
+            title: "Agencies that overpromise",
+            description:
+              "We keep delivery practical and transparent with milestone-based communication, realistic scope, and accountable implementation.",
+          },
+          {
+            title: "Disconnected customer journeys",
+            description:
+              "We unify your website, product experience, and backend operations so enquiry, onboarding, and delivery work as one system.",
+          },
+        ],
+        outcomeHighlights: [
+          "Outcome: Faster response-to-delivery workflows and stronger operational clarity.",
+          "Outcome: Improved lead quality and higher conversion confidence across digital touchpoints.",
+          "Outcome: Systems that scale with your team instead of becoming operational bottlenecks.",
+        ],
+        credibilityStats: [
+          { value: "100+", label: "Projects delivered across web and software" },
+          { value: "5+", label: "Years building production-grade solutions" },
+          { value: "< 24h", label: "Typical response cycle on active projects" },
+          { value: "Global", label: "Remote-first delivery for international clients" },
+        ],
+        fitPoints: [
+          "Direct communication with the engineers and strategists responsible for delivery",
+          "Tailored implementation plans built around your operational constraints",
+          "Premium UI and robust backend architecture that support growth",
+          "Execution discipline focused on outcomes, not vanity output",
+          "Flexible enough for startups, structured enough for established organisations",
+        ],
         faq: [
           {
             q: "Do you work with UK clients remotely?",
