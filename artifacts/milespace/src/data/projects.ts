@@ -111,4 +111,13 @@ export const projects: Project[] = [
     featured: false,
     tags: ['Healthcare', 'Global'],
   },
+  {
+    id: '12',
+    client: 'Nextcare Dental Studio',
+    category: 'website',
+    description: 'Professional dental clinic website for Nextcare Dental Studio, designed to showcase services, streamline bookings, and build patient trust.',
+    url: 'https://www.nextcaredental.ke/',
+    featured: true,
+    tags: ['Healthcare', 'Dental', 'Kenya'],
+  },
 ];
