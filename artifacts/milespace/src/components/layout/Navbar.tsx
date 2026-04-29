@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { WHATSAPP_DIRECT_LINK } from "@/lib/whatsapp";
-import { Menu, X, ArrowRight, Home, Info, Briefcase, DollarSign, Image, Phone } from "lucide-react";
+import { Menu, X, ArrowRight, Home, Info, Briefcase, DollarSign, Image, Phone, Boxes } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -9,6 +9,7 @@ const links = [
   { href: "/", label: "Home", icon: Home },
   { href: "/about", label: "About", icon: Info },
   { href: "/services", label: "Services", icon: Briefcase },
+  { href: "/saas", label: "SaaS", icon: Boxes },
   { href: "/pricing", label: "Pricing", icon: DollarSign },
   { href: "/portfolio", label: "Portfolio", icon: Image },
   { href: "/contact", label: "Contact", icon: Phone },

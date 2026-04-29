@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { DemoBookingSection } from "@/components/saas/DemoBookingSection";
+import { IconTiles } from "@/components/marketing/IconTiles";
 
 const features = [
   "Fast checkout and sales recording",
@@ -54,6 +55,19 @@ export default function SaaSPOS() {
             </div>
             <p className="mt-5 text-sm text-primary-foreground/70">Fast checkout, better stock visibility, cleaner reporting, and stronger day-to-day control.</p>
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          <IconTiles
+            items={[
+              { icon: "💳", title: "Fast Checkout", subtitle: "Serve customers quickly with minimal friction" },
+              { icon: "📦", title: "Stock Visibility", subtitle: "Track movement and low-stock risks clearly" },
+              { icon: "📊", title: "Daily Insights", subtitle: "Understand sales and expense performance fast" },
+              { icon: "👥", title: "Staff Control", subtitle: "Monitor cashier and staff activity by role" },
+            ]}
+          />
         </div>
       </section>
 

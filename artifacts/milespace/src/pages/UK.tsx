@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { DemoBookingSection } from "@/components/saas/DemoBookingSection";
+import { IconTiles } from "@/components/marketing/IconTiles";
 
 export default function UK() {
   usePageMetadata({
@@ -42,6 +43,19 @@ export default function UK() {
               Tailored solution architecture, fast response cycles, and structured delivery across UK time zones.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          <IconTiles
+            items={[
+              { icon: "🎯", title: "Client-Centric", subtitle: "Your commercial outcomes guide delivery" },
+              { icon: "⚡", title: "Fast & Reliable", subtitle: "Practical timelines and disciplined shipping" },
+              { icon: "🔎", title: "Detail-Oriented", subtitle: "Strong QA and implementation rigor" },
+              { icon: "🤝", title: "Proactive Support", subtitle: "We surface risks and options early" },
+            ]}
+          />
         </div>
       </section>
 

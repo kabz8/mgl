@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { DemoBookingSection } from "@/components/saas/DemoBookingSection";
+import { IconTiles } from "@/components/marketing/IconTiles";
 
 const products = [
   {
@@ -67,6 +68,19 @@ export default function SaaS() {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          <IconTiles
+            items={[
+              { icon: "🎯", title: "Outcome Focused", subtitle: "Built to solve operational pain points" },
+              { icon: "⚡", title: "Fast to Adopt", subtitle: "Simple workflows your team can use quickly" },
+              { icon: "🔍", title: "Traceable", subtitle: "Clear records and visibility across actions" },
+              { icon: "🤝", title: "Supportive", subtitle: "Product guidance and practical rollout help" },
+            ]}
+          />
         </div>
       </section>
 

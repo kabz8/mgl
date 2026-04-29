@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { DemoBookingSection } from "@/components/saas/DemoBookingSection";
+import { IconTiles } from "@/components/marketing/IconTiles";
 
 export default function USA() {
   usePageMetadata({
@@ -60,6 +61,19 @@ export default function USA() {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+          <IconTiles
+            items={[
+              { icon: "🚀", title: "Execution Speed", subtitle: "Move from scope to shipped outcomes faster" },
+              { icon: "📈", title: "Growth-Ready", subtitle: "Architecture designed for scale and expansion" },
+              { icon: "🧠", title: "Clear Decisions", subtitle: "Better visibility for product and ops teams" },
+              { icon: "🛠️", title: "Hands-On Delivery", subtitle: "Practical build support across roadmap phases" },
+            ]}
+          />
         </div>
       </section>
 
