@@ -5,10 +5,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Phone, Mail, MessageSquare } from "lucide-react";
-import { getWhatsAppLink, WHATSAPP_DIRECT_LINK } from "@/lib/whatsapp";
+import { WHATSAPP_DIRECT_LINK } from "@/lib/whatsapp";
+import { submitLeadViaWhatsAppAndEmail } from "@/lib/leadSubmission";
+import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 
 export default function Contact() {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,9 +31,26 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `*New Inquiry*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone}\n*Service Interested In:* ${formData.service}\n*Budget:* ${formData.budget}\n*Project Description:* ${formData.description}`;
-    
-    window.open(getWhatsAppLink(message), '_blank');
+    submitLeadViaWhatsAppAndEmail({
+      subject: `New Project Enquiry - ${formData.name}`,
+      lines: [
+        "New website enquiry",
+        "",
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Phone: ${formData.phone}`,
+        `Service Interested In: ${formData.service}`,
+        `Budget: ${formData.budget}`,
+        "",
+        "Project Description:",
+        formData.description,
+      ],
+    });
+
+    toast({
+      title: "Enquiry sent",
+      description: "WhatsApp and email have been opened with your enquiry details.",
+    });
   };
 
   return (

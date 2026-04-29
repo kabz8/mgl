@@ -24,6 +24,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { projects } from "@/data/projects";
 import { getWhatsAppLink, WHATSAPP_DIRECT_LINK } from "@/lib/whatsapp";
 import { useToast } from "@/hooks/use-toast";
+import { submitLeadViaWhatsAppAndEmail } from "@/lib/leadSubmission";
 
 type CountryCode = "UK" | "USA";
 
@@ -111,10 +112,26 @@ function LeadFormSection({ countryCode }: { countryCode: CountryCode }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Replace with backend/API integration when lead pipeline is connected.
+    submitLeadViaWhatsAppAndEmail({
+      subject: `New ${countryCode} Project Enquiry - ${formData.companyName || formData.fullName}`,
+      lines: [
+        `New ${countryCode} landing page enquiry`,
+        "",
+        `Full Name: ${formData.fullName}`,
+        `Company Name: ${formData.companyName}`,
+        `Email: ${formData.email}`,
+        `Phone / WhatsApp: ${formData.phone}`,
+        `Service Needed: ${formData.serviceNeeded}`,
+        `Budget Range: ${formData.budgetRange}`,
+        "",
+        "Project Details:",
+        formData.projectDetails,
+      ],
+    });
+
     toast({
       title: "Thanks - your enquiry has been captured",
-      description: "Our team will reach out shortly to confirm next steps.",
+      description: "We opened WhatsApp and email so your enquiry is sent through both channels.",
     });
     setFormData({
       fullName: "",
