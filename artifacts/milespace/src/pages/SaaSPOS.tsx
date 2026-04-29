@@ -58,6 +58,14 @@ export default function SaaSPOS() {
         </div>
       </section>
 
+      <section className="py-12 bg-transparent">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="rounded-2xl border border-border/70 bg-card/80 p-4 md:p-6 shadow-sm">
+            <img src="/illustrations/pos.svg" alt="POS dashboard and checkout illustration" className="w-full h-auto rounded-xl" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4 md:px-8 max-w-4xl">
           <IconTiles

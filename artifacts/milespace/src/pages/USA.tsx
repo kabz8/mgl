@@ -65,6 +65,14 @@ export default function USA() {
       </section>
 
       <section className="py-12 bg-background">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="rounded-2xl border border-border bg-card p-4 md:p-6 shadow-sm">
+            <img src="/illustrations/usa.svg" alt="USA growth software delivery illustration" className="w-full h-auto rounded-xl" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-background">
         <div className="container mx-auto px-4 md:px-8 max-w-4xl">
           <IconTiles
             items={[
