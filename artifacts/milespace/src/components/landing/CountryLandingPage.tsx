@@ -6,6 +6,7 @@ import {
   CheckCircle2,
   ClipboardCheck,
   Cog,
+  Globe2,
   LayoutDashboard,
   MessageSquare,
   Rocket,
@@ -42,36 +43,12 @@ interface CountryLandingConfig {
 }
 
 const services = [
-  {
-    title: "Custom Software Development",
-    description: "Bespoke systems built around your operations, workflows, and growth goals.",
-    icon: Cog,
-  },
-  {
-    title: "Web App Development",
-    description: "Fast, secure, and intuitive web apps your team and customers actually enjoy using.",
-    icon: Smartphone,
-  },
-  {
-    title: "Website Development",
-    description: "Conversion-focused marketing and business websites designed for trust and performance.",
-    icon: Sparkles,
-  },
-  {
-    title: "Shopify Development",
-    description: "Modern Shopify stores with custom features, apps, and integrations for better sales.",
-    icon: ShoppingCart,
-  },
-  {
-    title: "Business Systems & Automation",
-    description: "Automate repetitive tasks and connect core tools to eliminate operational bottlenecks.",
-    icon: Settings2,
-  },
-  {
-    title: "Admin Dashboards & Portals",
-    description: "Purpose-built dashboards and internal portals for clearer decisions and better control.",
-    icon: LayoutDashboard,
-  },
+  { title: "Custom Software Development", description: "Bespoke systems built around your operations, workflows, and growth goals.", icon: Cog },
+  { title: "Web App Development", description: "Fast, secure, and intuitive web apps your team and customers actually enjoy using.", icon: Smartphone },
+  { title: "Website Development", description: "Conversion-focused websites designed for trust, speed, and measurable results.", icon: Sparkles },
+  { title: "Shopify Development", description: "Modern Shopify builds with custom features, integrations, and conversion improvements.", icon: ShoppingCart },
+  { title: "Business Systems & Automation", description: "Automate repetitive workflows and connect tools to remove operational friction.", icon: Settings2 },
+  { title: "Admin Dashboards & Portals", description: "Purpose-built dashboards and internal portals for better control and reporting.", icon: LayoutDashboard },
 ];
 
 const whyMilespaceItems = [
@@ -145,66 +122,33 @@ function LeadFormSection({ countryCode }: { countryCode: CountryCode }) {
   };
 
   return (
-    <section id="lead-form" className="py-20 bg-background">
+    <section id="lead-form" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-4xl mx-auto rounded-2xl border border-border bg-card p-8 md:p-10 shadow-sm">
+        <div className="max-w-5xl mx-auto rounded-2xl border border-border bg-card p-8 md:p-10 shadow-sm">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">Start Your Project</h2>
           <p className="text-muted-foreground mb-8">
-            Share your project details and we will respond with a clear plan, timeline, and next step recommendations.
+            Share your requirements and we will respond with a clear implementation direction, timeline, and next steps.
           </p>
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-2 gap-5">
               <div className="space-y-2">
                 <Label htmlFor={`${countryCode}-fullName`}>Full Name *</Label>
-                <Input
-                  id={`${countryCode}-fullName`}
-                  name="fullName"
-                  required
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  className="h-12 bg-background"
-                  placeholder="Jane Smith"
-                />
+                <Input id={`${countryCode}-fullName`} name="fullName" required value={formData.fullName} onChange={handleChange} className="h-12 bg-background" placeholder="Jane Smith" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor={`${countryCode}-companyName`}>Company Name *</Label>
-                <Input
-                  id={`${countryCode}-companyName`}
-                  name="companyName"
-                  required
-                  value={formData.companyName}
-                  onChange={handleChange}
-                  className="h-12 bg-background"
-                  placeholder="Acme Ltd"
-                />
+                <Input id={`${countryCode}-companyName`} name="companyName" required value={formData.companyName} onChange={handleChange} className="h-12 bg-background" placeholder="Acme Ltd" />
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
               <div className="space-y-2">
                 <Label htmlFor={`${countryCode}-email`}>Email *</Label>
-                <Input
-                  id={`${countryCode}-email`}
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="h-12 bg-background"
-                  placeholder="you@company.com"
-                />
+                <Input id={`${countryCode}-email`} name="email" type="email" required value={formData.email} onChange={handleChange} className="h-12 bg-background" placeholder="you@company.com" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor={`${countryCode}-phone`}>Phone / WhatsApp *</Label>
-                <Input
-                  id={`${countryCode}-phone`}
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="h-12 bg-background"
-                  placeholder="+44 ... / +1 ..."
-                />
+                <Input id={`${countryCode}-phone`} name="phone" required value={formData.phone} onChange={handleChange} className="h-12 bg-background" placeholder="+44 ... / +1 ..." />
               </div>
             </div>
 
@@ -273,12 +217,8 @@ function LeadFormSection({ countryCode }: { countryCode: CountryCode }) {
 
 export function CountryLandingPage({ config }: { config: CountryLandingConfig }) {
   const countrySlug = config.code.toLowerCase();
-  const quoteHref = "#lead-form";
   const featuredProof = useMemo(
-    () =>
-      projects
-        .filter((project) => project.category === "website" || project.category === "software")
-        .slice(0, 3),
+    () => projects.filter((project) => project.category === "website" || project.category === "software").slice(0, 3),
     [],
   );
 
@@ -289,56 +229,53 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
 
   return (
     <div className="flex flex-col w-full bg-background">
-      <section className="relative overflow-hidden bg-primary text-primary-foreground py-20 md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary to-primary/95" />
-        <div className="absolute top-0 right-0 w-72 h-72 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <section className="relative overflow-hidden bg-primary text-primary-foreground py-24 md:py-32">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.09),transparent_45%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.05),transparent_42%)]" />
         <div className="container relative z-10 mx-auto px-4 md:px-8">
-          <div className="max-w-4xl">
-            <p className="text-sm uppercase tracking-[0.18em] text-secondary font-semibold mb-4">Milespace Global Delivery</p>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">{config.heroTitle}</h1>
-            <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mb-8">{config.heroSubtitle}</p>
-            {/* Tracking-ready CTA hooks via id/data-cta/data-country attributes. */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold"
-                id={`${countrySlug}-book-call`}
-                data-cta="book-call"
-                data-country={countrySlug}
-              >
-                <a href={getWhatsAppLink(discoveryMessage)} target="_blank" rel="noopener noreferrer">
-                  Book a Discovery Call
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold"
-                id={`${countrySlug}-request-quote`}
-                data-cta="request-quote"
-                data-country={countrySlug}
-              >
-                <a href={quoteHref}>{config.quoteCtaLabel}</a>
-              </Button>
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.18em] text-secondary font-semibold mb-4">Milespace Global Delivery</p>
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">{config.heroTitle}</h1>
+              <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mb-8">{config.heroSubtitle}</p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id={`${countrySlug}-book-call`} data-cta="book-call" data-country={countrySlug}>
+                  <a href={getWhatsAppLink(discoveryMessage)} target="_blank" rel="noopener noreferrer">Book a Discovery Call</a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id={`${countrySlug}-request-quote`} data-cta="request-quote" data-country={countrySlug}>
+                  <a href="#lead-form">{config.quoteCtaLabel}</a>
+                </Button>
+              </div>
+              <p className="mt-5 text-sm text-primary-foreground/70">{config.heroTrustLine}</p>
             </div>
-            <p className="mt-5 text-sm text-primary-foreground/70">{config.heroTrustLine}</p>
+            <Card className="border-white/15 bg-white/[0.06] backdrop-blur-sm text-white shadow-2xl">
+              <CardHeader>
+                <CardTitle className="text-2xl leading-tight">Built for outcomes, not just deliverables.</CardTitle>
+                <CardDescription className="text-primary-foreground/70">Premium engineering and design for international teams that need reliable execution.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <Globe2 className="h-5 w-5 text-secondary mt-0.5" />
+                  <p className="text-sm text-primary-foreground/90">Cross-timezone collaboration with clear weekly visibility.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="h-5 w-5 text-secondary mt-0.5" />
+                  <p className="text-sm text-primary-foreground/90">Conversion-focused UX with scalable backend architecture.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Rocket className="h-5 w-5 text-secondary mt-0.5" />
+                  <p className="text-sm text-primary-foreground/90">Faster release cycles with robust quality checks.</p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      <section className="py-8 bg-muted/40 border-y border-border">
+      <section className="py-10 bg-background border-b border-border">
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {[
-              "Custom-built solutions",
-              "Clear communication",
-              "Fast turnaround",
-              "International delivery",
-              "Clean UI + solid backend",
-            ].map((item) => (
-              <div key={item} className="rounded-lg bg-background border border-border px-4 py-3 text-sm font-medium text-foreground">
+            {["Custom-built solutions", "Clear communication", "Fast turnaround", "International delivery", "Clean UI + solid backend"].map((item) => (
+              <div key={item} className="rounded-xl bg-muted/40 border border-border px-4 py-3 text-sm font-medium text-foreground text-center">
                 {item}
               </div>
             ))}
@@ -346,26 +283,18 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
         </div>
       </section>
 
-      <section className="py-20 bg-background">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="max-w-3xl mb-10">
+          <div className="max-w-3xl mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Services for {config.code} Companies</h2>
-            <p className="text-muted-foreground">
-              We help teams ship reliable digital products and business systems that support growth, operations, and customer experience.
-            </p>
+            <p className="text-muted-foreground">We help teams ship reliable digital products and business systems that support growth and operations.</p>
           </div>
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: index * 0.05 }}
-                >
-                  <Card className="h-full border-border/70 hover:shadow-md transition-shadow">
+                <motion.div key={service.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: index * 0.05 }}>
+                  <Card className="h-full border-border/70 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                     <CardHeader>
                       <div className="h-12 w-12 rounded-xl bg-primary/5 flex items-center justify-center mb-4">
                         <Icon className="h-6 w-6 text-secondary" />
@@ -383,22 +312,24 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
         </div>
       </section>
 
-      <section className="py-20 bg-muted/30 border-y border-border">
+      <section className="py-24 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 items-start">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Milespace</h2>
-              <p className="text-muted-foreground mb-6">{config.whyIntro}</p>
-              <div className="space-y-3">
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            <Card className="border-border/70 shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-3xl md:text-4xl">Why Milespace</CardTitle>
+                <CardDescription className="text-base">{config.whyIntro}</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
                 {whyMilespaceItems.map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-secondary mt-0.5 shrink-0" />
                     <p className="text-foreground">{item}</p>
                   </div>
                 ))}
-              </div>
-            </div>
-            <Card className="border-border/70">
+              </CardContent>
+            </Card>
+            <Card className="border-border/70 shadow-sm">
               <CardHeader>
                 <CardTitle className="text-2xl">Our Process</CardTitle>
                 <CardDescription>{config.processIntro}</CardDescription>
@@ -407,14 +338,12 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
                 {processSteps.map((step, index) => {
                   const Icon = step.icon;
                   return (
-                    <div key={step.title} className="flex gap-4">
+                    <div key={step.title} className="flex gap-4 rounded-xl bg-muted/30 p-3">
                       <div className="h-10 w-10 rounded-full bg-primary/5 flex items-center justify-center shrink-0">
                         <Icon className="h-5 w-5 text-primary" />
                       </div>
                       <div>
-                        <p className="font-semibold">
-                          {index + 1}. {step.title}
-                        </p>
+                        <p className="font-semibold">{index + 1}. {step.title}</p>
                         <p className="text-sm text-muted-foreground">{step.description}</p>
                       </div>
                     </div>
@@ -426,26 +355,22 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
         </div>
       </section>
 
-      <section className="py-20 bg-background">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="max-w-3xl mb-10">
+          <div className="max-w-3xl mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Recent Project Proof</h2>
-            <p className="text-muted-foreground">
-              A sample of projects we have delivered. Replace or expand these cards with campaign-specific case studies as needed.
-            </p>
+            <p className="text-muted-foreground">A sample of projects we have delivered. Replace or expand these cards with campaign-specific case studies as needed.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {featuredProof.map((project) => (
-              <Card key={project.id} className="h-full border-border/70">
+              <Card key={project.id} className="h-full border-border/70 shadow-sm hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-lg">{project.client}</CardTitle>
                   <CardDescription className="uppercase tracking-wide text-xs">{project.category}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <p className="text-sm text-muted-foreground">{project.description}</p>
-                  <p className="text-sm font-medium text-foreground">
-                    Outcome: Improved clarity, trust, and digital presence for target users.
-                  </p>
+                  <p className="text-sm font-medium text-foreground">Outcome: Improved clarity, trust, and digital presence for target users.</p>
                   {project.url && project.url !== "#" ? (
                     <a href={project.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-semibold text-primary hover:underline">
                       View project <ArrowRight className="ml-1 h-4 w-4" />
@@ -460,7 +385,7 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
         </div>
       </section>
 
-      <section className="py-20 bg-muted/30 border-y border-border">
+      <section className="py-24 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-3xl mx-auto text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
@@ -469,47 +394,24 @@ export function CountryLandingPage({ config }: { config: CountryLandingConfig })
           <div className="max-w-4xl mx-auto grid gap-4">
             {config.faq.map((item) => (
               <Card key={item.q} className="border-border/70">
-                <CardHeader>
-                  <CardTitle className="text-lg">{item.q}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{item.a}</p>
-                </CardContent>
+                <CardHeader><CardTitle className="text-lg">{item.q}</CardTitle></CardHeader>
+                <CardContent><p className="text-muted-foreground">{item.a}</p></CardContent>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
           <h2 className="text-3xl md:text-5xl font-bold mb-5">{config.finalCtaTitle}</h2>
           <p className="text-primary-foreground/80 text-lg mb-9">{config.finalCtaBody}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold"
-              id={`${countrySlug}-final-book-call`}
-              data-cta="book-call"
-              data-country={countrySlug}
-            >
-              <a href={getWhatsAppLink(discoveryMessage)} target="_blank" rel="noopener noreferrer">
-                Book a Discovery Call
-              </a>
+            <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id={`${countrySlug}-final-book-call`} data-cta="book-call" data-country={countrySlug}>
+              <a href={getWhatsAppLink(discoveryMessage)} target="_blank" rel="noopener noreferrer">Book a Discovery Call</a>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold"
-              id={`${countrySlug}-final-whatsapp`}
-              data-cta="whatsapp-contact"
-              data-country={countrySlug}
-            >
-              <a href={WHATSAPP_DIRECT_LINK} target="_blank" rel="noopener noreferrer">
-                WhatsApp Milespace
-              </a>
+            <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id={`${countrySlug}-final-whatsapp`} data-cta="whatsapp-contact" data-country={countrySlug}>
+              <a href={WHATSAPP_DIRECT_LINK} target="_blank" rel="noopener noreferrer">WhatsApp Milespace</a>
             </Button>
           </div>
           <p className="mt-6 text-sm text-primary-foreground/70">

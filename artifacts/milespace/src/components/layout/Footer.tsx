@@ -18,12 +18,12 @@ export function Footer() {
               href={WHATSAPP_DIRECT_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] active:scale-95 text-white font-semibold text-base px-6 py-3.5 rounded-full shadow-lg shadow-[#25D366]/30 hover:shadow-[#25D366]/50 transition-all duration-300"
+              className="group inline-flex items-center gap-3 border border-white/20 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm px-5 py-3 rounded-xl transition-all duration-300"
             >
-              <span className="bg-white/20 group-hover:bg-white/30 rounded-full p-1.5 transition-colors">
-                <MessageSquare size={18} className="fill-white" />
+              <span className="bg-white/10 group-hover:bg-white/20 rounded-lg p-1.5 transition-colors">
+                <MessageSquare size={16} className="fill-white" />
               </span>
-              Chat on WhatsApp
+              Message us on WhatsApp
             </a>
           </div>
 
