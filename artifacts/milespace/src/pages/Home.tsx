@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, Smartphone, Database, CheckCircle2, ChevronRight } from "lucide-react";
+import { ArrowRight, Code, Smartphone, Database, CheckCircle2, ChevronRight, LayoutGrid, ShoppingBag } from "lucide-react";
 import { getWhatsAppLink, WHATSAPP_DIRECT_LINK } from "@/lib/whatsapp";
 import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -124,6 +124,74 @@ export default function Home() {
               <Link href="/services" className="text-primary font-semibold flex items-center hover:text-secondary transition-colors">
                 Learn more <ChevronRight className="ml-1 h-4 w-4" />
               </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* SaaS Products */}
+      <section className="py-24 bg-muted/30 border-y border-border">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div className="max-w-3xl">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">SaaS Products by Milespace</h2>
+              <p className="text-muted-foreground text-lg">
+                Beyond custom builds, Milespace develops practical SaaS products for group management and business operations.
+              </p>
+            </div>
+            <Button variant="outline" asChild>
+              <Link href="/saas">Explore SaaS Products</Link>
+            </Button>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="h-full bg-card rounded-xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
+                <div className="h-12 w-12 rounded-lg bg-primary/5 flex items-center justify-center mb-5">
+                  <LayoutGrid className="h-6 w-6 text-secondary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">ChamaDesk</h3>
+                <p className="text-muted-foreground mb-6">
+                  A digital platform for chamas and group operations - meetings, contributions, loans, records, and accountability in one place.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button asChild className="flex-1">
+                    <Link href="/saas/chamadesk">View ChamaDesk</Link>
+                  </Button>
+                  <Button asChild variant="outline" className="flex-1">
+                    <a href="/saas/chamadesk#chamadesk-demo-form">Book Demo</a>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <div className="h-full bg-card rounded-xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
+                <div className="h-12 w-12 rounded-lg bg-primary/5 flex items-center justify-center mb-5">
+                  <ShoppingBag className="h-6 w-6 text-secondary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">POS</h3>
+                <p className="text-muted-foreground mb-6">
+                  A modern POS for cafés, pastry shops, retail stores, and growing businesses to handle sales, stock, staff, and reporting.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button asChild className="flex-1">
+                    <Link href="/saas/pos">View POS</Link>
+                  </Button>
+                  <Button asChild variant="outline" className="flex-1">
+                    <a href="/saas/pos#pos-demo-form">Book Demo</a>
+                  </Button>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>

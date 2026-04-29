@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground pt-14 pb-8">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-10">
           <div className="col-span-2">
             <Link href="/" className="inline-block mb-5">
               <img src="/logo.png" alt="Milespace" className="h-[120px] w-auto brightness-0 invert" />
@@ -33,6 +33,7 @@ export function Footer() {
               {[
                 { href: "/about", label: "About Us" },
                 { href: "/services", label: "Services" },
+                { href: "/saas", label: "SaaS" },
                 { href: "/pricing", label: "Pricing" },
                 { href: "/portfolio", label: "Portfolio" },
                 { href: "/contact", label: "Contact" },
@@ -65,6 +66,23 @@ export function Footer() {
                   milespace.co.ke
                 </a>
               </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-sm uppercase tracking-wider text-white/50 mb-4">Products</h3>
+            <ul className="space-y-3 text-sm">
+              {[
+                { href: "/saas", label: "All SaaS Products" },
+                { href: "/saas/chamadesk", label: "ChamaDesk" },
+                { href: "/saas/pos", label: "POS" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-primary-foreground/60 hover:text-white transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

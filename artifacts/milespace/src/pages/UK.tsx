@@ -1,5 +1,11 @@
-import { CountryLandingPage } from "@/components/landing/CountryLandingPage";
+import { motion } from "framer-motion";
+import { Link } from "wouter";
+import { ArrowRight, CheckCircle2, Clock3, Handshake, ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { getWhatsAppLink } from "@/lib/whatsapp";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
+import { DemoBookingSection } from "@/components/saas/DemoBookingSection";
 
 export default function UK() {
   usePageMetadata({
@@ -10,84 +16,174 @@ export default function UK() {
   });
 
   return (
-    <CountryLandingPage
-      config={{
-        code: "UK",
-        heroTitle: "Custom Software Development for UK Businesses",
-        heroSubtitle:
-          "Milespace helps UK teams ship tailored software, premium websites, and internal systems that are engineered for practical outcomes, operational clarity, and long-term scalability.",
-        heroTrustLine: "Tailored solutions, clear communication, practical execution, and ongoing support across UK time zones.",
-        quoteCtaLabel: "Request a Project Quote",
-        finalCtaTitle: "Need a Reliable Tech Partner for Your Growing UK Business?",
-        finalCtaBody:
-          "Tell us your goals and current bottlenecks. We will map the right tailored solution and delivery plan from scope to launch.",
-        whyIntro:
-          "We blend premium product design with dependable engineering discipline, so what we build is polished, stable, and commercially useful.",
-        processIntro:
-          "Our process keeps scope, communication, and deadlines aligned from the first discovery call through post-launch iteration.",
-        servicesIntro:
-          "From discovery websites to complex internal tooling, we build practical digital solutions that help UK businesses serve customers faster and operate with less friction.",
-        challengeSectionTitle: "Common UK Delivery Gaps We Help Fix",
-        challengeSectionBody:
-          "Most teams do not struggle with ideas - they struggle with execution quality, timeline drift, and fragmented systems. We solve those delivery gaps with clear ownership.",
-        challenges: [
-          {
-            title: "Legacy systems slowing growth",
-            description:
-              "We modernize outdated tools and workflows so your team can move faster without carrying technical debt that blocks execution.",
-          },
-          {
-            title: "Agencies that overpromise",
-            description:
-              "We keep delivery practical and transparent with milestone-based communication, realistic scope, and accountable implementation.",
-          },
-          {
-            title: "Disconnected customer journeys",
-            description:
-              "We unify your website, product experience, and backend operations so enquiry, onboarding, and delivery work as one system.",
-          },
-        ],
-        outcomeHighlights: [
-          "Outcome: Faster response-to-delivery workflows and stronger operational clarity.",
-          "Outcome: Improved lead quality and higher conversion confidence across digital touchpoints.",
-          "Outcome: Systems that scale with your team instead of becoming operational bottlenecks.",
-        ],
-        credibilityStats: [
-          { value: "100+", label: "Projects delivered across web and software" },
-          { value: "5+", label: "Years building production-grade solutions" },
-          { value: "< 24h", label: "Typical response cycle on active projects" },
-          { value: "Global", label: "Remote-first delivery for international clients" },
-        ],
-        fitPoints: [
-          "Direct communication with the engineers and strategists responsible for delivery",
-          "Tailored implementation plans built around your operational constraints",
-          "Premium UI and robust backend architecture that support growth",
-          "Execution discipline focused on outcomes, not vanity output",
-          "Flexible enough for startups, structured enough for established organisations",
-        ],
-        faq: [
-          {
-            q: "Do you work with UK clients remotely?",
-            a: "Yes. We work remotely with UK teams every week and maintain smooth communication through shared channels, regular updates, and structured milestones.",
-          },
-          {
-            q: "Can you support and maintain our product after launch?",
-            a: "Absolutely. We provide ongoing support, bug fixes, feature iterations, and performance improvements once your product is live.",
-          },
-          {
-            q: "Can you improve an existing website or software system?",
-            a: "Yes. We can audit your current platform, improve UX and performance, refactor weak areas, and add new functionality without rebuilding from scratch.",
-          },
-          {
-            q: "How long does a typical project take?",
-            a: "Timelines depend on scope, but many projects launch within 4-12 weeks. We provide realistic timelines after discovery and planning.",
-          },
-          {
-            q: "Do you work with startups and established companies?",
-            a: "Yes. We work with both startup teams and established organisations that need dependable software delivery and product execution.",
-          },
-        ],
-      }}
-    />
+    <div className="flex flex-col w-full bg-background">
+      <section className="relative overflow-hidden bg-primary text-primary-foreground py-20 md:py-28">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_45%)]" />
+        <div className="container relative z-10 mx-auto px-4 md:px-8">
+          <div className="max-w-4xl">
+            <p className="text-sm uppercase tracking-[0.18em] text-secondary font-semibold mb-4">Milespace UK</p>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+              Reliable Web & Software Development Partner for UK Companies
+            </h1>
+            <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mb-8">
+              We help UK teams deliver tailored software, conversion-focused web platforms, and business systems with clear communication, practical scope, and dependable execution.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="uk-book-call" data-cta="book-call">
+                <a href={getWhatsAppLink("Hi Milespace, we are a UK business and want to book a discovery call.")} target="_blank" rel="noopener noreferrer">
+                  Book a Discovery Call
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="uk-request-quote" data-cta="request-quote">
+                <a href="#uk-demo-form">Request a Project Quote</a>
+              </Button>
+            </div>
+            <p className="mt-5 text-sm text-primary-foreground/70">
+              Tailored solution architecture, fast response cycles, and structured delivery across UK time zones.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: Handshake, title: "Direct Collaboration", text: "You work directly with the implementation team, not a layered account relay." },
+              { icon: Clock3, title: "Timeline Discipline", text: "Scope, milestones, and delivery windows are managed with practical accountability." },
+              { icon: ShieldCheck, title: "Business-Ready Quality", text: "Stable builds, clean UX, and robust system design suitable for production use." },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <Card key={item.title} className="border-border/70">
+                  <CardHeader>
+                    <div className="h-12 w-12 rounded-xl bg-primary/5 flex items-center justify-center mb-4">
+                      <Icon className="h-6 w-6 text-secondary" />
+                    </div>
+                    <CardTitle className="text-xl">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-sm leading-relaxed">{item.text}</CardDescription>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-muted/30 border-y border-border">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="max-w-3xl mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Services for UK Growth Teams</h2>
+            <p className="text-muted-foreground">
+              We focus on delivery work that drives operational efficiency, stronger customer journeys, and clearer business visibility.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {[
+              "Custom Software Development",
+              "Web App Development",
+              "Website Development",
+              "Shopify Development",
+              "Business Systems & Automation",
+              "Admin Dashboards & Portals",
+            ].map((service, i) => (
+              <motion.div key={service} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.05 }}>
+                <Card className="h-full border-border/70">
+                  <CardHeader><CardTitle className="text-xl">{service}</CardTitle></CardHeader>
+                  <CardContent><CardDescription>Tailored implementation designed around your workflows and commercial goals.</CardDescription></CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="grid lg:grid-cols-2 gap-8">
+            <Card className="border-border/70">
+              <CardHeader><CardTitle className="text-2xl">Our Delivery Process</CardTitle></CardHeader>
+              <CardContent className="space-y-3">
+                {[
+                  "Discovery: align on business outcomes and constraints",
+                  "Planning: define practical scope, estimates, and priorities",
+                  "Design & Development: build with quality and iteration in view",
+                  "Testing & Launch: validate before release and deploy cleanly",
+                  "Support: iterate post-launch as your business evolves",
+                ].map((step, i) => (
+                  <p key={step} className="text-sm text-foreground"><span className="font-semibold">{i + 1}. </span>{step}</p>
+                ))}
+              </CardContent>
+            </Card>
+            <Card className="border-border/70">
+              <CardHeader><CardTitle className="text-2xl">Who We Work With</CardTitle></CardHeader>
+              <CardContent className="space-y-2 text-sm text-muted-foreground">
+                {[
+                  "Founders needing execution reliability",
+                  "In-house teams needing additional product bandwidth",
+                  "Operations teams replacing fragmented manual workflows",
+                  "Growing businesses needing scalable digital infrastructure",
+                  "Established companies modernizing legacy systems",
+                ].map((item) => (
+                  <p key={item}>{item}</p>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-muted/30 border-y border-border">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+          </div>
+          <div className="max-w-4xl mx-auto grid gap-4">
+            {[
+              ["Do you work with UK clients remotely?", "Yes. We collaborate remotely with UK teams through structured milestones and clear communication rhythms."],
+              ["Can you support ongoing maintenance?", "Yes. We provide post-launch support, feature iteration, and technical improvements."],
+              ["Can you improve an existing system?", "Yes. We can modernize, refactor, and extend existing platforms without unnecessary rebuilds."],
+              ["How long does a typical project take?", "Many projects launch in 4-12 weeks depending on complexity, integration needs, and scope depth."],
+              ["Do you work with startups and established businesses?", "Yes. We work with both startup teams and mature organizations needing delivery discipline."],
+            ].map(([q, a]) => (
+              <Card key={q} className="border-border/70">
+                <CardHeader><CardTitle className="text-lg">{q}</CardTitle></CardHeader>
+                <CardContent><CardDescription>{a}</CardDescription></CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
+          <h2 className="text-3xl md:text-5xl font-bold mb-5">Need a Dependable UK Delivery Partner?</h2>
+          <p className="text-primary-foreground/80 text-lg mb-9">
+            Share your scope and we will return a practical roadmap with clear next steps and commercial fit.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="uk-final-book-call" data-cta="book-call">
+              <a href={getWhatsAppLink("Hi Milespace, we are ready to discuss our UK project scope.")} target="_blank" rel="noopener noreferrer">
+                Book a Discovery Call
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="uk-final-request-quote" data-cta="request-quote">
+              <a href="#uk-demo-form">Request Quote</a>
+            </Button>
+          </div>
+          <p className="mt-6 text-sm text-primary-foreground/70">
+            Looking for US-focused messaging instead? <Link href="/usa" className="underline underline-offset-4 hover:text-white">View USA page</Link>.
+          </p>
+        </div>
+      </section>
+
+      <DemoBookingSection
+        context="uk"
+        title="Book a UK Discovery Session"
+        description="Share your requirements and we will tailor a discovery call around your current stack, priorities, and delivery timeline."
+      />
+    </div>
   );
 }

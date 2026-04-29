@@ -13,6 +13,9 @@ import Contact from "@/pages/Contact";
 import Legal from "@/pages/Legal";
 import UK from "@/pages/UK";
 import USA from "@/pages/USA";
+import SaaS from "@/pages/SaaS";
+import SaaSChamaDesk from "@/pages/SaaSChamaDesk";
+import SaaSPOS from "@/pages/SaaSPOS";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -30,6 +33,9 @@ function Router() {
         <Route path="/contact" component={Contact} />
         <Route path="/uk" component={UK} />
         <Route path="/usa" component={USA} />
+        <Route path="/saas" component={SaaS} />
+        <Route path="/saas/chamadesk" component={SaaSChamaDesk} />
+        <Route path="/saas/pos" component={SaaSPOS} />
         <Route path="/legal" component={Legal} />
         <Route component={NotFound} />
       </Switch>
