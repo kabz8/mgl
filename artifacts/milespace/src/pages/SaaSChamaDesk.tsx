@@ -6,7 +6,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { DemoBookingSection } from "@/components/saas/DemoBookingSection";
-import { IconTiles } from "@/components/marketing/IconTiles";
 
 const features = [
   "Member registration and profile management",
@@ -85,19 +84,6 @@ export default function SaaSChamaDesk() {
           <div className="rounded-2xl border border-border/70 bg-card/80 p-4 md:p-6 shadow-sm">
             <img src="/illustrations/chamadesk.svg" alt="ChamaDesk workflow illustration" className="w-full h-auto rounded-xl" loading="lazy" />
           </div>
-        </div>
-      </section>
-
-      <section className="py-12 bg-background">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          <IconTiles
-            items={[
-              { icon: "📌", title: "Structured Meetings", subtitle: "Run monthly meeting flows with consistency" },
-              { icon: "🧾", title: "Clear Records", subtitle: "Contributions, loans, and updates in one timeline" },
-              { icon: "🔐", title: "Role Controls", subtitle: "Officials and members access what they should" },
-              { icon: "🛡️", title: "Accountability", subtitle: "Traceable actions and audit-friendly history" },
-            ]}
-          />
         </div>
       </section>
 
