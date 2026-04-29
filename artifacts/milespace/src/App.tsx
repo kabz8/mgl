@@ -11,6 +11,8 @@ import PackageDetail from "@/pages/PackageDetail";
 import Portfolio from "@/pages/Portfolio";
 import Contact from "@/pages/Contact";
 import Legal from "@/pages/Legal";
+import UK from "@/pages/UK";
+import USA from "@/pages/USA";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -26,6 +28,8 @@ function Router() {
         <Route path="/pricing/:category/:slug" component={PackageDetail} />
         <Route path="/portfolio" component={Portfolio} />
         <Route path="/contact" component={Contact} />
+        <Route path="/uk" component={UK} />
+        <Route path="/usa" component={USA} />
         <Route path="/legal" component={Legal} />
         <Route component={NotFound} />
       </Switch>
