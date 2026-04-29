@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Zap, Shield, Star } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 
@@ -96,17 +96,17 @@ export default function About() {
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             <ValueCard
-              icon={<Zap className="h-7 w-7 text-secondary" />}
+              icon="⚡"
               title="Innovation is the Standard"
               desc="Here, innovation is not an aspiration — it is the standard. Every project pushes beyond what's expected."
             />
             <ValueCard
-              icon={<Star className="h-7 w-7 text-secondary" />}
+              icon="✨"
               title="Elegance is the Foundation"
               desc="Elegance is not an afterthought — it is the foundation. Design and engineering meet to create experiences that captivate."
             />
             <ValueCard
-              icon={<Shield className="h-7 w-7 text-secondary" />}
+              icon="🛡️"
               title="Success is Inevitable"
               desc="And success? It is not a possibility — it is inevitable. We partner with you until the goal is achieved."
             />
@@ -204,7 +204,7 @@ export default function About() {
   );
 }
 
-function ValueCard({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
+function ValueCard({ icon, title, desc }: { icon: string; title: string; desc: string }) {
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -213,7 +213,7 @@ function ValueCard({ icon, title, desc }: { icon: React.ReactNode; title: string
       viewport={{ once: true }}
       className="bg-card p-6 md:p-8 rounded-xl border border-border shadow-sm"
     >
-      <div className="h-14 w-14 bg-primary/5 rounded-2xl flex items-center justify-center mb-5">
+      <div className="h-14 w-14 bg-muted rounded-2xl flex items-center justify-center mb-5 text-2xl">
         {icon}
       </div>
       <h3 className="text-lg md:text-xl font-bold mb-3">{title}</h3>

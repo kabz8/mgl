@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MapPin, Phone, Mail, MessageSquare } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { WHATSAPP_DIRECT_LINK } from "@/lib/whatsapp";
 import { submitLeadViaWhatsAppAndEmail } from "@/lib/leadSubmission";
 import { useToast } from "@/hooks/use-toast";
@@ -78,27 +78,21 @@ export default function Contact() {
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary/5 p-3 rounded-full shrink-0">
-                    <Phone className="h-6 w-6 text-primary" />
-                  </div>
+                  <div className="bg-muted p-3 rounded-xl shrink-0 text-lg">📞</div>
                   <div>
                     <p className="text-sm text-muted-foreground font-medium mb-1">Phone / WhatsApp</p>
                     <a href="tel:+254720176247" className="text-lg font-bold hover:text-primary transition-colors">+254 720 176 247</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary/5 p-3 rounded-full shrink-0">
-                    <Mail className="h-6 w-6 text-primary" />
-                  </div>
+                  <div className="bg-muted p-3 rounded-xl shrink-0 text-lg">✉️</div>
                   <div>
                     <p className="text-sm text-muted-foreground font-medium mb-1">Email</p>
                     <a href="mailto:hello@milespace.co.ke" className="text-lg font-bold hover:text-primary transition-colors">hello@milespace.co.ke</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary/5 p-3 rounded-full shrink-0">
-                    <MapPin className="h-6 w-6 text-primary" />
-                  </div>
+                  <div className="bg-muted p-3 rounded-xl shrink-0 text-lg">📍</div>
                   <div>
                     <p className="text-sm text-muted-foreground font-medium mb-1">Location</p>
                     <p className="text-lg font-bold">Nairobi, Kenya</p>

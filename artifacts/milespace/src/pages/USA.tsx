@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, BarChart3, CheckCircle2, GaugeCircle, Layers3 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWhatsAppLink } from "@/lib/whatsapp";
@@ -79,28 +79,14 @@ export default function USA() {
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { icon: GaugeCircle, title: "Speed", text: "Move from roadmap to shipped features with less internal friction." },
-              { icon: Layers3, title: "Scalability", text: "Build once with architecture that supports future growth and complexity." },
-              { icon: BarChart3, title: "Operational Clarity", text: "Improve visibility into product, workflows, and performance outcomes." },
-            ].map((item) => {
-              const Icon = item.icon;
-              return (
-                <Card key={item.title} className="border-border/70">
-                  <CardHeader>
-                    <div className="h-12 w-12 rounded-xl bg-primary/5 flex items-center justify-center mb-4">
-                      <Icon className="h-6 w-6 text-secondary" />
-                    </div>
-                    <CardTitle className="text-xl">{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription>{item.text}</CardDescription>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+          <IconTiles
+            items={[
+              { icon: "🚀", title: "Speed", subtitle: "Move from roadmap to shipped features with less friction." },
+              { icon: "🧱", title: "Scalability", subtitle: "Architecture built for growth and increasing complexity." },
+              { icon: "📊", title: "Operational Clarity", subtitle: "Better visibility into product and performance outcomes." },
+              { icon: "🎯", title: "Execution Focus", subtitle: "Delivery aligned to measurable business targets." },
+            ]}
+          />
         </div>
       </section>
 

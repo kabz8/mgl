@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { Code, Smartphone, Database, Megaphone, PenTool, ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 
@@ -9,7 +9,7 @@ export default function Services() {
     {
       id: "web",
       title: "Website Development",
-      icon: Code,
+      icon: "🌐",
       desc: "High-performance, scalable websites tailored to your business goals. From rapid WordPress deployments to complex custom React applications.",
       features: [
         "WordPress sites (Corporate & Business)",
@@ -22,7 +22,7 @@ export default function Services() {
     {
       id: "app",
       title: "App Development",
-      icon: Smartphone,
+      icon: "📱",
       desc: "Engaging mobile experiences that users love. We build robust native and cross-platform applications that perform flawlessly.",
       features: [
         "Android App Development",
@@ -35,7 +35,7 @@ export default function Services() {
     {
       id: "software",
       title: "Custom Software",
-      icon: Database,
+      icon: "⚙️",
       desc: "Tailor-made software solutions designed to streamline your operations, reduce manual work, and scale with your business.",
       features: [
         "Business management systems",
@@ -48,7 +48,7 @@ export default function Services() {
     {
       id: "marketing",
       title: "Digital Marketing",
-      icon: Megaphone,
+      icon: "📣",
       desc: "Data-driven marketing strategies that increase visibility, drive qualified traffic, and convert visitors into loyal customers.",
       features: [
         "Search Engine Optimization (SEO)",
@@ -61,7 +61,7 @@ export default function Services() {
     {
       id: "design",
       title: "UI/UX Design",
-      icon: PenTool,
+      icon: "🎨",
       desc: "Beautiful, intuitive interfaces backed by user research. We design products that are visually stunning and effortlessly usable.",
       features: [
         "Website & App UI design",
@@ -92,7 +92,6 @@ export default function Services() {
         <div className="container mx-auto px-4 md:px-8">
           <div className="space-y-6">
             {services.map((service, index) => {
-              const Icon = service.icon;
               return (
                 <motion.div
                   key={service.id}
@@ -105,8 +104,8 @@ export default function Services() {
                   <div className="flex flex-col md:flex-row md:items-start gap-8">
                     <div className="flex-1">
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="h-12 w-12 bg-primary/5 rounded-xl flex items-center justify-center shrink-0">
-                          <Icon className="h-6 w-6 text-secondary" />
+                        <div className="h-12 w-12 bg-muted rounded-xl flex items-center justify-center shrink-0 text-2xl">
+                          {service.icon}
                         </div>
                         <h2 className="text-2xl md:text-3xl font-bold text-foreground">{service.title}</h2>
                       </div>
@@ -115,9 +114,7 @@ export default function Services() {
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                         {service.features.map((feature, i) => (
                           <li key={i} className="flex items-center gap-2.5">
-                            <div className="bg-secondary/10 rounded-full p-1 shrink-0">
-                              <Check className="h-3.5 w-3.5 text-secondary" />
-                            </div>
+                            <div className="rounded-full shrink-0 text-sm">✓</div>
                             <span className="text-sm text-foreground">{feature}</span>
                           </li>
                         ))}

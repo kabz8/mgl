@@ -44,7 +44,7 @@ export default function SaaS() {
   });
 
   return (
-    <div className="flex flex-col w-full bg-background">
+    <div className="flex flex-col w-full bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.07),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(234,179,8,0.08),transparent_40%)]">
       <section className="relative overflow-hidden bg-primary text-primary-foreground py-20 md:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_45%)]" />
         <div className="container relative z-10 mx-auto px-4 md:px-8">
@@ -81,6 +81,27 @@ export default function SaaS() {
               { icon: "🤝", title: "Supportive", subtitle: "Product guidance and practical rollout help" },
             ]}
           />
+        </div>
+      </section>
+
+      <section className="py-10 bg-transparent">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              { title: "Unified Operations", visual: "📊📦💼" },
+              { title: "Clear Accountability", visual: "🧾✅🔐" },
+              { title: "Smarter Decisions", visual: "📈🧠⚙️" },
+            ].map((item) => (
+              <Card key={item.title} className="border-border/70 bg-card/80 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-lg">{item.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-2xl tracking-wide">{item.visual}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 

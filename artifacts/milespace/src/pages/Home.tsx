@@ -1,10 +1,11 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, Smartphone, Database, CheckCircle2, ChevronRight, LayoutGrid, ShoppingBag } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
 import { getWhatsAppLink, WHATSAPP_DIRECT_LINK } from "@/lib/whatsapp";
 import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import { motion } from "framer-motion";
+import { IconTiles } from "@/components/marketing/IconTiles";
 
 export default function Home() {
   const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
@@ -72,59 +73,18 @@ export default function Home() {
             <p className="text-muted-foreground text-lg">We deliver tailored solutions that solve complex business challenges and drive measurable results.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
-              className="bg-card rounded-xl p-8 border border-border hover:border-secondary/50 transition-colors shadow-sm hover:shadow-md"
-              whileHover={{ y: -5 }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="h-14 w-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
-                <Code className="h-7 w-7 text-secondary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">Web Development</h3>
-              <p className="text-muted-foreground mb-6 line-clamp-3">Custom websites, e-commerce platforms, and corporate sites optimized for speed, SEO, and conversions.</p>
-              <Link href="/services" className="text-primary font-semibold flex items-center hover:text-secondary transition-colors">
-                Learn more <ChevronRight className="ml-1 h-4 w-4" />
-              </Link>
-            </motion.div>
-
-            <motion.div 
-              className="bg-card rounded-xl p-8 border border-border hover:border-secondary/50 transition-colors shadow-sm hover:shadow-md"
-              whileHover={{ y: -5 }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className="h-14 w-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
-                <Smartphone className="h-7 w-7 text-secondary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">App Development</h3>
-              <p className="text-muted-foreground mb-6 line-clamp-3">Native and cross-platform mobile applications that provide intuitive user experiences and powerful functionality.</p>
-              <Link href="/services" className="text-primary font-semibold flex items-center hover:text-secondary transition-colors">
-                Learn more <ChevronRight className="ml-1 h-4 w-4" />
-              </Link>
-            </motion.div>
-
-            <motion.div 
-              className="bg-card rounded-xl p-8 border border-border hover:border-secondary/50 transition-colors shadow-sm hover:shadow-md"
-              whileHover={{ y: -5 }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="h-14 w-14 bg-primary/5 rounded-lg flex items-center justify-center mb-6">
-                <Database className="h-7 w-7 text-secondary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">Custom Software</h3>
-              <p className="text-muted-foreground mb-6 line-clamp-3">Scalable business management systems, CRMs, and custom APIs designed specifically for your operational needs.</p>
-              <Link href="/services" className="text-primary font-semibold flex items-center hover:text-secondary transition-colors">
-                Learn more <ChevronRight className="ml-1 h-4 w-4" />
-              </Link>
-            </motion.div>
+          <IconTiles
+            items={[
+              { icon: "🌐", title: "Web Development", subtitle: "High-performance websites engineered for visibility and conversion." },
+              { icon: "📱", title: "App Development", subtitle: "Cross-platform and native app experiences built for adoption." },
+              { icon: "⚙️", title: "Custom Software", subtitle: "Operational systems and custom platforms tailored to your workflow." },
+              { icon: "🚀", title: "Growth Execution", subtitle: "Design + engineering focused on measurable business outcomes." },
+            ]}
+          />
+          <div className="mt-8 text-center">
+            <Link href="/services" className="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors">
+              Explore all services <ChevronRight className="ml-1 h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -151,9 +111,7 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <div className="h-full bg-card rounded-xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
-                <div className="h-12 w-12 rounded-lg bg-primary/5 flex items-center justify-center mb-5">
-                  <LayoutGrid className="h-6 w-6 text-secondary" />
-                </div>
+                <div className="text-2xl mb-4">🧩</div>
                 <h3 className="text-2xl font-bold mb-3">ChamaDesk</h3>
                 <p className="text-muted-foreground mb-6">
                   A digital platform for chamas and group operations - meetings, contributions, loans, records, and accountability in one place.
@@ -176,9 +134,7 @@ export default function Home() {
               transition={{ delay: 0.1 }}
             >
               <div className="h-full bg-card rounded-xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
-                <div className="h-12 w-12 rounded-lg bg-primary/5 flex items-center justify-center mb-5">
-                  <ShoppingBag className="h-6 w-6 text-secondary" />
-                </div>
+                <div className="text-2xl mb-4">🛍️</div>
                 <h3 className="text-2xl font-bold mb-3">POS</h3>
                 <p className="text-muted-foreground mb-6">
                   A modern POS for cafés, pastry shops, retail stores, and growing businesses to handle sales, stock, staff, and reporting.

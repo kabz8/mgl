@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, CheckCircle2, Clock3, Handshake, ShieldCheck } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWhatsAppLink } from "@/lib/whatsapp";
@@ -61,28 +61,14 @@ export default function UK() {
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { icon: Handshake, title: "Direct Collaboration", text: "You work directly with the implementation team, not a layered account relay." },
-              { icon: Clock3, title: "Timeline Discipline", text: "Scope, milestones, and delivery windows are managed with practical accountability." },
-              { icon: ShieldCheck, title: "Business-Ready Quality", text: "Stable builds, clean UX, and robust system design suitable for production use." },
-            ].map((item) => {
-              const Icon = item.icon;
-              return (
-                <Card key={item.title} className="border-border/70">
-                  <CardHeader>
-                    <div className="h-12 w-12 rounded-xl bg-primary/5 flex items-center justify-center mb-4">
-                      <Icon className="h-6 w-6 text-secondary" />
-                    </div>
-                    <CardTitle className="text-xl">{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-sm leading-relaxed">{item.text}</CardDescription>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+          <IconTiles
+            items={[
+              { icon: "🤝", title: "Direct Collaboration", subtitle: "You work with delivery leads, not account relays." },
+              { icon: "⏱️", title: "Timeline Discipline", subtitle: "Practical scope, milestones, and transparent progress." },
+              { icon: "🛡️", title: "Business-Ready Quality", subtitle: "Stable builds with strong UX and engineering fundamentals." },
+              { icon: "📣", title: "Clear Communication", subtitle: "Consistent updates with decisions and risks surfaced early." },
+            ]}
+          />
         </div>
       </section>
 
