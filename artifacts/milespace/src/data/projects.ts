@@ -25,7 +25,7 @@ export const projects: Project[] = [
     category: 'website',
     description: 'Luxury fragrance brand website for Moods Fragrances — an immersive, elegant online presence designed to captivate and convert fragrance enthusiasts.',
     url: 'https://moodsfragrances.co.ke/',
-    featured: true,
+    featured: false,
     tags: ['Luxury', 'E-commerce', 'Lifestyle'],
   },
   {

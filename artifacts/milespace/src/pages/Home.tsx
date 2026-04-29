@@ -7,7 +7,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { motion } from "framer-motion";
 
 export default function Home() {
-  const featuredProjects = projects.filter(p => p.featured).slice(0, 3);
+  const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
 
   const stats = [
     { value: "50+", label: "Clients Served" },
