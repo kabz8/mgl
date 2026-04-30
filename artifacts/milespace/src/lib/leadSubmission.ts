@@ -9,7 +9,7 @@ interface DualChannelLeadOptions {
 export function submitLeadViaWhatsAppAndEmail({
   subject,
   lines,
-  emailTo = "hello@milespace.co.ke",
+  emailTo = "kabaikunjane@gmail.com,info@milespace.com",
 }: DualChannelLeadOptions) {
   const plainMessage = lines.join("\n");
   const whatsappUrl = getWhatsAppLink(plainMessage);
