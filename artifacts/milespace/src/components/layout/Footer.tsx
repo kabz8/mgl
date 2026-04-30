@@ -74,7 +74,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               {[
                 { href: "/saas", label: "All SaaS Products" },
-                { href: "/saas/chamadesk", label: "Milespace ChamaDesk" },
+                { href: "/saas/milespace-chamadesk", label: "Milespace ChamaDesk" },
                 { href: "/saas/pos", label: "Milespace POS" },
               ].map((link) => (
                 <li key={link.href}>

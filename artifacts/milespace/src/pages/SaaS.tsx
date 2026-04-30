@@ -14,7 +14,7 @@ const products = [
     market: "Chamas and member-led groups",
     summary: "A structured operating system for meetings, contributions, loans, and governance.",
     value: "Move from informal record-keeping to traceable and trusted group operations.",
-    href: "/saas/chamadesk",
+    href: "/saas/milespace-chamadesk",
   },
   {
     id: "pos",
@@ -49,7 +49,7 @@ export default function SaaS() {
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="saas-explore-chamadesk" data-cta="book-demo">
-                <Link href="/saas/chamadesk">View Milespace ChamaDesk</Link>
+                <Link href="/saas/milespace-chamadesk">View Milespace ChamaDesk</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="saas-explore-pos" data-cta="book-demo">
                 <Link href="/saas/pos">View Milespace POS</Link>

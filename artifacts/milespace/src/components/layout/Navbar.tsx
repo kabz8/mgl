@@ -1,18 +1,24 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { WHATSAPP_DIRECT_LINK } from "@/lib/whatsapp";
-import { Menu, X, ArrowRight, Home, Info, Briefcase, DollarSign, Image, Phone, Boxes } from "lucide-react";
+import { Menu, X, ArrowRight, Home, Info, Briefcase, DollarSign, Image, Phone, Boxes, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const links = [
   { href: "/", label: "Home", icon: Home },
   { href: "/about", label: "About", icon: Info },
   { href: "/services", label: "Services", icon: Briefcase },
-  { href: "/saas", label: "SaaS", icon: Boxes },
   { href: "/pricing", label: "Pricing", icon: DollarSign },
   { href: "/portfolio", label: "Portfolio", icon: Image },
   { href: "/contact", label: "Contact", icon: Phone },
+];
+
+const saasLinks = [
+  { href: "/saas", label: "All SaaS Products" },
+  { href: "/saas/milespace-chamadesk", label: "Milespace ChamaDesk" },
+  { href: "/saas/pos", label: "Milespace POS" },
 ];
 
 export function Navbar() {
@@ -34,6 +40,28 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  type="button"
+                  className={`inline-flex items-center gap-1 text-sm font-semibold transition-colors hover:text-primary ${
+                    location.startsWith("/saas") ? "text-primary" : "text-muted-foreground"
+                  }`}
+                >
+                  SaaS
+                  <ChevronDown className="h-4 w-4" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-56">
+                {saasLinks.map((link) => (
+                  <DropdownMenuItem key={link.href} asChild>
+                    <Link href={link.href} className="w-full cursor-pointer">
+                      {link.label}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -107,6 +135,41 @@ export function Navbar() {
             <div className="relative z-10 flex flex-col h-full px-6 pt-8 pb-10 overflow-y-auto">
               {/* Nav links */}
               <nav className="flex flex-col gap-2 flex-1">
+                <motion.div
+                  initial={{ opacity: 0, x: -24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05, duration: 0.3, ease: "easeOut" }}
+                >
+                  <Link
+                    href="/saas"
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center gap-4 px-4 py-4 rounded-xl transition-all font-semibold text-lg group ${
+                      location.startsWith("/saas")
+                        ? "bg-secondary text-primary"
+                        : "text-white/80 hover:bg-white/10 hover:text-white"
+                    }`}
+                  >
+                    <span className={`p-2 rounded-lg ${location.startsWith("/saas") ? "bg-primary/20" : "bg-white/10 group-hover:bg-white/20"} transition-colors`}>
+                      <Boxes size={18} />
+                    </span>
+                    SaaS Products
+                    {location.startsWith("/saas") && <span className="ml-auto w-2 h-2 rounded-full bg-primary" />}
+                  </Link>
+                  <div className="ml-14 mt-2 space-y-1">
+                    {saasLinks.slice(1).map((subLink) => (
+                      <Link
+                        key={subLink.href}
+                        href={subLink.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
+                          location === subLink.href ? "bg-white/20 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
+                        }`}
+                      >
+                        {subLink.label}
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
                 {links.map((link, i) => {
                   const Icon = link.icon;
                   const active = location === link.href;
@@ -115,7 +178,7 @@ export function Navbar() {
                       key={link.href}
                       initial={{ opacity: 0, x: -24 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.05 + i * 0.07, duration: 0.3, ease: "easeOut" }}
+                      transition={{ delay: 0.12 + i * 0.07, duration: 0.3, ease: "easeOut" }}
                     >
                       <Link
                         href={link.href}

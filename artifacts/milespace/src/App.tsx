@@ -42,6 +42,7 @@ function Router() {
         <Route path="/usa" component={USA} />
         <Route path="/saas" component={SaaS} />
         <Route path="/saas/chamadesk" component={SaaSChamaDesk} />
+        <Route path="/saas/milespace-chamadesk" component={SaaSChamaDesk} />
         <Route path="/saas/pos" component={SaaSPOS} />
         <Route path="/legal" component={Legal} />
         <Route component={NotFound} />

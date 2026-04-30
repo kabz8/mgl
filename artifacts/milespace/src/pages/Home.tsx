@@ -118,10 +118,10 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button asChild className="flex-1">
-                    <Link href="/saas/chamadesk">View Milespace ChamaDesk</Link>
+                    <Link href="/saas/milespace-chamadesk">View Milespace ChamaDesk</Link>
                   </Button>
                   <Button asChild variant="outline" className="flex-1">
-                    <a href="/saas/chamadesk#chamadesk-demo-form">Book Demo</a>
+                    <a href="/saas/milespace-chamadesk#chamadesk-demo-form">Book Demo</a>
                   </Button>
                 </div>
               </div>
@@ -149,6 +149,32 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-border bg-card p-6 md:p-8">
+            <div className="grid gap-6 md:grid-cols-[1.2fr_1fr] md:items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary mb-3">Flagship SaaS Launch</p>
+                <h3 className="text-2xl md:text-3xl font-bold mb-3">Milespace ChamaDesk for Structured Group Operations</h3>
+                <p className="text-muted-foreground mb-5">
+                  For chamas, family groups, and welfare teams ready to move from scattered spreadsheets and chat threads to a professional system for meetings, contributions, loans, guarantees, and minutes.
+                </p>
+                <Button asChild id="home-chamadesk-view-product" data-cta="view-product">
+                  <Link href="/saas/milespace-chamadesk">Explore Milespace ChamaDesk</Link>
+                </Button>
+              </div>
+              <div className="grid gap-3">
+                {[
+                  "Smarter meeting workflows and minute publishing",
+                  "Better member accountability with traceable records",
+                  "Loans, guarantees, and contribution visibility in one place",
+                ].map((item) => (
+                  <div key={item} className="rounded-xl border border-border bg-muted/30 px-4 py-3 text-sm font-medium text-foreground">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
