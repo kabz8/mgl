@@ -113,6 +113,20 @@ export function DemoBookingSection({
           "Message:",
           formData.message,
         ],
+        replyTo: formData.email,
+        fields: {
+          "Lead Type": "SaaS Demo Request",
+          "Page Context": context.toUpperCase(),
+          "Full Name": formData.fullName,
+          "Business / Group Name": formData.businessOrGroupName,
+          Email: formData.email,
+          "Phone / WhatsApp": formData.phone,
+          "Product of Interest": formData.productOfInterest,
+          "Business / Group Type": formData.businessOrGroupType,
+          "Team Size or Member Count": formData.teamOrMemberCount,
+          "Preferred Demo Date": formData.preferredDemoDate || "Not specified",
+          Message: formData.message,
+        },
       });
 
       toast({

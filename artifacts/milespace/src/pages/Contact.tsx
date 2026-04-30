@@ -46,6 +46,16 @@ export default function Contact() {
           "Project Description:",
           formData.description,
         ],
+        replyTo: formData.email,
+        fields: {
+          "Lead Type": "General Contact Enquiry",
+          Name: formData.name,
+          Email: formData.email,
+          "Phone / WhatsApp": formData.phone,
+          "Service Interested In": formData.service,
+          Budget: formData.budget || "Not specified",
+          "Project Description": formData.description,
+        },
       });
 
       toast({

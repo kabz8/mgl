@@ -134,6 +134,17 @@ function LeadFormSection({ countryCode }: { countryCode: CountryCode }) {
           "Project Details:",
           formData.projectDetails,
         ],
+        replyTo: formData.email,
+        fields: {
+          "Lead Type": `${countryCode} Landing Enquiry`,
+          "Full Name": formData.fullName,
+          "Company Name": formData.companyName,
+          Email: formData.email,
+          "Phone / WhatsApp": formData.phone,
+          "Service Needed": formData.serviceNeeded,
+          "Budget Range": formData.budgetRange,
+          "Project Details": formData.projectDetails,
+        },
       });
 
       toast({

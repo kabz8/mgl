@@ -407,6 +407,17 @@ function CyberLeadForm() {
           "Message:",
           form.message,
         ],
+        replyTo: form.email,
+        fields: {
+          "Lead Type": "Cybersecurity Request",
+          Name: form.name,
+          "Business Name": form.businessName,
+          Email: form.email,
+          "Phone / WhatsApp": form.phone,
+          "Website URL": form.websiteUrl || "Not provided",
+          "Service Needed": serviceNeeded,
+          Message: form.message,
+        },
       });
 
       toast({
