@@ -93,32 +93,39 @@ export function DemoBookingSection({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Replace with backend/CRM integration when available.
-    submitLeadViaWhatsAppAndEmail({
-      subject: `New SaaS Demo Request - ${formData.productOfInterest || "Milespace SaaS"}`,
-      lines: [
-        `New demo request from ${context.toUpperCase()} page`,
-        "",
-        `Full Name: ${formData.fullName}`,
-        `Business / Group Name: ${formData.businessOrGroupName}`,
-        `Email: ${formData.email}`,
-        `Phone / WhatsApp: ${formData.phone}`,
-        `Product of Interest: ${formData.productOfInterest}`,
-        `Business / Group Type: ${formData.businessOrGroupType}`,
-        `Team Size or Member Count: ${formData.teamOrMemberCount}`,
-        `Preferred Demo Date: ${formData.preferredDemoDate || "Not specified"}`,
-        "",
-        "Message:",
-        formData.message,
-      ],
-    });
+    try {
+      await submitLeadViaWhatsAppAndEmail({
+        subject: `New SaaS Demo Request - ${formData.productOfInterest || "Milespace SaaS"}`,
+        lines: [
+          `New demo request from ${context.toUpperCase()} page`,
+          "",
+          `Full Name: ${formData.fullName}`,
+          `Business / Group Name: ${formData.businessOrGroupName}`,
+          `Email: ${formData.email}`,
+          `Phone / WhatsApp: ${formData.phone}`,
+          `Product of Interest: ${formData.productOfInterest}`,
+          `Business / Group Type: ${formData.businessOrGroupType}`,
+          `Team Size or Member Count: ${formData.teamOrMemberCount}`,
+          `Preferred Demo Date: ${formData.preferredDemoDate || "Not specified"}`,
+          "",
+          "Message:",
+          formData.message,
+        ],
+      });
 
-    toast({
-      title: "Demo request submitted",
-      description: "WhatsApp and email were opened with your demo details.",
-    });
+      toast({
+        title: "Demo request submitted",
+        description: "Your request has been submitted successfully.",
+      });
+    } catch {
+      toast({
+        title: "Submission failed",
+        description: "Please try again in a moment.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

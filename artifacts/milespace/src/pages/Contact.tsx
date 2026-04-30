@@ -29,28 +29,36 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    submitLeadViaWhatsAppAndEmail({
-      subject: `New Project Enquiry - ${formData.name}`,
-      lines: [
-        "New website enquiry",
-        "",
-        `Name: ${formData.name}`,
-        `Email: ${formData.email}`,
-        `Phone: ${formData.phone}`,
-        `Service Interested In: ${formData.service}`,
-        `Budget: ${formData.budget}`,
-        "",
-        "Project Description:",
-        formData.description,
-      ],
-    });
+    try {
+      await submitLeadViaWhatsAppAndEmail({
+        subject: `New Project Enquiry - ${formData.name}`,
+        lines: [
+          "New website enquiry",
+          "",
+          `Name: ${formData.name}`,
+          `Email: ${formData.email}`,
+          `Phone: ${formData.phone}`,
+          `Service Interested In: ${formData.service}`,
+          `Budget: ${formData.budget}`,
+          "",
+          "Project Description:",
+          formData.description,
+        ],
+      });
 
-    toast({
-      title: "Enquiry sent",
-      description: "WhatsApp and email have been opened with your enquiry details.",
-    });
+      toast({
+        title: "Enquiry sent",
+        description: "Your request has been submitted successfully.",
+      });
+    } catch {
+      toast({
+        title: "Submission failed",
+        description: "Please try again in a moment.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -185,7 +193,7 @@ export default function Contact() {
                 </div>
 
                 <Button type="submit" size="lg" className="w-full h-14 text-lg font-bold bg-primary hover:bg-primary/90">
-                  Send Inquiry via WhatsApp
+                  Send Message
                 </Button>
               </form>
             </motion.div>

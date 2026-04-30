@@ -116,29 +116,38 @@ function LeadFormSection({ countryCode }: { countryCode: CountryCode }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    submitLeadViaWhatsAppAndEmail({
-      subject: `New ${countryCode} Project Enquiry - ${formData.companyName || formData.fullName}`,
-      lines: [
-        `New ${countryCode} landing page enquiry`,
-        "",
-        `Full Name: ${formData.fullName}`,
-        `Company Name: ${formData.companyName}`,
-        `Email: ${formData.email}`,
-        `Phone / WhatsApp: ${formData.phone}`,
-        `Service Needed: ${formData.serviceNeeded}`,
-        `Budget Range: ${formData.budgetRange}`,
-        "",
-        "Project Details:",
-        formData.projectDetails,
-      ],
-    });
+    try {
+      await submitLeadViaWhatsAppAndEmail({
+        subject: `New ${countryCode} Project Enquiry - ${formData.companyName || formData.fullName}`,
+        lines: [
+          `New ${countryCode} landing page enquiry`,
+          "",
+          `Full Name: ${formData.fullName}`,
+          `Company Name: ${formData.companyName}`,
+          `Email: ${formData.email}`,
+          `Phone / WhatsApp: ${formData.phone}`,
+          `Service Needed: ${formData.serviceNeeded}`,
+          `Budget Range: ${formData.budgetRange}`,
+          "",
+          "Project Details:",
+          formData.projectDetails,
+        ],
+      });
 
-    toast({
-      title: "Thanks - your enquiry has been captured",
-      description: "We opened WhatsApp and email so your enquiry is sent through both channels.",
-    });
+      toast({
+        title: "Thanks - your enquiry has been captured",
+        description: "Your request has been submitted successfully.",
+      });
+    } catch {
+      toast({
+        title: "Submission failed",
+        description: "Please try again in a moment.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     setFormData({
       fullName: "",

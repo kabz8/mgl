@@ -1,20 +1,32 @@
-import { getWhatsAppLink } from "@/lib/whatsapp";
-
 interface DualChannelLeadOptions {
   subject: string;
   lines: string[];
-  emailTo?: string;
+  emailTo?: [string, string];
 }
 
-export function submitLeadViaWhatsAppAndEmail({
+export async function submitLeadViaWhatsAppAndEmail({
   subject,
   lines,
-  emailTo = "kabaikunjane@gmail.com,info@milespace.com",
+  emailTo = ["kabaikunjane@gmail.com", "info@milespace.com"],
 }: DualChannelLeadOptions) {
+  const [primaryEmail, ccEmail] = emailTo;
   const plainMessage = lines.join("\n");
-  const whatsappUrl = getWhatsAppLink(plainMessage);
-  const mailtoUrl = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(plainMessage)}`;
+  const payload = new FormData();
+  payload.append("_subject", subject);
+  payload.append("_cc", ccEmail);
+  payload.append("_captcha", "false");
+  payload.append("_template", "table");
+  payload.append("message", plainMessage);
 
-  window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-  window.location.href = mailtoUrl;
+  const response = await fetch(`https://formsubmit.co/ajax/${primaryEmail}`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+    },
+    body: payload,
+  });
+
+  if (!response.ok) {
+    throw new Error("Lead submission failed");
+  }
 }

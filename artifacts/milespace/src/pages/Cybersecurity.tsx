@@ -3,21 +3,15 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import {
   AlertTriangle,
-  BadgeAlert,
   Bug,
   DatabaseZap,
   Flame,
-  GlobeLock,
   KeyRound,
-  Lock,
   MailWarning,
   Network,
   ServerCrash,
-  ShieldAlert,
   ShieldCheck,
-  ShieldEllipsis,
   ShieldX,
-  Siren,
   TriangleAlert,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -393,31 +387,39 @@ function CyberLeadForm() {
 
   const canSubmit = useMemo(() => form.name && form.businessName && form.email && form.phone && serviceNeeded && form.message, [form, serviceNeeded]);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!canSubmit) return;
 
-    submitLeadViaWhatsAppAndEmail({
-      subject: "New Cybersecurity Request - Milespace Group",
-      lines: [
-        "New cybersecurity lead request",
-        "",
-        `Name: ${form.name}`,
-        `Business Name: ${form.businessName}`,
-        `Email: ${form.email}`,
-        `Phone / WhatsApp: ${form.phone}`,
-        `Website URL: ${form.websiteUrl || "Not provided"}`,
-        `Service Needed: ${serviceNeeded}`,
-        "",
-        "Message:",
-        form.message,
-      ],
-    });
+    try {
+      await submitLeadViaWhatsAppAndEmail({
+        subject: "New Cybersecurity Request - Milespace Group",
+        lines: [
+          "New cybersecurity lead request",
+          "",
+          `Name: ${form.name}`,
+          `Business Name: ${form.businessName}`,
+          `Email: ${form.email}`,
+          `Phone / WhatsApp: ${form.phone}`,
+          `Website URL: ${form.websiteUrl || "Not provided"}`,
+          `Service Needed: ${serviceNeeded}`,
+          "",
+          "Message:",
+          form.message,
+        ],
+      });
 
-    toast({
-      title: "Security request submitted",
-      description: "WhatsApp and email were opened with your details.",
-    });
+      toast({
+        title: "Security request submitted",
+        description: "Your request has been submitted successfully.",
+      });
+    } catch {
+      toast({
+        title: "Submission failed",
+        description: "Please try again in a moment.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
