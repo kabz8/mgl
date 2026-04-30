@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ChartLine, ReceiptText, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWhatsAppLink } from "@/lib/whatsapp";
@@ -30,21 +30,21 @@ export default function SaaSPOS() {
   });
 
   return (
-    <div className="flex flex-col w-full bg-[radial-gradient(circle_at_top_left,rgba(234,179,8,0.10),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.07),transparent_40%)]">
-      <section className="relative overflow-hidden bg-primary text-primary-foreground py-20 md:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_45%)]" />
+    <div className="flex w-full flex-col bg-background">
+      <section className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-28">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_42%),radial-gradient(circle_at_bottom_left,rgba(234,179,8,0.25),transparent_40%)]" />
         <div className="container relative z-10 mx-auto px-4 md:px-8">
           <div className="max-w-4xl">
             <p className="text-sm uppercase tracking-[0.18em] text-secondary font-semibold mb-4">Milespace SaaS - Milespace POS</p>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
-              Milespace POS for Fast-Moving Growing Businesses
+              Milespace POS for Fast Counters and Smart Store Decisions
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mb-8">
-              Milespace POS helps cafes, pastry shops, retail stores, and other growing businesses handle sales, stock, staff activity, and reporting through one clean system.
+              Milespace POS gives owners clear daily control over checkout speed, stock movement, cashier activity, and profitability without operational guesswork.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="pos-book-demo" data-cta="book-demo">
-                <a href="#pos-demo-form">Book a Demo</a>
+                <a href="#pos-demo-form">Book POS Operations Demo</a>
               </Button>
               <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="pos-request-pricing" data-cta="request-pricing">
                 <a href={getWhatsAppLink("Hi Milespace, I want pricing details for Milespace POS.")} target="_blank" rel="noopener noreferrer">
@@ -57,23 +57,15 @@ export default function SaaSPOS() {
         </div>
       </section>
 
-      <section className="py-10 bg-transparent">
+      <section className="border-b border-border py-14">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="mb-8 overflow-hidden rounded-2xl border border-border/70">
-            <img
-              src="https://images.unsplash.com/photo-1604719312566-8912e9c8a213?auto=format&fit=crop&w=1600&q=80"
-              alt="Retail checkout and inventory operations"
-              className="h-[240px] w-full object-cover md:h-[320px]"
-              loading="lazy"
-            />
-          </div>
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { title: "Front Counter Speed", visual: "⚡🧾🛍️" },
+              { title: "Faster Checkout", visual: "⚡🧾💳" },
               { title: "Stock Confidence", visual: "📦📉🔔" },
-              { title: "Owner Control", visual: "📊💼🧠" },
+              { title: "Profit Clarity", visual: "📊💼🧠" },
             ].map((item) => (
-              <Card key={item.title} className="border-border/70 bg-card/80 backdrop-blur-sm">
+              <Card key={item.title} className="border-border/70">
                 <CardHeader><CardTitle className="text-lg">{item.title}</CardTitle></CardHeader>
                 <CardContent><p className="text-2xl tracking-wide">{item.visual}</p></CardContent>
               </Card>
@@ -90,7 +82,7 @@ export default function SaaSPOS() {
                 <CardTitle className="text-3xl">Product Overview</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground">
-                <p>Milespace POS is built for owners who are tired of guesswork at close of day. You get clear numbers, clear stock position, and clear staff activity.</p>
+                <p>Milespace POS is built for owners who need instant operational visibility at end of day and during peak hours.</p>
                 <p>Instead of juggling manual logs and disconnected apps, your team works from one shared operating interface from checkout to reporting.</p>
                 <p className="text-foreground font-medium">The result is faster service, better stock control, and stronger business decision making.</p>
               </CardContent>
@@ -138,6 +130,26 @@ export default function SaaSPOS() {
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 md:px-8">
+          <div className="mb-8 grid gap-5 md:grid-cols-3">
+            {[
+              { icon: Store, title: "Counter Workflow", text: "Reduce queue bottlenecks with cleaner order and payment flow." },
+              { icon: ReceiptText, title: "Transaction Trace", text: "Every sale and adjustment is visible, searchable, and auditable." },
+              { icon: ChartLine, title: "Daily Decisions", text: "See what products and shifts actually drive business outcomes." },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <Card key={item.title} className="border-border/70">
+                  <CardHeader className="pb-3">
+                    <Icon className="h-5 w-5 text-secondary" />
+                    <CardTitle className="text-base">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>{item.text}</CardDescription>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
           <div className="grid lg:grid-cols-2 gap-8">
             <Card className="border-border/70">
               <CardHeader>
@@ -182,9 +194,9 @@ export default function SaaSPOS() {
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              ["Queue Time", "Shorter checkout queues during peak hours due to faster item and receipt flow."],
-              ["Stockouts", "Fewer surprise stockouts from low-stock awareness and movement visibility."],
-              ["Profit Clarity", "Owner visibility into margin leakage through expense and product reports."],
+              ["Day 1", "Get one system for sales, stock, and staff activity instead of scattered records."],
+              ["Week 1", "Identify high-leakage points in products, cashier patterns, and expense tracking."],
+              ["Month 1", "Run management decisions from real data instead of assumptions."],
             ].map(([title, text]) => (
               <Card key={title} className="border-border/70">
                 <CardHeader><CardTitle className="text-xl">{title}</CardTitle></CardHeader>
@@ -222,10 +234,10 @@ export default function SaaSPOS() {
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
           <h2 className="text-3xl md:text-5xl font-bold mb-5">Ready to Modernize Your Store Operations?</h2>
-          <p className="text-primary-foreground/80 text-lg mb-9">Book a guided Milespace POS demo and see how your sales, stock, and reporting can run in one clean system.</p>
+          <p className="text-primary-foreground/80 text-lg mb-9">Book a guided session and we will map your first operational wins with Milespace POS.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="pos-final-book-demo" data-cta="book-demo">
-              <a href="#pos-demo-form">Book a Demo</a>
+              <a href="#pos-demo-form">Book Operations Session</a>
             </Button>
             <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="pos-final-whatsapp" data-cta="whatsapp-contact">
               <a href={getWhatsAppLink("Hi Milespace, I want to discuss Milespace POS for my business.")} target="_blank" rel="noopener noreferrer">
