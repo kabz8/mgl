@@ -48,6 +48,7 @@ function Router() {
         <Route path="/saas/pos" component={SaaSPOS} />
         <Route path="/cybersecurity" component={CybersecurityPage} />
         <Route path="/kabz" component={ClientMailer} />
+        <Route path="/client-mailer" component={ClientMailer} />
         <Route path="/legal" component={Legal} />
         <Route component={NotFound} />
       </Switch>
