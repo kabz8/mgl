@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { BadgeCheck, FileText, Mail, Send, ShieldCheck, Sparkles } from "lucide-react";
+import { BadgeCheck, Copy, FileText, Mail, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
-import { sendClientMailer, type ClientMailerPayload } from "@/lib/mailerClient";
+import { type ClientMailerPayload } from "@/lib/mailerClient";
 
 type SenderKey = ClientMailerPayload["sender"];
 type DocumentType = ClientMailerPayload["docType"];
@@ -127,7 +127,6 @@ export default function ClientMailer() {
   });
 
   const { toast } = useToast();
-  const [isSending, setIsSending] = useState(false);
   const [docType, setDocType] = useState<DocumentType>("Quotation");
   const [sender, setSender] = useState<SenderKey>("biz");
 
@@ -164,7 +163,7 @@ export default function ClientMailer() {
     [docType, form, sender],
   );
 
-  const canSend = Boolean(payload.to && payload.to.includes("@") && payload.subject && payload.body);
+  const canExport = Boolean(payload.subject && payload.body);
 
   const applyPreset = (type: DocumentType) => {
     setDocType(type);
@@ -176,23 +175,12 @@ export default function ClientMailer() {
     }));
   };
 
-  const onSend = async () => {
-    if (!canSend || isSending) return;
-    setIsSending(true);
+  const onCopyPayload = async () => {
     try {
-      await sendClientMailer(payload);
-      toast({
-        title: "Email sent",
-        description: "Your branded email has been delivered via Resend.",
-      });
-    } catch (err) {
-      toast({
-        title: "Send failed",
-        description: "Check your API configuration and try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSending(false);
+      await navigator.clipboard.writeText(JSON.stringify(payload, null, 2));
+      toast({ title: "Copied", description: "Email payload copied to clipboard." });
+    } catch {
+      toast({ title: "Copy failed", description: "Unable to copy payload.", variant: "destructive" });
     }
   };
 
@@ -212,16 +200,22 @@ export default function ClientMailer() {
                 Send well-structured invoices, quotations, proposals, and branded client emails from the correct Milespace address. Replies are routed to both your inboxes.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <Button className="h-12 bg-cyan-400 px-6 font-semibold text-slate-900 hover:bg-cyan-300" onClick={onSend} disabled={!canSend || isSending} id="client-mailer-send" data-cta="send-client-email">
-                  <Send className="mr-2 h-4 w-4" />
-                  {isSending ? "Sending..." : "Send Email"}
+                <Button
+                  className="h-12 bg-cyan-400 px-6 font-semibold text-slate-900 hover:bg-cyan-300"
+                  onClick={onCopyPayload}
+                  disabled={!canExport}
+                  id="client-mailer-copy-payload"
+                  data-cta="copy-client-email-payload"
+                >
+                  <Copy className="mr-2 h-4 w-4" />
+                  Copy Payload
                 </Button>
                 <Button asChild variant="outline" className="h-12 border-white/30 bg-transparent px-6 font-semibold text-white hover:bg-white/10 hover:text-white">
                   <Link href="/contact">Back to Website</Link>
                 </Button>
               </div>
               <p className="mt-4 text-xs text-white/55">
-                Requires `RESEND_API_KEY` + `MAILER_API_KEY` on the server and `VITE_MAILER_API_KEY` on the frontend.
+                Sending is disabled for now. This page is a branded preview + payload builder. We’ll wire Resend sending after configuration.
               </p>
             </div>
             <Card className="border-white/10 bg-white/[0.04] text-white backdrop-blur">
