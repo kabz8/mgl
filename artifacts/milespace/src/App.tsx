@@ -17,6 +17,7 @@ import USA from "@/pages/USA";
 import SaaS from "@/pages/SaaS";
 import SaaSChamaDesk from "@/pages/SaaSChamaDesk";
 import SaaSPOS from "@/pages/SaaSPOS";
+import CybersecurityPage from "@/pages/Cybersecurity";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ function Router() {
         <Route path="/saas/chamadesk" component={SaaSChamaDesk} />
         <Route path="/saas/milespace-chamadesk" component={SaaSChamaDesk} />
         <Route path="/saas/pos" component={SaaSPOS} />
+        <Route path="/cybersecurity" component={CybersecurityPage} />
         <Route path="/legal" component={Legal} />
         <Route component={NotFound} />
       </Switch>

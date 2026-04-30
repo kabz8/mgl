@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { WHATSAPP_DIRECT_LINK } from "@/lib/whatsapp";
-import { Menu, X, ArrowRight, Home, Info, Briefcase, DollarSign, Image, Phone, Boxes, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowRight, Home, Info, Briefcase, DollarSign, Image, Phone, Boxes, ChevronDown, Shield } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -10,6 +10,7 @@ const links = [
   { href: "/", label: "Home", icon: Home },
   { href: "/about", label: "About", icon: Info },
   { href: "/services", label: "Services", icon: Briefcase },
+  { href: "/cybersecurity", label: "Cybersecurity", icon: Shield },
   { href: "/pricing", label: "Pricing", icon: DollarSign },
   { href: "/portfolio", label: "Portfolio", icon: Image },
   { href: "/contact", label: "Contact", icon: Phone },
@@ -24,6 +25,8 @@ const saasLinks = [
 export function Navbar() {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const preSaasLinks = links.slice(0, 2);
+  const postSaasLinks = links.slice(2);
 
   return (
     <>
@@ -40,6 +43,17 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
+            {preSaasLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-semibold transition-colors hover:text-primary ${
+                  location === link.href ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
@@ -62,7 +76,7 @@ export function Navbar() {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
-            {links.map((link) => (
+            {postSaasLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -135,10 +149,40 @@ export function Navbar() {
             <div className="relative z-10 flex flex-col h-full px-6 pt-8 pb-10 overflow-y-auto">
               {/* Nav links */}
               <nav className="flex flex-col gap-2 flex-1">
+                {preSaasLinks.map((link, i) => {
+                  const Icon = link.icon;
+                  const active = location === link.href;
+                  return (
+                    <motion.div
+                      key={link.href}
+                      initial={{ opacity: 0, x: -24 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.05 + i * 0.07, duration: 0.3, ease: "easeOut" }}
+                    >
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center gap-4 px-4 py-4 rounded-xl transition-all font-semibold text-lg group ${
+                          active
+                            ? "bg-secondary text-primary"
+                            : "text-white/80 hover:bg-white/10 hover:text-white"
+                        }`}
+                      >
+                        <span className={`p-2 rounded-lg ${active ? "bg-primary/20" : "bg-white/10 group-hover:bg-white/20"} transition-colors`}>
+                          <Icon size={18} />
+                        </span>
+                        {link.label}
+                        {active && (
+                          <span className="ml-auto w-2 h-2 rounded-full bg-primary" />
+                        )}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
                 <motion.div
                   initial={{ opacity: 0, x: -24 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05, duration: 0.3, ease: "easeOut" }}
+                  transition={{ delay: 0.2, duration: 0.3, ease: "easeOut" }}
                 >
                   <Link
                     href="/saas"
@@ -170,7 +214,7 @@ export function Navbar() {
                     ))}
                   </div>
                 </motion.div>
-                {links.map((link, i) => {
+                {postSaasLinks.map((link, i) => {
                   const Icon = link.icon;
                   const active = location === link.href;
                   return (
@@ -178,7 +222,7 @@ export function Navbar() {
                       key={link.href}
                       initial={{ opacity: 0, x: -24 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.12 + i * 0.07, duration: 0.3, ease: "easeOut" }}
+                      transition={{ delay: 0.28 + i * 0.07, duration: 0.3, ease: "easeOut" }}
                     >
                       <Link
                         href={link.href}

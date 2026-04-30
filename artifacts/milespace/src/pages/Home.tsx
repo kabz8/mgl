@@ -7,6 +7,38 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { motion } from "framer-motion";
 import { IconTiles } from "@/components/marketing/IconTiles";
 
+function HomepageCybersecurityTeaser() {
+  return (
+    <section className="py-20 bg-[#07111C] text-white border-y border-slate-800">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300 mb-3">Cybersecurity by Milespace</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Secure Your Website, Email, Hosting, and Business Systems</h2>
+            <p className="text-white/80 mb-6">
+              Threats like phishing, malware injection, weak admin access, and exposed hosting settings are now everyday business risks. Milespace helps you audit, harden, monitor, and respond before incidents escalate.
+            </p>
+            <Button asChild className="bg-cyan-400 text-slate-900 hover:bg-cyan-300" id="home-cybersecurity-view-page" data-cta="view-cybersecurity-page">
+              <Link href="/cybersecurity">Explore Cybersecurity Services</Link>
+            </Button>
+          </div>
+          <div className="grid gap-3">
+            {[
+              "Website and web app vulnerability audits",
+              "WordPress hardening and malware prevention",
+              "Email security checks for SPF, DKIM, and DMARC",
+            ].map((item) => (
+              <div key={item} className="rounded-xl border border-slate-700/70 bg-slate-900/70 px-4 py-3 text-sm font-medium">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
 
@@ -88,6 +120,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <HomepageCybersecurityTeaser />
 
       {/* SaaS Products */}
       <section className="py-24 bg-muted/30 border-y border-border">
