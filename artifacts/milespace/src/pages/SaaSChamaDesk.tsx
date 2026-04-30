@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { CheckCircle2, ShieldCheck, Users2 } from "lucide-react";
+import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWhatsAppLink } from "@/lib/whatsapp";
@@ -45,9 +45,9 @@ const premiumTier = [
 
 export default function SaaSChamaDesk() {
   usePageMetadata({
-    title: "ChamaDesk | Chama & Group Management Software by Milespace",
+    title: "Milespace ChamaDesk | Chama & Group Management Software",
     description:
-      "ChamaDesk helps chamas, SACCO-like groups, and family groups manage meetings, contributions, loans, records, and accountability in one system.",
+      "Milespace ChamaDesk helps chamas, SACCO-like groups, and family groups manage meetings, contributions, loans, records, and accountability in one system.",
     path: "/saas/chamadesk",
   });
 
@@ -57,9 +57,9 @@ export default function SaaSChamaDesk() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_45%)]" />
         <div className="container relative z-10 mx-auto px-4 md:px-8">
           <div className="max-w-4xl">
-            <p className="text-sm uppercase tracking-[0.18em] text-secondary font-semibold mb-4">Milespace SaaS - ChamaDesk</p>
+            <p className="text-sm uppercase tracking-[0.18em] text-secondary font-semibold mb-4">Milespace SaaS - Milespace ChamaDesk</p>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
-              Run Your Chama Smarter with ChamaDesk
+              Run Your Chama Smarter with Milespace ChamaDesk
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mb-8">
               A digital operating system for chamas, family groups, SACCO-like groups, and community savings teams to manage meetings, contributions, loans, and records in one place.
@@ -69,7 +69,7 @@ export default function SaaSChamaDesk() {
                 <a href="#chamadesk-demo-form">Book a Demo</a>
               </Button>
               <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="chamadesk-request-pricing" data-cta="request-pricing">
-                <a href={getWhatsAppLink("Hi Milespace, I want pricing details for ChamaDesk.")} target="_blank" rel="noopener noreferrer">
+                <a href={getWhatsAppLink("Hi Milespace, I want pricing details for Milespace ChamaDesk.")} target="_blank" rel="noopener noreferrer">
                   Request Pricing / Talk to Us
                 </a>
               </Button>
@@ -81,6 +81,14 @@ export default function SaaSChamaDesk() {
 
       <section className="py-10 bg-transparent">
         <div className="container mx-auto px-4 md:px-8">
+          <div className="mb-8 overflow-hidden rounded-2xl border border-border/70">
+            <img
+              src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1600&q=80"
+              alt="Financial collaboration and records management"
+              className="h-[240px] w-full object-cover md:h-[320px]"
+              loading="lazy"
+            />
+          </div>
           <div className="grid md:grid-cols-3 gap-4">
             {[
               { title: "Member Governance", visual: "👥🏛️📘" },
@@ -101,13 +109,13 @@ export default function SaaSChamaDesk() {
           <div className="grid lg:grid-cols-2 gap-8">
             <Card className="border-border/70">
               <CardHeader>
-                <CardTitle className="text-3xl">What ChamaDesk Changes Immediately</CardTitle>
+                <CardTitle className="text-3xl">What Milespace ChamaDesk Changes Immediately</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground">
-                <p>Most groups lose trust because records are scattered across notebooks, chat messages, and personal spreadsheets. ChamaDesk centralizes that into one clean source of truth.</p>
+                <p>Most groups lose trust because records are scattered across notebooks, chat messages, and personal spreadsheets. Milespace ChamaDesk centralizes that into one clean source of truth.</p>
                 <p>Every contribution, loan action, and meeting decision becomes traceable by person and date, which reduces confusion and internal conflicts.</p>
                 <p className="text-foreground font-medium">
-                  ChamaDesk does not send, process, or hold actual money. It records workflows, evidence, and accountability data around your group operations.
+                  Milespace ChamaDesk does not send, process, or hold actual money. It records workflows, evidence, and accountability data around your group operations.
                 </p>
               </CardContent>
             </Card>
@@ -176,7 +184,7 @@ export default function SaaSChamaDesk() {
               </CardContent>
             </Card>
             <Card className="border-border/70">
-              <CardHeader><CardTitle className="text-2xl">Where ChamaDesk Fits Best</CardTitle></CardHeader>
+              <CardHeader><CardTitle className="text-2xl">Where Milespace ChamaDesk Fits Best</CardTitle></CardHeader>
               <CardContent className="space-y-2 text-sm text-muted-foreground">
                 {[
                   "Structured chamas with recurring monthly obligations",
@@ -256,11 +264,11 @@ export default function SaaSChamaDesk() {
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             {[
-              { q: "Does ChamaDesk send or hold money?", a: "No. ChamaDesk does not process or hold funds. It manages records, workflows, and accountability." },
+              { q: "Does Milespace ChamaDesk send or hold money?", a: "No. Milespace ChamaDesk does not process or hold funds. It manages records, workflows, and accountability." },
               { q: "Can members upload payment confirmation?", a: "Yes. Members can post payment proof references such as M-Pesa, bank, or Unaitas confirmations." },
               { q: "Can officials control who records cash entries?", a: "Yes. Authorized officials like treasurer can be assigned controlled entry permissions." },
-              { q: "Is there an audit trail?", a: "Yes. ChamaDesk includes traceable records for key actions and edits." },
-              { q: "Is ChamaDesk suitable for family and welfare groups?", a: "Yes. It is designed for chamas, family groups, welfare groups, and SACCO-like structures." },
+              { q: "Is there an audit trail?", a: "Yes. Milespace ChamaDesk includes traceable records for key actions and edits." },
+              { q: "Is Milespace ChamaDesk suitable for family and welfare groups?", a: "Yes. It is designed for chamas, family groups, welfare groups, and SACCO-like structures." },
               { q: "Is there a free version?", a: "Yes. Core meeting and record operations are available in the free tier." },
               { q: "Can it be customized for our group?", a: "Yes. Premium plans can include custom branding and additional controls." },
             ].map((item) => (
@@ -276,13 +284,13 @@ export default function SaaSChamaDesk() {
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
           <h2 className="text-3xl md:text-5xl font-bold mb-5">Ready to Run Your Group with More Trust and Structure?</h2>
-          <p className="text-primary-foreground/80 text-lg mb-9">Book a guided demo and see how ChamaDesk can improve transparency, record keeping, and accountability.</p>
+          <p className="text-primary-foreground/80 text-lg mb-9">Book a guided demo and see how Milespace ChamaDesk can improve transparency, record keeping, and accountability.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="chamadesk-final-book-demo" data-cta="book-demo">
               <a href="#chamadesk-demo-form">Book a Demo</a>
             </Button>
             <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="chamadesk-final-whatsapp" data-cta="whatsapp-contact">
-              <a href={getWhatsAppLink("Hi Milespace, I want to discuss ChamaDesk for our group.")} target="_blank" rel="noopener noreferrer">
+              <a href={getWhatsAppLink("Hi Milespace, I want to discuss Milespace ChamaDesk for our group.")} target="_blank" rel="noopener noreferrer">
                 Talk to Milespace
               </a>
             </Button>
@@ -295,10 +303,10 @@ export default function SaaSChamaDesk() {
 
       <DemoBookingSection
         context="chamadesk"
-        title="Book a ChamaDesk Governance Demo"
+        title="Book a Milespace ChamaDesk Governance Demo"
         description="Share your group structure and where accountability breaks down today. We will tailor a walkthrough for your exact workflow."
-        defaultProduct="ChamaDesk"
-        submitLabel="Get ChamaDesk Walkthrough"
+        defaultProduct="Milespace ChamaDesk"
+        submitLabel="Get Milespace ChamaDesk Walkthrough"
         primarySelectLabel="What is your main Chama focus? *"
         primarySelectPlaceholder="Select focus"
         primarySelectOptions={["Contribution tracking", "Loan workflow", "Meeting governance", "Member records + transparency", "Full setup"]}

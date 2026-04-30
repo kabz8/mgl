@@ -64,6 +64,14 @@ export default function USA() {
 
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 md:px-8">
+          <div className="mb-8 overflow-hidden rounded-2xl border border-border/70">
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80"
+              alt="USA skyline and business technology context"
+              className="h-[240px] w-full object-cover md:h-[320px]"
+              loading="lazy"
+            />
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: Rocket, title: "Growth Velocity", text: "Roadmaps are broken into launchable milestones, not endless backlog discussions." },

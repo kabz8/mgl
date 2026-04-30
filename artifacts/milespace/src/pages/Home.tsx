@@ -112,13 +112,13 @@ export default function Home() {
             >
               <div className="h-full bg-card rounded-xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-2xl mb-4">🧩</div>
-                <h3 className="text-2xl font-bold mb-3">ChamaDesk</h3>
+                <h3 className="text-2xl font-bold mb-3">Milespace ChamaDesk</h3>
                 <p className="text-muted-foreground mb-6">
                   A digital platform for chamas and group operations - meetings, contributions, loans, records, and accountability in one place.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button asChild className="flex-1">
-                    <Link href="/saas/chamadesk">View ChamaDesk</Link>
+                    <Link href="/saas/chamadesk">View Milespace ChamaDesk</Link>
                   </Button>
                   <Button asChild variant="outline" className="flex-1">
                     <a href="/saas/chamadesk#chamadesk-demo-form">Book Demo</a>
@@ -135,13 +135,13 @@ export default function Home() {
             >
               <div className="h-full bg-card rounded-xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-2xl mb-4">🛍️</div>
-                <h3 className="text-2xl font-bold mb-3">POS</h3>
+                <h3 className="text-2xl font-bold mb-3">Milespace POS</h3>
                 <p className="text-muted-foreground mb-6">
                   A modern POS for cafés, pastry shops, retail stores, and growing businesses to handle sales, stock, staff, and reporting.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button asChild className="flex-1">
-                    <Link href="/saas/pos">View POS</Link>
+                    <Link href="/saas/pos">View Milespace POS</Link>
                   </Button>
                   <Button asChild variant="outline" className="flex-1">
                     <a href="/saas/pos#pos-demo-form">Book Demo</a>

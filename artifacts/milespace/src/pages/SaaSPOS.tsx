@@ -35,9 +35,9 @@ export default function SaaSPOS() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_45%)]" />
         <div className="container relative z-10 mx-auto px-4 md:px-8">
           <div className="max-w-4xl">
-            <p className="text-sm uppercase tracking-[0.18em] text-secondary font-semibold mb-4">Milespace SaaS - POS</p>
+            <p className="text-sm uppercase tracking-[0.18em] text-secondary font-semibold mb-4">Milespace SaaS - Milespace POS</p>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
-              A Simple, Modern POS for Growing Businesses
+              Milespace POS for Fast-Moving Growing Businesses
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mb-8">
               Milespace POS helps cafes, pastry shops, retail stores, and other growing businesses handle sales, stock, staff activity, and reporting through one clean system.
@@ -47,7 +47,7 @@ export default function SaaSPOS() {
                 <a href="#pos-demo-form">Book a Demo</a>
               </Button>
               <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="pos-request-pricing" data-cta="request-pricing">
-                <a href={getWhatsAppLink("Hi Milespace, I want pricing details for your POS system.")} target="_blank" rel="noopener noreferrer">
+                <a href={getWhatsAppLink("Hi Milespace, I want pricing details for Milespace POS.")} target="_blank" rel="noopener noreferrer">
                   Request Pricing / Talk to Us
                 </a>
               </Button>
@@ -59,6 +59,14 @@ export default function SaaSPOS() {
 
       <section className="py-10 bg-transparent">
         <div className="container mx-auto px-4 md:px-8">
+          <div className="mb-8 overflow-hidden rounded-2xl border border-border/70">
+            <img
+              src="https://images.unsplash.com/photo-1604719312566-8912e9c8a213?auto=format&fit=crop&w=1600&q=80"
+              alt="Retail checkout and inventory operations"
+              className="h-[240px] w-full object-cover md:h-[320px]"
+              loading="lazy"
+            />
+          </div>
           <div className="grid md:grid-cols-3 gap-4">
             {[
               { title: "Front Counter Speed", visual: "⚡🧾🛍️" },
@@ -194,10 +202,10 @@ export default function SaaSPOS() {
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             {[
-              { q: "Can I track stock levels?", a: "Yes. POS includes stock tracking with low stock visibility to help prevent stockout issues." },
+              { q: "Can I track stock levels?", a: "Yes. Milespace POS includes stock tracking with low stock visibility to help prevent stockout issues." },
               { q: "Can I see daily sales summaries?", a: "Yes. You can review daily sales performance and trend snapshots directly from dashboard reports." },
-              { q: "Can multiple staff members use it?", a: "Yes. POS supports role-based access for admin, cashier, and staff workflows." },
-              { q: "Is it suitable for a cafe or pastry shop?", a: "Yes. POS is designed to support cafes, pastry shops, and retail-type businesses." },
+              { q: "Can multiple staff members use it?", a: "Yes. Milespace POS supports role-based access for admin, cashier, and staff workflows." },
+              { q: "Is it suitable for a cafe or pastry shop?", a: "Yes. Milespace POS is designed to support cafes, pastry shops, and retail-type businesses." },
               { q: "Can it track expenses?", a: "Yes. Expense tracking is included so you can review operational performance with better context." },
               { q: "Will it help me identify fast-moving products?", a: "Yes. Product movement and sales reporting helps identify best and worst performers." },
               { q: "Can it be customized for my business?", a: "Yes. Milespace can tailor workflows and reporting to fit specific business operations." },
@@ -214,13 +222,13 @@ export default function SaaSPOS() {
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
           <h2 className="text-3xl md:text-5xl font-bold mb-5">Ready to Modernize Your Store Operations?</h2>
-          <p className="text-primary-foreground/80 text-lg mb-9">Book a guided POS demo and see how your sales, stock, and reporting can run in one clean system.</p>
+          <p className="text-primary-foreground/80 text-lg mb-9">Book a guided Milespace POS demo and see how your sales, stock, and reporting can run in one clean system.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="pos-final-book-demo" data-cta="book-demo">
               <a href="#pos-demo-form">Book a Demo</a>
             </Button>
             <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="pos-final-whatsapp" data-cta="whatsapp-contact">
-              <a href={getWhatsAppLink("Hi Milespace, I want to discuss POS for my business.")} target="_blank" rel="noopener noreferrer">
+              <a href={getWhatsAppLink("Hi Milespace, I want to discuss Milespace POS for my business.")} target="_blank" rel="noopener noreferrer">
                 Talk to Milespace
               </a>
             </Button>
@@ -233,10 +241,10 @@ export default function SaaSPOS() {
 
       <DemoBookingSection
         context="pos"
-        title="Book a POS Operations Demo"
+        title="Book a Milespace POS Operations Demo"
         description="Tell us how your store currently runs and where control is weak. We will tailor a walkthrough to your daily flow."
-        defaultProduct="POS"
-        submitLabel="Request POS Demo"
+        defaultProduct="Milespace POS"
+        submitLabel="Request Milespace POS Demo"
         primarySelectLabel="Store Type *"
         primarySelectPlaceholder="Select store type"
         primarySelectOptions={["Cafe / Coffee Shop", "Bakery / Pastry", "Retail Shop", "Pharmacy / Beauty", "Mixed Inventory Store"]}

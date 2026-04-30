@@ -11,7 +11,7 @@ interface DemoBookingSectionProps {
   context: "saas" | "chamadesk" | "pos" | "uk" | "usa";
   title?: string;
   description?: string;
-  defaultProduct?: "ChamaDesk" | "POS";
+  defaultProduct?: "Milespace ChamaDesk" | "Milespace POS";
   mode?: "product" | "project";
   submitLabel?: string;
   primarySelectLabel?: string;
@@ -54,7 +54,7 @@ export function DemoBookingSection({
   const resolvedPrimarySelectOptions =
     primarySelectOptions ??
     (mode === "product"
-      ? ["ChamaDesk", "POS"]
+      ? ["Milespace ChamaDesk", "Milespace POS"]
       : ["Custom Software Development", "Web App Development", "Website Development", "Shopify Development", "Business System Automation", "Other"]);
 
   const resolvedSecondarySelectLabel = secondarySelectLabel ?? (mode === "product" ? "Business / Group Type *" : "Current Stage *");

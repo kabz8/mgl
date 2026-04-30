@@ -10,7 +10,7 @@ import { DemoBookingSection } from "@/components/saas/DemoBookingSection";
 const products = [
   {
     id: "chamadesk",
-    name: "ChamaDesk",
+    name: "Milespace ChamaDesk",
     summary: "A digital operating system for chamas, family groups, and SACCO-like member organisations.",
     highlights: [
       "Meeting flow and member management",
@@ -22,7 +22,7 @@ const products = [
   },
   {
     id: "pos",
-    name: "POS",
+    name: "Milespace POS",
     summary: "A clean, modern point-of-sale system for cafés, pastry shops, stores, and growing retail teams.",
     highlights: [
       "Fast checkout and daily sales summaries",
@@ -36,9 +36,9 @@ const products = [
 
 export default function SaaS() {
   usePageMetadata({
-    title: "Milespace SaaS Products | ChamaDesk & POS",
+    title: "Milespace SaaS Products | Milespace ChamaDesk & Milespace POS",
     description:
-      "Explore Milespace SaaS products including ChamaDesk for chamas and group management, and POS for modern business operations.",
+      "Explore Milespace SaaS products including Milespace ChamaDesk for chamas and group management, and Milespace POS for modern business operations.",
     path: "/saas",
   });
 
@@ -58,10 +58,10 @@ export default function SaaS() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="saas-explore-chamadesk" data-cta="book-demo">
-                  <Link href="/saas/chamadesk">Explore ChamaDesk</Link>
+                  <Link href="/saas/chamadesk">Explore Milespace ChamaDesk</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="saas-explore-pos" data-cta="book-demo">
-                  <Link href="/saas/pos">Explore POS</Link>
+                  <Link href="/saas/pos">Explore Milespace POS</Link>
                 </Button>
               </div>
             </div>
@@ -88,6 +88,14 @@ export default function SaaS() {
 
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 md:px-8">
+          <div className="mb-8 overflow-hidden rounded-2xl border border-border/70">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80"
+              alt="Product strategy and SaaS team collaboration"
+              className="h-[240px] w-full object-cover md:h-[320px]"
+              loading="lazy"
+            />
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: Zap, title: "Speed to Value", text: "Launch with the workflows that matter first, then layer advanced capability." },
@@ -172,7 +180,7 @@ export default function SaaS() {
               </CardHeader>
               <CardContent className="space-y-3 text-sm text-muted-foreground">
                 <p>1. Discovery call around your current operations.</p>
-                <p>2. Product fit recommendation (ChamaDesk, POS, or both).</p>
+                <p>2. Product fit recommendation (Milespace ChamaDesk, Milespace POS, or both).</p>
                 <p>3. Guided onboarding plan and implementation scope.</p>
                 <p>4. Training and launch support with improvement loop.</p>
                 <p>5. Ongoing enhancements based on business usage data.</p>
@@ -208,13 +216,13 @@ export default function SaaS() {
               <CardHeader>
                 <CardTitle className="text-xl flex items-center gap-2">
                   <Handshake className="h-5 w-5 text-secondary" />
-                  ChamaDesk
+                  Milespace ChamaDesk
                 </CardTitle>
                 <CardDescription>For chamas, SACCO-like groups, and structured member organizations.</CardDescription>
               </CardHeader>
               <CardContent>
                 <Button asChild variant="outline">
-                  <Link href="/saas/chamadesk">Go to ChamaDesk</Link>
+                  <Link href="/saas/chamadesk">Go to Milespace ChamaDesk</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -222,13 +230,13 @@ export default function SaaS() {
               <CardHeader>
                 <CardTitle className="text-xl flex items-center gap-2">
                   <BarChart3 className="h-5 w-5 text-secondary" />
-                  POS
+                  Milespace POS
                 </CardTitle>
                 <CardDescription>For cafes, retail teams, and owner-led businesses needing clean daily control.</CardDescription>
               </CardHeader>
               <CardContent>
                 <Button asChild variant="outline">
-                  <Link href="/saas/pos">Go to POS</Link>
+                  <Link href="/saas/pos">Go to Milespace POS</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -243,7 +251,7 @@ export default function SaaS() {
         submitLabel="Get Product Recommendation"
         primarySelectLabel="What are you evaluating? *"
         primarySelectPlaceholder="Select product interest"
-        primarySelectOptions={["ChamaDesk", "POS", "Both Products", "Not Sure Yet"]}
+        primarySelectOptions={["Milespace ChamaDesk", "Milespace POS", "Both Products", "Not Sure Yet"]}
         secondarySelectLabel="Primary Challenge *"
         secondarySelectPlaceholder="Select challenge"
         secondarySelectOptions={["Poor record visibility", "Manual operations overload", "Stock & sales control", "Member accountability", "Need system upgrade"]}

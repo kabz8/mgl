@@ -74,8 +74,8 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               {[
                 { href: "/saas", label: "All SaaS Products" },
-                { href: "/saas/chamadesk", label: "ChamaDesk" },
-                { href: "/saas/pos", label: "POS" },
+                { href: "/saas/chamadesk", label: "Milespace ChamaDesk" },
+                { href: "/saas/pos", label: "Milespace POS" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-primary-foreground/60 hover:text-white transition-colors">

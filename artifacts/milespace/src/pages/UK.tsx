@@ -47,6 +47,14 @@ export default function UK() {
 
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 md:px-8">
+          <div className="mb-8 overflow-hidden rounded-2xl border border-border/70">
+            <img
+              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80"
+              alt="UK city business district and digital growth context"
+              className="h-[240px] w-full object-cover md:h-[320px]"
+              loading="lazy"
+            />
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: Clock3, title: "Timezone-Aligned Delivery", text: "Planned ceremonies and async updates tailored for UK working rhythms." },
