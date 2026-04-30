@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { CheckCircle2 } from "lucide-react";
+import { Clock3, ShieldCheck, Users2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { DemoBookingSection } from "@/components/saas/DemoBookingSection";
-import { IconTiles } from "@/components/marketing/IconTiles";
 
 export default function UK() {
   usePageMetadata({
@@ -46,46 +45,39 @@ export default function UK() {
         </div>
       </section>
 
-      <section className="py-12 bg-background">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="rounded-2xl border border-border bg-card p-4 md:p-6 shadow-sm">
-            <img src="/illustrations/uk.svg" alt="UK software delivery illustration" className="w-full h-auto rounded-xl" loading="lazy" />
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: Clock3, title: "Timezone-Aligned Delivery", text: "Planned ceremonies and async updates tailored for UK working rhythms." },
+              { icon: ShieldCheck, title: "Low-Risk Execution", text: "Release discipline, QA checkpoints, and transparent issue escalation." },
+              { icon: Users2, title: "Senior Team Access", text: "Direct communication with product and engineering leads, not handoffs." },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <Card key={item.title} className="border-border/70">
+                  <CardHeader>
+                    <div className="h-11 w-11 rounded-lg bg-primary/5 flex items-center justify-center mb-4">
+                      <Icon className="h-5 w-5 text-secondary" />
+                    </div>
+                    <CardTitle className="text-xl">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>{item.text}</CardDescription>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
-        </div>
-      </section>
-
-      <section className="py-12 bg-background">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          <IconTiles
-            items={[
-              { icon: "🎯", title: "Client-Centric", subtitle: "Your commercial outcomes guide delivery" },
-              { icon: "⚡", title: "Fast & Reliable", subtitle: "Practical timelines and disciplined shipping" },
-              { icon: "🔎", title: "Detail-Oriented", subtitle: "Strong QA and implementation rigor" },
-              { icon: "🤝", title: "Proactive Support", subtitle: "We surface risks and options early" },
-            ]}
-          />
-        </div>
-      </section>
-
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 md:px-8">
-          <IconTiles
-            items={[
-              { icon: "🤝", title: "Direct Collaboration", subtitle: "You work with delivery leads, not account relays." },
-              { icon: "⏱️", title: "Timeline Discipline", subtitle: "Practical scope, milestones, and transparent progress." },
-              { icon: "🛡️", title: "Business-Ready Quality", subtitle: "Stable builds with strong UX and engineering fundamentals." },
-              { icon: "📣", title: "Clear Communication", subtitle: "Consistent updates with decisions and risks surfaced early." },
-            ]}
-          />
         </div>
       </section>
 
       <section className="py-20 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Services for UK Growth Teams</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">What UK Teams Hire Us For</h2>
             <p className="text-muted-foreground">
-              We focus on delivery work that drives operational efficiency, stronger customer journeys, and clearer business visibility.
+              We focus on serious implementation work where reliability and clarity matter as much as design quality.
             </p>
           </div>
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -112,28 +104,28 @@ export default function UK() {
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-2 gap-8">
             <Card className="border-border/70">
-              <CardHeader><CardTitle className="text-2xl">Our Delivery Process</CardTitle></CardHeader>
+              <CardHeader><CardTitle className="text-2xl">UK Delivery Framework</CardTitle></CardHeader>
               <CardContent className="space-y-3">
                 {[
-                  "Discovery: align on business outcomes and constraints",
-                  "Planning: define practical scope, estimates, and priorities",
-                  "Design & Development: build with quality and iteration in view",
-                  "Testing & Launch: validate before release and deploy cleanly",
-                  "Support: iterate post-launch as your business evolves",
+                  "Commercial discovery: align on measurable outcomes and risk profile",
+                  "Technical framing: define architecture, integrations, and timeline",
+                  "Sprint execution: ship features in controlled increments",
+                  "Release hardening: QA, UAT, and go-live checklist",
+                  "Post-launch support: optimize based on user and business signals",
                 ].map((step, i) => (
                   <p key={step} className="text-sm text-foreground"><span className="font-semibold">{i + 1}. </span>{step}</p>
                 ))}
               </CardContent>
             </Card>
             <Card className="border-border/70">
-              <CardHeader><CardTitle className="text-2xl">Who We Work With</CardTitle></CardHeader>
+              <CardHeader><CardTitle className="text-2xl">Best-Fit UK Clients</CardTitle></CardHeader>
               <CardContent className="space-y-2 text-sm text-muted-foreground">
                 {[
-                  "Founders needing execution reliability",
-                  "In-house teams needing additional product bandwidth",
-                  "Operations teams replacing fragmented manual workflows",
-                  "Growing businesses needing scalable digital infrastructure",
-                  "Established companies modernizing legacy systems",
+                  "Agencies and SMBs needing dependable implementation partners",
+                  "Ops-heavy teams replacing spreadsheets and manual follow-ups",
+                  "Founders under pressure to launch without quality compromise",
+                  "Service businesses building client portals and internal systems",
+                  "Organizations modernizing old platforms without disruptive rewrites",
                 ].map((item) => (
                   <p key={item}>{item}</p>
                 ))}
@@ -145,20 +137,19 @@ export default function UK() {
 
       <section className="py-20 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+          <div className="max-w-3xl mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">UK Partner Expectations</h2>
+            <p className="text-muted-foreground">How we keep projects professional, predictable, and commercially aligned.</p>
           </div>
-          <div className="max-w-4xl mx-auto grid gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             {[
-              ["Do you work with UK clients remotely?", "Yes. We collaborate remotely with UK teams through structured milestones and clear communication rhythms."],
-              ["Can you support ongoing maintenance?", "Yes. We provide post-launch support, feature iteration, and technical improvements."],
-              ["Can you improve an existing system?", "Yes. We can modernize, refactor, and extend existing platforms without unnecessary rebuilds."],
-              ["How long does a typical project take?", "Many projects launch in 4-12 weeks depending on complexity, integration needs, and scope depth."],
-              ["Do you work with startups and established businesses?", "Yes. We work with both startup teams and mature organizations needing delivery discipline."],
-            ].map(([q, a]) => (
-              <Card key={q} className="border-border/70">
-                <CardHeader><CardTitle className="text-lg">{q}</CardTitle></CardHeader>
-                <CardContent><CardDescription>{a}</CardDescription></CardContent>
+              ["Communication cadence", "Weekly milestone updates plus async daily status when needed."],
+              ["Contracting model", "Fixed-scope milestones or retainer-based product support options."],
+              ["Quality guardrails", "Structured QA, staging verification, and release notes for accountability."],
+            ].map(([title, text]) => (
+              <Card key={title} className="border-border/70">
+                <CardHeader><CardTitle className="text-lg">{title}</CardTitle></CardHeader>
+                <CardContent><CardDescription>{text}</CardDescription></CardContent>
               </Card>
             ))}
           </div>
@@ -189,8 +180,22 @@ export default function UK() {
 
       <DemoBookingSection
         context="uk"
-        title="Book a UK Discovery Session"
-        description="Share your requirements and we will tailor a discovery call around your current stack, priorities, and delivery timeline."
+        mode="project"
+        title="Start a UK Project Discovery Session"
+        description="Tell us what you need delivered, your timeline pressure, and your current blockers. We will return with a practical execution plan."
+        submitLabel="Request UK Delivery Plan"
+        primarySelectLabel="Project Type *"
+        primarySelectPlaceholder="Select project type"
+        primarySelectOptions={["Website + Conversion Upgrade", "Custom Internal System", "Client Portal / Dashboard", "Shopify + Ops Integration", "Legacy System Modernization"]}
+        secondarySelectLabel="Delivery Priority *"
+        secondarySelectPlaceholder="Select priority"
+        secondarySelectOptions={["Ship quickly", "Reduce operational risk", "Improve user experience", "Improve reporting visibility", "Need all three"]}
+        organizationLabel="Company / Organization Name *"
+        organizationPlaceholder="Example: Northfield Logistics Ltd"
+        teamLabel="Who will be involved on your side? *"
+        teamPlaceholder="Example: Founder, Operations Manager, 1 technical lead"
+        messageLabel="What has to be true after launch? *"
+        messagePlaceholder="Describe the business outcomes and non-negotiables for this project."
       />
     </div>
   );

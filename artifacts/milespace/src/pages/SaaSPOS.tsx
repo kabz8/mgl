@@ -57,21 +57,13 @@ export default function SaaSPOS() {
         </div>
       </section>
 
-      <section className="py-12 bg-transparent">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="rounded-2xl border border-border/70 bg-card/80 p-4 md:p-6 shadow-sm">
-            <img src="/illustrations/pos.svg" alt="POS dashboard and checkout illustration" className="w-full h-auto rounded-xl" loading="lazy" />
-          </div>
-        </div>
-      </section>
-
       <section className="py-10 bg-transparent">
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { title: "Checkout Illustration", visual: "🛒💳✅" },
-              { title: "Stock Visibility", visual: "📦📉🔔" },
-              { title: "Insights Dashboard", visual: "📊📈🧠" },
+              { title: "Front Counter Speed", visual: "⚡🧾🛍️" },
+              { title: "Stock Confidence", visual: "📦📉🔔" },
+              { title: "Owner Control", visual: "📊💼🧠" },
             ].map((item) => (
               <Card key={item.title} className="border-border/70 bg-card/80 backdrop-blur-sm">
                 <CardHeader><CardTitle className="text-lg">{item.title}</CardTitle></CardHeader>
@@ -90,8 +82,8 @@ export default function SaaSPOS() {
                 <CardTitle className="text-3xl">Product Overview</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground">
-                <p>Milespace POS is built for businesses that need speed at checkout and clarity in operations.</p>
-                <p>Instead of juggling disconnected tools, your team gets one interface for sales, inventory, expenses, and performance reporting.</p>
+                <p>Milespace POS is built for owners who are tired of guesswork at close of day. You get clear numbers, clear stock position, and clear staff activity.</p>
+                <p>Instead of juggling manual logs and disconnected apps, your team works from one shared operating interface from checkout to reporting.</p>
                 <p className="text-foreground font-medium">The result is faster service, better stock control, and stronger business decision making.</p>
               </CardContent>
             </Card>
@@ -101,11 +93,11 @@ export default function SaaSPOS() {
               </CardHeader>
               <CardContent className="space-y-2 text-sm text-muted-foreground">
                 {[
-                  "Cafés and coffee shops",
-                  "Pastry and bakery stores",
-                  "Retail shops and mini marts",
-                  "Beauty shops and pharmacies",
-                  "Small to mid-size growing businesses",
+                  "Cafe and restaurant counters with daily rush pressure",
+                  "Bakery and pastry teams handling high SKU turnover",
+                  "Retail stores needing cleaner stock movement tracking",
+                  "Owner-managed businesses with small cashier teams",
+                  "Growing outlets preparing to scale to more branches",
                 ].map((item) => (
                   <p key={item}>{item}</p>
                 ))}
@@ -118,8 +110,8 @@ export default function SaaSPOS() {
       <section className="py-20 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-3xl mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Key Features</h2>
-            <p className="text-muted-foreground">Operational control without complexity, designed for teams that need quick adoption.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Operational Feature Set</h2>
+            <p className="text-muted-foreground">Everything your team needs to run the store with speed and confidence.</p>
           </div>
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
             {features.map((feature) => (
@@ -178,12 +170,29 @@ export default function SaaSPOS() {
         </div>
       </section>
 
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              ["Queue Time", "Shorter checkout queues during peak hours due to faster item and receipt flow."],
+              ["Stockouts", "Fewer surprise stockouts from low-stock awareness and movement visibility."],
+              ["Profit Clarity", "Owner visibility into margin leakage through expense and product reports."],
+            ].map(([title, text]) => (
+              <Card key={title} className="border-border/70">
+                <CardHeader><CardTitle className="text-xl">{title}</CardTitle></CardHeader>
+                <CardContent><CardDescription>{text}</CardDescription></CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+          <div className="max-w-3xl mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Questions Store Owners Ask First</h2>
           </div>
-          <div className="max-w-4xl mx-auto grid gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {[
               { q: "Can I track stock levels?", a: "Yes. POS includes stock tracking with low stock visibility to help prevent stockout issues." },
               { q: "Can I see daily sales summaries?", a: "Yes. You can review daily sales performance and trend snapshots directly from dashboard reports." },
@@ -224,9 +233,22 @@ export default function SaaSPOS() {
 
       <DemoBookingSection
         context="pos"
-        title="Book a POS Demo"
-        description="Tell us your business type and we will tailor a walkthrough around checkout speed, stock tracking, and reporting visibility."
+        title="Book a POS Operations Demo"
+        description="Tell us how your store currently runs and where control is weak. We will tailor a walkthrough to your daily flow."
         defaultProduct="POS"
+        submitLabel="Request POS Demo"
+        primarySelectLabel="Store Type *"
+        primarySelectPlaceholder="Select store type"
+        primarySelectOptions={["Cafe / Coffee Shop", "Bakery / Pastry", "Retail Shop", "Pharmacy / Beauty", "Mixed Inventory Store"]}
+        secondarySelectLabel="Current Pain Point *"
+        secondarySelectPlaceholder="Select pain point"
+        secondarySelectOptions={["Slow checkout", "Stock confusion", "Cashier oversight", "Weak reporting", "Expense leakage"]}
+        organizationLabel="Business Name *"
+        organizationPlaceholder="Example: Urban Beans Cafe"
+        teamLabel="Number of checkout staff *"
+        teamPlaceholder="Example: 3 cashiers, 1 supervisor"
+        messageLabel="What is hurting performance most right now? *"
+        messagePlaceholder="Describe the day-to-day issue you want fixed first (queues, stock, reporting, etc.)."
       />
     </div>
   );

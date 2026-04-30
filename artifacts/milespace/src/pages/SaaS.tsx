@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, LayoutGrid, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, BarChart3, Handshake, ShieldCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWhatsAppLink } from "@/lib/whatsapp";
@@ -43,68 +43,82 @@ export default function SaaS() {
   });
 
   return (
-    <div className="flex flex-col w-full bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.07),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(234,179,8,0.08),transparent_40%)]">
+    <div className="flex flex-col w-full bg-background">
       <section className="relative overflow-hidden bg-primary text-primary-foreground py-20 md:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_45%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_45%)]" />
         <div className="container relative z-10 mx-auto px-4 md:px-8">
-          <div className="max-w-4xl">
-            <p className="text-sm uppercase tracking-[0.18em] text-secondary font-semibold mb-4">Milespace SaaS</p>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
-              SaaS Products Built for Real Businesses
-            </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mb-8">
-              Milespace builds software products that solve real operational problems for businesses, groups, and growing organizations - with premium UX and practical functionality.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="saas-explore-chamadesk" data-cta="book-demo">
-                <Link href="/saas/chamadesk">Explore ChamaDesk</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="saas-explore-pos" data-cta="book-demo">
-                <Link href="/saas/pos">Explore POS</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="saas-book-demo" data-cta="book-demo">
-                <a href="#saas-demo-form">Book a Demo</a>
-              </Button>
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.18em] text-secondary font-semibold mb-4">Milespace SaaS</p>
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+                Product Software That Feels Premium and Runs the Business
+              </h1>
+              <p className="text-lg md:text-xl text-primary-foreground/80 max-w-3xl mb-8">
+                We are not shipping templates. Every SaaS product is built around a specific operational problem, with the UX quality and reliability needed for real daily usage.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="saas-explore-chamadesk" data-cta="book-demo">
+                  <Link href="/saas/chamadesk">Explore ChamaDesk</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="saas-explore-pos" data-cta="book-demo">
+                  <Link href="/saas/pos">Explore POS</Link>
+                </Button>
+              </div>
             </div>
+            <Card className="border-white/20 bg-white/10 text-white backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle className="text-2xl">What We Optimize For</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm">
+                {[
+                  "Fast onboarding and low learning curve",
+                  "Operational traceability and role clarity",
+                  "Performance dashboards leaders can trust",
+                  "Continuous improvements after launch",
+                ].map((line) => (
+                  <p key={line} className="text-primary-foreground/90">
+                    {line}
+                  </p>
+                ))}
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      <section className="py-12 bg-transparent">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="rounded-2xl border border-border/70 bg-card/80 p-4 md:p-6 shadow-sm">
-            <img src="/illustrations/saas-overview.svg" alt="SaaS operations overview illustration" className="w-full h-auto rounded-xl" loading="lazy" />
-          </div>
-        </div>
-      </section>
-
-      <section className="py-10 bg-transparent">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: "Unified Operations", visual: "📊📦💼" },
-              { title: "Clear Accountability", visual: "🧾✅🔐" },
-              { title: "Smarter Decisions", visual: "📈🧠⚙️" },
-            ].map((item) => (
-              <Card key={item.title} className="border-border/70 bg-card/80 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-lg">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-2xl tracking-wide">{item.visual}</p>
-                </CardContent>
-              </Card>
-            ))}
+              { icon: Zap, title: "Speed to Value", text: "Launch with the workflows that matter first, then layer advanced capability." },
+              { icon: ShieldCheck, title: "Trust by Design", text: "Permissions, logs, and accountability are built in from the foundation." },
+              { icon: BarChart3, title: "Decision Visibility", text: "Dashboards are designed for managers, not just for technical teams." },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <Card key={item.title} className="border-border/70">
+                  <CardHeader>
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/5">
+                      <Icon className="h-5 w-5 text-secondary" />
+                    </div>
+                    <CardTitle className="text-xl">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>{item.text}</CardDescription>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Software Products for Day-to-Day Operations</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our SaaS Product Line</h2>
             <p className="text-muted-foreground text-lg">
-              Our SaaS products are designed to simplify operations, improve visibility, and help teams make better decisions with cleaner records and faster workflows.
+              Two focused products, two different markets, one shared standard: software that makes operations cleaner and decisions faster.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -116,12 +130,9 @@ export default function SaaS() {
                     <CardDescription className="text-sm leading-relaxed">{product.summary}</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-5">
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 text-sm">
                       {product.highlights.map((item) => (
-                        <li key={item} className="text-sm text-foreground flex items-start gap-2">
-                          <CheckCircle2 className="h-4 w-4 text-secondary mt-0.5 shrink-0" />
-                          <span>{item}</span>
-                        </li>
+                        <li key={item}>{item}</li>
                       ))}
                     </ul>
                     <div className="flex flex-col sm:flex-row gap-3">
@@ -131,7 +142,7 @@ export default function SaaS() {
                         </Link>
                       </Button>
                       <Button asChild variant="outline" className="flex-1" id={`${product.id}-book-demo`} data-cta="book-demo">
-                        <a href="#saas-demo-form">Book Demo</a>
+                        <a href="#saas-demo-form">Get Live Walkthrough</a>
                       </Button>
                     </div>
                   </CardContent>
@@ -142,59 +153,107 @@ export default function SaaS() {
         </div>
       </section>
 
-      <section className="py-20 bg-muted/30 border-y border-border">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Our SaaS Products</h2>
-            <p className="text-muted-foreground">
-              Our products are built by a software engineering team focused on practical value, not marketing hype.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { icon: LayoutGrid, title: "Practical Product Design", text: "Built around real operations, workflows, and everyday usage patterns." },
-              { icon: ShieldCheck, title: "Trust and Traceability", text: "Strong emphasis on visibility, records, accountability, and role-based control." },
-              { icon: Sparkles, title: "Premium UX + Clear Value", text: "Modern, clean interface design with business impact that users can feel quickly." },
-            ].map((item) => {
-              const Icon = item.icon;
-              return (
-                <Card key={item.title} className="border-border/70">
-                  <CardHeader>
-                    <div className="h-12 w-12 rounded-xl bg-primary/5 flex items-center justify-center mb-4">
-                      <Icon className="h-6 w-6 text-secondary" />
-                    </div>
-                    <CardTitle className="text-xl">{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-sm leading-relaxed">{item.text}</CardDescription>
-                  </CardContent>
-                </Card>
-              );
-            })}
+          <div className="grid lg:grid-cols-2 gap-8">
+            <Card className="border-border/70">
+              <CardHeader>
+                <CardTitle className="text-2xl">Why Teams Choose Milespace SaaS</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4 text-muted-foreground">
+                <p>Most software looks good in demos and breaks in real operations. We design around real users, real process friction, and daily constraints.</p>
+                <p>That means faster adoption, lower support burden, and clearer outcomes for the business owner or operations lead.</p>
+                <p className="text-foreground font-medium">You get a product partner that thinks in workflows, not feature checklists.</p>
+              </CardContent>
+            </Card>
+            <Card className="border-border/70">
+              <CardHeader>
+                <CardTitle className="text-2xl">Engagement Model</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm text-muted-foreground">
+                <p>1. Discovery call around your current operations.</p>
+                <p>2. Product fit recommendation (ChamaDesk, POS, or both).</p>
+                <p>3. Guided onboarding plan and implementation scope.</p>
+                <p>4. Training and launch support with improvement loop.</p>
+                <p>5. Ongoing enhancements based on business usage data.</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-5xl font-bold mb-5">Ready to See the Products in Action?</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-5">Want Software That Your Team Actually Uses?</h2>
           <p className="text-primary-foreground/80 text-lg mb-9">
-            Book a guided demo and we will walk you through the workflows, controls, and business outcomes relevant to your team.
+            Tell us what is slowing your operations down and we will show you the right product path.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="saas-final-book-demo" data-cta="book-demo">
-              <a href="#saas-demo-form">Book a Demo</a>
+              <a href="#saas-demo-form">Book Strategy Session</a>
             </Button>
             <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="saas-final-whatsapp" data-cta="whatsapp-contact">
-              <a href={getWhatsAppLink("Hi Milespace, I want to learn more about your SaaS products.")} target="_blank" rel="noopener noreferrer">
-                Talk to Us on WhatsApp
+              <a href={getWhatsAppLink("Hi Milespace, I want to discuss which SaaS product fits my operation.")} target="_blank" rel="noopener noreferrer">
+                Chat on WhatsApp
               </a>
             </Button>
           </div>
         </div>
       </section>
 
-      <DemoBookingSection context="saas" title="Book a SaaS Product Demo" description="Request a live walkthrough for ChamaDesk or POS and we will tailor the demo to your setup." />
+      <section className="py-14 bg-muted/30 border-y border-border">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="border-border/70">
+              <CardHeader>
+                <CardTitle className="text-xl flex items-center gap-2">
+                  <Handshake className="h-5 w-5 text-secondary" />
+                  ChamaDesk
+                </CardTitle>
+                <CardDescription>For chamas, SACCO-like groups, and structured member organizations.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button asChild variant="outline">
+                  <Link href="/saas/chamadesk">Go to ChamaDesk</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            <Card className="border-border/70">
+              <CardHeader>
+                <CardTitle className="text-xl flex items-center gap-2">
+                  <BarChart3 className="h-5 w-5 text-secondary" />
+                  POS
+                </CardTitle>
+                <CardDescription>For cafes, retail teams, and owner-led businesses needing clean daily control.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button asChild variant="outline">
+                  <Link href="/saas/pos">Go to POS</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <DemoBookingSection
+        context="saas"
+        title="Book a SaaS Strategy Session"
+        description="Share your business model and current workflow issues. We will recommend the best product path and onboarding plan."
+        submitLabel="Get Product Recommendation"
+        primarySelectLabel="What are you evaluating? *"
+        primarySelectPlaceholder="Select product interest"
+        primarySelectOptions={["ChamaDesk", "POS", "Both Products", "Not Sure Yet"]}
+        secondarySelectLabel="Primary Challenge *"
+        secondarySelectPlaceholder="Select challenge"
+        secondarySelectOptions={["Poor record visibility", "Manual operations overload", "Stock & sales control", "Member accountability", "Need system upgrade"]}
+        organizationLabel="Business / Group Name *"
+        organizationPlaceholder="Example: Haraka Chama or Bright Retail"
+        teamLabel="Current Team / Member Size *"
+        teamPlaceholder="Example: 6 staff, 45 members"
+        messageLabel="What should this software fix first? *"
+        messagePlaceholder="Describe your current process and the one outcome you need in the first 60 days."
+      />
     </div>
   );
 }

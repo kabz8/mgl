@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { CheckCircle2 } from "lucide-react";
+import { Gauge, Layers3, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
 import { DemoBookingSection } from "@/components/saas/DemoBookingSection";
-import { IconTiles } from "@/components/marketing/IconTiles";
 
 export default function USA() {
   usePageMetadata({
@@ -45,16 +44,15 @@ export default function USA() {
 
             <Card className="border-white/15 bg-white/[0.06] backdrop-blur-sm text-white">
               <CardHeader>
-                <CardTitle className="text-2xl">Execution Metrics That Matter</CardTitle>
+                <CardTitle className="text-2xl">Execution Outcomes We Track</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 {[
-                  "Time-to-market acceleration through scope discipline",
-                  "Scalable architecture for growth and integrations",
-                  "Clear sprint visibility for product and ops teams",
+                  "Time-to-value from scoped backlog to shipped release",
+                  "Feature reliability under real usage load",
+                  "Delivery confidence for founders and product leaders",
                 ].map((line) => (
                   <p key={line} className="text-sm text-primary-foreground/90 flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-secondary mt-0.5 shrink-0" />
                     <span>{line}</span>
                   </p>
                 ))}
@@ -64,56 +62,49 @@ export default function USA() {
         </div>
       </section>
 
-      <section className="py-12 bg-background">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="rounded-2xl border border-border bg-card p-4 md:p-6 shadow-sm">
-            <img src="/illustrations/usa.svg" alt="USA growth software delivery illustration" className="w-full h-auto rounded-xl" loading="lazy" />
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: Rocket, title: "Growth Velocity", text: "Roadmaps are broken into launchable milestones, not endless backlog discussions." },
+              { icon: Layers3, title: "Scalable Stack", text: "Architecture choices support expansion, integrations, and multi-team development." },
+              { icon: Gauge, title: "Performance Focus", text: "UX speed and stability are treated as core product outcomes, not afterthoughts." },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <Card key={item.title} className="border-border/70">
+                  <CardHeader>
+                    <div className="h-11 w-11 rounded-lg bg-primary/5 flex items-center justify-center mb-4">
+                      <Icon className="h-5 w-5 text-secondary" />
+                    </div>
+                    <CardTitle className="text-xl">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>{item.text}</CardDescription>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
-        </div>
-      </section>
-
-      <section className="py-12 bg-background">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          <IconTiles
-            items={[
-              { icon: "🚀", title: "Execution Speed", subtitle: "Move from scope to shipped outcomes faster" },
-              { icon: "📈", title: "Growth-Ready", subtitle: "Architecture designed for scale and expansion" },
-              { icon: "🧠", title: "Clear Decisions", subtitle: "Better visibility for product and ops teams" },
-              { icon: "🛠️", title: "Hands-On Delivery", subtitle: "Practical build support across roadmap phases" },
-            ]}
-          />
-        </div>
-      </section>
-
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 md:px-8">
-          <IconTiles
-            items={[
-              { icon: "🚀", title: "Speed", subtitle: "Move from roadmap to shipped features with less friction." },
-              { icon: "🧱", title: "Scalability", subtitle: "Architecture built for growth and increasing complexity." },
-              { icon: "📊", title: "Operational Clarity", subtitle: "Better visibility into product and performance outcomes." },
-              { icon: "🎯", title: "Execution Focus", subtitle: "Delivery aligned to measurable business targets." },
-            ]}
-          />
         </div>
       </section>
 
       <section className="py-20 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Solutions We Build for US Teams</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Capabilities for Product-Driven US Teams</h2>
             <p className="text-muted-foreground">
-              Product-minded implementation focused on customer growth, system reliability, and operational leverage.
+              Delivery support for teams that need speed, stability, and clarity at the same time.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              ["Custom Software Development", "Internal and customer-facing systems aligned with business logic and growth goals."],
-              ["Web App Development", "Robust web apps with clean UX, secure architecture, and scalable service layers."],
-              ["Website & Conversion Systems", "Marketing and product websites engineered for performance and conversion outcomes."],
-              ["Shopify & Commerce", "Commerce experiences with custom integrations and operational reporting."],
-              ["Business Automation", "Workflow automation and connected systems that reduce manual load."],
-              ["Dashboards & Portals", "Decision-oriented dashboards for teams, operations, and leadership visibility."],
+              ["Product Engineering", "Roadmap execution with scalable architecture and release discipline."],
+              ["Customer-Facing Platforms", "Web apps designed around activation, retention, and user trust."],
+              ["Internal Operations Software", "Systems that reduce manual work and improve decision speed."],
+              ["Commerce + Fulfillment Flows", "Integrations between storefront, ops, and reporting layers."],
+              ["Data Visibility Layers", "Dashboards that leadership can use for weekly decisions."],
+              ["Platform Refactoring", "Incremental modernization for brittle apps that cannot be replaced at once."],
             ].map(([title, desc], i) => (
               <motion.div key={title} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.05 }}>
                 <Card className="h-full border-border/70">
@@ -130,28 +121,28 @@ export default function USA() {
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-2 gap-8">
             <Card className="border-border/70">
-              <CardHeader><CardTitle className="text-2xl">Product Delivery Workflow</CardTitle></CardHeader>
+              <CardHeader><CardTitle className="text-2xl">US Product Delivery Model</CardTitle></CardHeader>
               <CardContent className="space-y-3">
                 {[
-                  "Discovery and metrics alignment",
-                  "Scope planning and technical framing",
-                  "Design and engineering in delivery sprints",
-                  "Testing, release, and post-launch monitoring",
-                  "Iteration against user and business signals",
+                  "Roadmap alignment around business and product KPIs",
+                  "Technical architecture and risk planning",
+                  "Sprint-based implementation with demo checkpoints",
+                  "Quality validation and release readiness",
+                  "Post-launch iteration loop tied to usage signals",
                 ].map((step, i) => (
                   <p key={step} className="text-sm text-foreground"><span className="font-semibold">{i + 1}. </span>{step}</p>
                 ))}
               </CardContent>
             </Card>
             <Card className="border-border/70">
-              <CardHeader><CardTitle className="text-2xl">Best Fit</CardTitle></CardHeader>
+              <CardHeader><CardTitle className="text-2xl">Ideal Engagement Profile</CardTitle></CardHeader>
               <CardContent className="space-y-2 text-sm text-muted-foreground">
                 {[
-                  "SaaS and product teams needing faster throughput",
-                  "Growing companies replacing manual operations",
-                  "Retail/ops businesses needing scalable internal tooling",
-                  "Teams modernizing brittle or legacy applications",
-                  "Leaders who need dependable implementation partners",
+                  "SaaS teams needing additional execution capacity",
+                  "Founder-led companies moving from MVP to structured scale",
+                  "Ops-heavy businesses needing custom internal tooling",
+                  "Product teams shipping under tight timeline pressure",
+                  "Companies modernizing legacy stacks without service disruption",
                 ].map((item) => (
                   <p key={item}>{item}</p>
                 ))}
@@ -163,16 +154,16 @@ export default function USA() {
 
       <section className="py-20 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+          <div className="max-w-3xl mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work with US Teams</h2>
+            <p className="text-muted-foreground">Clear answers to the delivery questions that matter before kickoff.</p>
           </div>
-          <div className="max-w-4xl mx-auto grid gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {[
-              ["Do you work with US companies remotely?", "Yes. We work remote-first with clear planning rhythms, milestone updates, and decision visibility."],
-              ["Can you support ongoing product development?", "Yes. We can continue as your product development partner across roadmap phases."],
-              ["Can you improve an existing product without rebuilding?", "Yes. We can refactor critical areas, improve performance, and add capabilities incrementally."],
-              ["How fast can projects start?", "After discovery and scope alignment, projects can begin quickly with practical sprint planning."],
-              ["Do you work with startups and established teams?", "Yes. We support both growth-stage and mature organizations needing execution capacity."],
+              ["Can you work with our in-house engineers?", "Yes. We can plug into your sprint rhythm, tools, and engineering standards."],
+              ["Can we start with one scoped module?", "Yes. Most engagements begin with a focused module to prove execution fit."],
+              ["How do you handle product ambiguity?", "We run discovery sprints to translate ambiguity into clear build priorities."],
+              ["Do you provide post-launch optimization?", "Yes. We support iteration based on user behavior and business metrics."],
             ].map(([q, a]) => (
               <Card key={q} className="border-border/70">
                 <CardHeader><CardTitle className="text-lg">{q}</CardTitle></CardHeader>
@@ -207,8 +198,22 @@ export default function USA() {
 
       <DemoBookingSection
         context="usa"
-        title="Book a USA Discovery Session"
-        description="Tell us your product goals, team constraints, and timeline so we can prepare a focused discovery conversation."
+        mode="project"
+        title="Book a USA Product Discovery Call"
+        description="Share your roadmap pressure, current bottlenecks, and expected outcomes. We will prepare a focused delivery proposal."
+        submitLabel="Request USA Discovery Call"
+        primarySelectLabel="Primary Initiative *"
+        primarySelectPlaceholder="Select initiative"
+        primarySelectOptions={["Build new SaaS feature set", "Redesign existing web app", "Scale backend and architecture", "Build internal operations platform", "Modernize legacy product"]}
+        secondarySelectLabel="Urgency Window *"
+        secondarySelectPlaceholder="Select timeline"
+        secondarySelectOptions={["Need kickoff in 1-2 weeks", "Kickoff this month", "Kickoff this quarter", "Exploring options"]}
+        organizationLabel="Company Name *"
+        organizationPlaceholder="Example: Nova Growth Labs"
+        teamLabel="Current Product Team Setup *"
+        teamPlaceholder="Example: PM, designer, 3 engineers"
+        messageLabel="What business metric should improve first? *"
+        messagePlaceholder="Describe the key metric, current bottleneck, and expected impact after delivery."
       />
     </div>
   );

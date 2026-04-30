@@ -12,6 +12,20 @@ interface DemoBookingSectionProps {
   title?: string;
   description?: string;
   defaultProduct?: "ChamaDesk" | "POS";
+  mode?: "product" | "project";
+  submitLabel?: string;
+  primarySelectLabel?: string;
+  primarySelectPlaceholder?: string;
+  primarySelectOptions?: string[];
+  secondarySelectLabel?: string;
+  secondarySelectPlaceholder?: string;
+  secondarySelectOptions?: string[];
+  organizationLabel?: string;
+  organizationPlaceholder?: string;
+  teamLabel?: string;
+  teamPlaceholder?: string;
+  messageLabel?: string;
+  messagePlaceholder?: string;
 }
 
 export function DemoBookingSection({
@@ -19,8 +33,46 @@ export function DemoBookingSection({
   title = "Book a Product Demo",
   description = "Tell us what you need and we will coordinate a guided product walkthrough.",
   defaultProduct,
+  mode = "product",
+  submitLabel = "Submit Demo Request",
+  primarySelectLabel,
+  primarySelectPlaceholder,
+  primarySelectOptions,
+  secondarySelectLabel,
+  secondarySelectPlaceholder,
+  secondarySelectOptions,
+  organizationLabel,
+  organizationPlaceholder,
+  teamLabel,
+  teamPlaceholder,
+  messageLabel,
+  messagePlaceholder,
 }: DemoBookingSectionProps) {
   const { toast } = useToast();
+  const resolvedPrimarySelectLabel = primarySelectLabel ?? (mode === "product" ? "Product of Interest *" : "Service Needed *");
+  const resolvedPrimarySelectPlaceholder = primarySelectPlaceholder ?? (mode === "product" ? "Choose a product" : "Choose a service");
+  const resolvedPrimarySelectOptions =
+    primarySelectOptions ??
+    (mode === "product"
+      ? ["ChamaDesk", "POS"]
+      : ["Custom Software Development", "Web App Development", "Website Development", "Shopify Development", "Business System Automation", "Other"]);
+
+  const resolvedSecondarySelectLabel = secondarySelectLabel ?? (mode === "product" ? "Business / Group Type *" : "Current Stage *");
+  const resolvedSecondarySelectPlaceholder = secondarySelectPlaceholder ?? (mode === "product" ? "Select type" : "Select stage");
+  const resolvedSecondarySelectOptions =
+    secondarySelectOptions ??
+    (mode === "product"
+      ? ["Chama / Savings Group", "SACCO-like Group", "Family Group", "Retail Shop", "Cafe / Pastry Shop", "Other Business"]
+      : ["New Product Build", "Redesign / Rebuild", "Ongoing Product Support", "Legacy System Modernization", "Needs Discovery"]);
+
+  const resolvedOrganizationLabel = organizationLabel ?? (mode === "product" ? "Business / Group Name *" : "Company Name *");
+  const resolvedOrganizationPlaceholder = organizationPlaceholder ?? (mode === "product" ? "Your company or group name" : "Your company");
+  const resolvedTeamLabel = teamLabel ?? (mode === "product" ? "Team Size or Member Count *" : "Team Size / Stakeholders *");
+  const resolvedTeamPlaceholder = teamPlaceholder ?? (mode === "product" ? "e.g. 8 staff / 25 members" : "e.g. Product lead + 4 engineers");
+  const resolvedMessageLabel = messageLabel ?? "Message / What You Need *";
+  const resolvedMessagePlaceholder =
+    messagePlaceholder ?? (mode === "product" ? "Tell us your current setup, pain points, and what you want to improve." : "Share your goals, constraints, and the outcomes you need.");
+
   const [formData, setFormData] = useState({
     fullName: "",
     businessOrGroupName: "",
@@ -82,7 +134,7 @@ export function DemoBookingSection({
                 <Input id={`${context}-fullName`} name="fullName" required value={formData.fullName} onChange={handleChange} className="h-12 bg-background" placeholder="Jane Smith" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor={`${context}-businessOrGroupName`}>Business / Group Name *</Label>
+                <Label htmlFor={`${context}-businessOrGroupName`}>{resolvedOrganizationLabel}</Label>
                 <Input
                   id={`${context}-businessOrGroupName`}
                   name="businessOrGroupName"
@@ -90,7 +142,7 @@ export function DemoBookingSection({
                   value={formData.businessOrGroupName}
                   onChange={handleChange}
                   className="h-12 bg-background"
-                  placeholder="Your company or group name"
+                  placeholder={resolvedOrganizationPlaceholder}
                 />
               </div>
             </div>
@@ -108,30 +160,32 @@ export function DemoBookingSection({
 
             <div className="grid md:grid-cols-2 gap-5">
               <div className="space-y-2">
-                <Label>Product of Interest *</Label>
+                <Label>{resolvedPrimarySelectLabel}</Label>
                 <Select value={formData.productOfInterest} onValueChange={(value) => handleSelectChange("productOfInterest", value)}>
                   <SelectTrigger className="h-12 bg-background">
-                    <SelectValue placeholder="Choose a product" />
+                    <SelectValue placeholder={resolvedPrimarySelectPlaceholder} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="ChamaDesk">ChamaDesk</SelectItem>
-                    <SelectItem value="POS">POS</SelectItem>
+                    {resolvedPrimarySelectOptions.map((option) => (
+                      <SelectItem key={option} value={option}>
+                        {option}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Business / Group Type *</Label>
+                <Label>{resolvedSecondarySelectLabel}</Label>
                 <Select value={formData.businessOrGroupType} onValueChange={(value) => handleSelectChange("businessOrGroupType", value)}>
                   <SelectTrigger className="h-12 bg-background">
-                    <SelectValue placeholder="Select type" />
+                    <SelectValue placeholder={resolvedSecondarySelectPlaceholder} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Chama / Savings Group">Chama / Savings Group</SelectItem>
-                    <SelectItem value="SACCO-like Group">SACCO-like Group</SelectItem>
-                    <SelectItem value="Family Group">Family Group</SelectItem>
-                    <SelectItem value="Retail Shop">Retail Shop</SelectItem>
-                    <SelectItem value="Cafe / Pastry Shop">Cafe / Pastry Shop</SelectItem>
-                    <SelectItem value="Other Business">Other Business</SelectItem>
+                    {resolvedSecondarySelectOptions.map((option) => (
+                      <SelectItem key={option} value={option}>
+                        {option}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
@@ -139,7 +193,7 @@ export function DemoBookingSection({
 
             <div className="grid md:grid-cols-2 gap-5">
               <div className="space-y-2">
-                <Label htmlFor={`${context}-teamOrMemberCount`}>Team Size or Member Count *</Label>
+                <Label htmlFor={`${context}-teamOrMemberCount`}>{resolvedTeamLabel}</Label>
                 <Input
                   id={`${context}-teamOrMemberCount`}
                   name="teamOrMemberCount"
@@ -147,7 +201,7 @@ export function DemoBookingSection({
                   value={formData.teamOrMemberCount}
                   onChange={handleChange}
                   className="h-12 bg-background"
-                  placeholder="e.g. 8 staff / 25 members"
+                  placeholder={resolvedTeamPlaceholder}
                 />
               </div>
               <div className="space-y-2">
@@ -164,7 +218,7 @@ export function DemoBookingSection({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor={`${context}-message`}>Message / What You Need *</Label>
+              <Label htmlFor={`${context}-message`}>{resolvedMessageLabel}</Label>
               <Textarea
                 id={`${context}-message`}
                 name="message"
@@ -172,7 +226,7 @@ export function DemoBookingSection({
                 value={formData.message}
                 onChange={handleChange}
                 className="min-h-[140px] bg-background resize-none"
-                placeholder="Tell us your current setup, pain points, and what you want to improve."
+                placeholder={resolvedMessagePlaceholder}
               />
             </div>
 
@@ -184,7 +238,7 @@ export function DemoBookingSection({
               data-cta="form-submit"
               data-product={formData.productOfInterest || "unknown"}
             >
-              Submit Demo Request
+              {submitLabel}
             </Button>
           </form>
         </div>

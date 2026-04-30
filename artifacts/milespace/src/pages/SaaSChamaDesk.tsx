@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Users2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWhatsAppLink } from "@/lib/whatsapp";
@@ -79,21 +79,13 @@ export default function SaaSChamaDesk() {
         </div>
       </section>
 
-      <section className="py-12 bg-transparent">
-        <div className="container mx-auto px-4 md:px-8">
-          <div className="rounded-2xl border border-border/70 bg-card/80 p-4 md:p-6 shadow-sm">
-            <img src="/illustrations/chamadesk.svg" alt="ChamaDesk workflow illustration" className="w-full h-auto rounded-xl" loading="lazy" />
-          </div>
-        </div>
-      </section>
-
       <section className="py-10 bg-transparent">
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { title: "Meeting Illustration", visual: "👥🗓️📝" },
-              { title: "Contribution Flow", visual: "📲➡️🧾" },
-              { title: "Accountability Trail", visual: "🔐📚✅" },
+              { title: "Member Governance", visual: "👥🏛️📘" },
+              { title: "Financial Discipline", visual: "🧾💰✅" },
+              { title: "Transparent Records", visual: "🔐📅🧠" },
             ].map((item) => (
               <Card key={item.title} className="border-border/70 bg-card/80 backdrop-blur-sm">
                 <CardHeader><CardTitle className="text-lg">{item.title}</CardTitle></CardHeader>
@@ -109,11 +101,11 @@ export default function SaaSChamaDesk() {
           <div className="grid lg:grid-cols-2 gap-8">
             <Card className="border-border/70">
               <CardHeader>
-                <CardTitle className="text-3xl">What ChamaDesk Solves</CardTitle>
+                <CardTitle className="text-3xl">What ChamaDesk Changes Immediately</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground">
-                <p>ChamaDesk helps groups move from fragmented notebooks and chat threads to one structured digital workflow.</p>
-                <p>It strengthens transparency, meeting discipline, and traceable records so members and officials always know what happened, when, and by whom.</p>
+                <p>Most groups lose trust because records are scattered across notebooks, chat messages, and personal spreadsheets. ChamaDesk centralizes that into one clean source of truth.</p>
+                <p>Every contribution, loan action, and meeting decision becomes traceable by person and date, which reduces confusion and internal conflicts.</p>
                 <p className="text-foreground font-medium">
                   ChamaDesk does not send, process, or hold actual money. It records workflows, evidence, and accountability data around your group operations.
                 </p>
@@ -121,20 +113,20 @@ export default function SaaSChamaDesk() {
             </Card>
             <Card className="border-border/70">
               <CardHeader>
-                <CardTitle className="text-3xl">How It Handles Payments</CardTitle>
+                <CardTitle className="text-3xl">How Accountability Works</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-muted-foreground">
                 <div className="flex gap-3">
                   <ShieldCheck className="h-5 w-5 text-secondary mt-0.5 shrink-0" />
-                  <p>Members post payment proof such as M-Pesa, bank, or Unaitas confirmation references.</p>
+                  <p>Members upload payment proof references (M-Pesa, bank, Unaitas) to create verifiable financial history.</p>
                 </div>
                 <div className="flex gap-3">
                   <ShieldCheck className="h-5 w-5 text-secondary mt-0.5 shrink-0" />
-                  <p>Verification workflows can be enabled in premium plans for stronger controls.</p>
+                  <p>Verification steps can be required before records are marked complete, reducing fraudulent or mistaken entries.</p>
                 </div>
                 <div className="flex gap-3">
                   <ShieldCheck className="h-5 w-5 text-secondary mt-0.5 shrink-0" />
-                  <p>Cash entries are restricted to authorized officials such as treasurer, with traceable logs.</p>
+                  <p>Officials can enforce role-based financial updates so only authorized members post sensitive entries.</p>
                 </div>
               </CardContent>
             </Card>
@@ -145,8 +137,8 @@ export default function SaaSChamaDesk() {
       <section className="py-20 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-3xl mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Key Features</h2>
-            <p className="text-muted-foreground">Everything needed to professionalize group operations without adding unnecessary complexity.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Feature Stack</h2>
+            <p className="text-muted-foreground">Designed for practical group governance, not feature bloat.</p>
           </div>
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
             {features.map((feature) => (
@@ -167,9 +159,7 @@ export default function SaaSChamaDesk() {
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-2 gap-8">
             <Card className="border-border/70">
-              <CardHeader>
-                <CardTitle className="text-2xl">How It Works</CardTitle>
-              </CardHeader>
+              <CardHeader><CardTitle className="text-2xl">Operational Flow</CardTitle></CardHeader>
               <CardContent className="space-y-3">
                 {[
                   "Register members and officials with defined roles",
@@ -186,21 +176,36 @@ export default function SaaSChamaDesk() {
               </CardContent>
             </Card>
             <Card className="border-border/70">
-              <CardHeader>
-                <CardTitle className="text-2xl">Who ChamaDesk Is For</CardTitle>
-              </CardHeader>
+              <CardHeader><CardTitle className="text-2xl">Where ChamaDesk Fits Best</CardTitle></CardHeader>
               <CardContent className="space-y-2 text-sm text-muted-foreground">
                 {[
-                  "Chamas and investment groups",
-                  "Family savings and welfare groups",
-                  "SACCO-like member organisations",
-                  "Community finance groups",
-                  "Officials who need stronger accountability and reporting",
+                  "Structured chamas with recurring monthly obligations",
+                  "Family or welfare groups needing transparent contribution records",
+                  "SACCO-like teams needing role-based controls and history",
+                  "Groups recovering from reconciliation and trust issues",
+                  "Treasurers and officials under pressure for clean reporting",
                 ].map((item) => (
                   <p key={item}>{item}</p>
                 ))}
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              ["30-60 day impact", "Most groups feel improved contribution tracking and meeting structure in the first two cycles."],
+              ["Conflict reduction", "Clear records reduce disputes around who paid, who owes, and what was approved."],
+              ["Leadership confidence", "Officials can answer member questions quickly with time-stamped evidence."],
+            ].map(([title, text]) => (
+              <Card key={title} className="border-border/70">
+                <CardHeader><CardTitle className="text-xl">{title}</CardTitle></CardHeader>
+                <CardContent><CardDescription>{text}</CardDescription></CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -246,10 +251,10 @@ export default function SaaSChamaDesk() {
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+          <div className="max-w-3xl mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Decision Questions from Group Leaders</h2>
           </div>
-          <div className="max-w-4xl mx-auto grid gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {[
               { q: "Does ChamaDesk send or hold money?", a: "No. ChamaDesk does not process or hold funds. It manages records, workflows, and accountability." },
               { q: "Can members upload payment confirmation?", a: "Yes. Members can post payment proof references such as M-Pesa, bank, or Unaitas confirmations." },
@@ -270,7 +275,7 @@ export default function SaaSChamaDesk() {
 
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-5xl font-bold mb-5">Ready to Professionalize Your Group Operations?</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-5">Ready to Run Your Group with More Trust and Structure?</h2>
           <p className="text-primary-foreground/80 text-lg mb-9">Book a guided demo and see how ChamaDesk can improve transparency, record keeping, and accountability.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="h-14 px-8 bg-secondary text-primary hover:bg-secondary/90 font-semibold" id="chamadesk-final-book-demo" data-cta="book-demo">
@@ -290,9 +295,22 @@ export default function SaaSChamaDesk() {
 
       <DemoBookingSection
         context="chamadesk"
-        title="Book a ChamaDesk Demo"
-        description="Share your group setup and we will tailor a walkthrough around meetings, contributions, loans, and accountability workflows."
+        title="Book a ChamaDesk Governance Demo"
+        description="Share your group structure and where accountability breaks down today. We will tailor a walkthrough for your exact workflow."
         defaultProduct="ChamaDesk"
+        submitLabel="Get ChamaDesk Walkthrough"
+        primarySelectLabel="What is your main Chama focus? *"
+        primarySelectPlaceholder="Select focus"
+        primarySelectOptions={["Contribution tracking", "Loan workflow", "Meeting governance", "Member records + transparency", "Full setup"]}
+        secondarySelectLabel="Group Category *"
+        secondarySelectPlaceholder="Select group category"
+        secondarySelectOptions={["Investment chama", "Family welfare group", "SACCO-like group", "Community savings group", "Other"]}
+        organizationLabel="Group Name *"
+        organizationPlaceholder="Example: Umoja Growth Chama"
+        teamLabel="Number of members / officials *"
+        teamPlaceholder="Example: 22 members, 4 officials"
+        messageLabel="Where is your group losing accountability today? *"
+        messagePlaceholder="Share the biggest reporting or contribution pain point your officials face."
       />
     </div>
   );
