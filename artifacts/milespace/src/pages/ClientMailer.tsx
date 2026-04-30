@@ -123,7 +123,7 @@ export default function ClientMailer() {
   usePageMetadata({
     title: "Client Mailer | Milespace Group",
     description: "Send branded Milespace emails (quotations, invoices, proposals) from the correct sender address with structured formatting.",
-    path: "/client-mailer",
+    path: "/kabz",
   });
 
   const { toast } = useToast();

@@ -47,7 +47,7 @@ function Router() {
         <Route path="/saas/milespace-chamadesk" component={SaaSChamaDesk} />
         <Route path="/saas/pos" component={SaaSPOS} />
         <Route path="/cybersecurity" component={CybersecurityPage} />
-        <Route path="/client-mailer" component={ClientMailer} />
+        <Route path="/kabz" component={ClientMailer} />
         <Route path="/legal" component={Legal} />
         <Route component={NotFound} />
       </Switch>
