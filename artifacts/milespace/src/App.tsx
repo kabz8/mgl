@@ -22,6 +22,8 @@ import ClientMailer from "@/pages/ClientMailer";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
+const routerBase = import.meta.env.BASE_URL.replace(/\/$/, "");
+const isKabzMountedAtBase = routerBase === "/kabz";
 
 function Router() {
   const [location] = useLocation();
@@ -33,6 +35,7 @@ function Router() {
   return (
     <Layout>
       <Switch>
+        {isKabzMountedAtBase ? <Route path="/" component={ClientMailer} /> : null}
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/services" component={Services} />
@@ -60,7 +63,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+        <WouterRouter base={routerBase}>
           <Router />
         </WouterRouter>
         <Toaster />
