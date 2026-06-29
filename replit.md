@@ -1,55 +1,45 @@
-# Workspace
+# [Project name]
 
-## Overview
+_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
 
-pnpm workspace monorepo using TypeScript. Each package manages its own dependencies.
+## Run & Operate
+
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm run typecheck` — full typecheck across all packages
+- `pnpm run build` — typecheck + build all packages
+- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
+- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
+- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
-- **Monorepo tool**: pnpm workspaces
-- **Node.js version**: 24
-- **Package manager**: pnpm
-- **TypeScript version**: 5.9
-- **API framework**: Express 5
-- **Database**: PostgreSQL + Drizzle ORM
-- **Validation**: Zod (`zod/v4`), `drizzle-zod`
-- **API codegen**: Orval (from OpenAPI spec)
-- **Build**: esbuild (CJS bundle)
+- pnpm workspaces, Node.js 24, TypeScript 5.9
+- API: Express 5
+- DB: PostgreSQL + Drizzle ORM
+- Validation: Zod (`zod/v4`), `drizzle-zod`
+- API codegen: Orval (from OpenAPI spec)
+- Build: esbuild (CJS bundle)
 
-## Key Commands
+## Where things live
 
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- `pnpm --filter @workspace/api-server run dev` — run API server locally
+_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
 
-See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+## Architecture decisions
 
-## Artifacts
+_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
 
-### Milespace Website (`artifacts/milespace`)
-- **Purpose**: Full marketing and sales website for Milespace digital agency (milespace.co.ke)
-- **Stack**: React + Vite + TypeScript + Tailwind CSS + Framer Motion + Wouter
-- **Preview path**: `/` (root)
-- **Vercel compatible**: Pure static frontend, no backend required
+## Product
 
-**Pages:**
-- `/` — Homepage with hero, services overview, recent work (iframe previews), stats, CTA
-- `/about` — About Milespace, brand story, values
-- `/services` — Detailed services breakdown (Web Dev, App Dev, Custom Software, Digital Marketing, UI/UX)
-- `/pricing` — Pricing page with category dropdown + KES/USD toggle; all packages with 10% off badge on website packages
-- `/pricing/:category/:slug` — Individual shareable package pages with share button
-- `/portfolio` — Portfolio/work page with filterable project cards
-- `/contact` — Contact form + WhatsApp link (all forms go to +254720176247)
+_Describe the high-level user-facing capabilities of this app once they exist._
 
-**Key files:**
-- `src/data/projects.ts` — Portfolio projects data (edit this to add real projects)
-- `src/data/pricing.ts` — All pricing packages data
-- `src/lib/whatsapp.ts` — WhatsApp link helpers (+254720176247)
-- `src/components/ProjectCard.tsx` — Iframe-preview project cards
-- `src/components/layout/Navbar.tsx` — Sticky navbar with logo
-- `public/logo.png` — Milespace logo
+## User preferences
 
-**To update portfolio projects:**
-Edit `src/data/projects.ts` — set `featured: true` on projects to show on homepage (max 3), add real `url` for iframe preview.
+_Populate as you build — explicit user instructions worth remembering across sessions._
+
+## Gotchas
+
+_Populate as you build — sharp edges, "always run X before Y" rules._
+
+## Pointers
+
+- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
