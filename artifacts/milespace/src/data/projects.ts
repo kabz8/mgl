@@ -14,7 +14,7 @@ export const projects: Project[] = [
     id: '1',
     client: 'Ornyx POS',
     category: 'software',
-    description: 'A modern point-of-sale system built by Milespace — streamlining sales, inventory, staff management, and reporting for retail and hospitality businesses.',
+    description: 'A modern point-of-sale system built by Milespace — powering Ornyx, a premium perfume shop outlet, with seamless sales, inventory, and reporting.',
     url: 'https://ornyx.milespace.co.ke/',
     featured: true,
     tags: ['POS', 'Software', 'Retail'],

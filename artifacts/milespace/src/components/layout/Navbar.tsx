@@ -29,7 +29,7 @@ export function Navbar() {
               src="/logo.png"
               alt="Milespace"
               className="w-auto object-contain"
-              style={{ height: "76px" }}
+              style={{ height: "141px" }}
             />
           </Link>
 

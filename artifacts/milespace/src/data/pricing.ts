@@ -313,7 +313,7 @@ export const pricingPackages: PricingPackage[] = [
     slug: 'seo-starter',
     category: 'SEO & AI Optimization',
     name: 'SEO Starter',
-    priceKES: 18000,
+    priceKES: 13500,
     isMonthly: true,
     features: [
       'Full technical SEO audit',
@@ -330,7 +330,7 @@ export const pricingPackages: PricingPackage[] = [
     slug: 'seo-growth',
     category: 'SEO & AI Optimization',
     name: 'SEO Growth',
-    priceKES: 35000,
+    priceKES: 26250,
     isMonthly: true,
     hasDiscount: true,
     discountPercentage: 10,
@@ -351,7 +351,7 @@ export const pricingPackages: PricingPackage[] = [
     slug: 'seo-agency',
     category: 'SEO & AI Optimization',
     name: 'SEO Agency',
-    priceKES: 65000,
+    priceKES: 48750,
     isMonthly: true,
     features: [
       'Everything in Growth',
