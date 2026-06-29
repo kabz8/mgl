@@ -16,6 +16,8 @@ import UK from "@/pages/UK";
 import USA from "@/pages/USA";
 import CybersecurityPage from "@/pages/Cybersecurity";
 import ClientMailer from "@/pages/ClientMailer";
+import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -43,6 +45,8 @@ function Router() {
         <Route path="/uk" component={UK} />
         <Route path="/usa" component={USA} />
         <Route path="/cybersecurity" component={CybersecurityPage} />
+        <Route path="/blog/:slug" component={BlogPost} />
+        <Route path="/blog" component={Blog} />
         <Route path="/kabz" component={ClientMailer} />
         <Route path="/client-mailer" component={ClientMailer} />
         <Route path="/legal" component={Legal} />

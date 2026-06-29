@@ -36,6 +36,7 @@ export function Footer() {
                 { href: "/cybersecurity", label: "Cybersecurity" },
                 { href: "/pricing", label: "Pricing" },
                 { href: "/portfolio", label: "Portfolio" },
+                { href: "/blog", label: "Blog" },
                 { href: "/contact", label: "Contact" },
               ].map(link => (
                 <li key={link.href}>
