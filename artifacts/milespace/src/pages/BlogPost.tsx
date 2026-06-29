@@ -1,4 +1,4 @@
-import { useRoute, Link } from "wouter";
+import { useRoute, Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, Calendar, User, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/blog";
@@ -18,6 +18,7 @@ function formatDate(dateStr: string) {
 }
 
 export default function BlogPost() {
+  const [, navigate] = useLocation();
   const [, params] = useRoute("/blog/:slug");
   const slug = params?.slug;
   const post = blogPosts.find((p) => p.slug === slug);
@@ -33,9 +34,12 @@ export default function BlogPost() {
       {/* Back nav */}
       <div className="bg-muted/30 border-b border-border">
         <div className="container mx-auto px-4 md:px-8 py-4">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <button
+            onClick={() => navigate("~/blog")}
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
             <ArrowLeft size={16} /> Back to Blog
-          </Link>
+          </button>
         </div>
       </div>
 

@@ -207,12 +207,14 @@ const CHIP_MAP: Record<string, string> = {
   "View pricing": "What are your prices?",
   "See our services": "What services do you offer?",
   "View portfolio": "Show me your portfolio",
-  "Get a quote": "I'd like to get a quote",
+  "Get a quote": "__LEAD__",
+  "Get started": "__LEAD__",
+  "Talk to us about my project": "__LEAD__",
   "Talk to us": "How can I contact you?",
   "Talk to the team": "How can I contact you?",
   "Contact us": "How can I contact you?",
-  "Chat on WhatsApp": "chat",
-  "Read the blog": "Tell me about your blog",
+  "Chat on WhatsApp": "__WA__",
+  "Read the blog": "__BLOG__",
   "Web pricing": "Tell me about web development pricing",
   "Web development pricing": "Tell me about web development pricing",
 };
@@ -224,25 +226,51 @@ const FALLBACK: Message = {
   whatsapp: "Hi Milespace, I have a question I couldn't find an answer to on your website.",
 };
 
-function respond(input: string): Message {
-  const trimmed = input.trim();
+function isQuoteIntent(text: string) {
+  return /quote|get started|start.*(project|build|website|app)|i.*(want|need|looking).*(website|app|system|software|help|seo|design|develop)|build.*(me|us|my|our)|hire|work.*(with|together)/i.test(text);
+}
 
+function respond(input: string): Message {
+  if (isQuoteIntent(input)) return { id: Date.now(), from: "mila", text: "__LEAD__" };
   for (const entry of KB) {
     for (const pattern of entry.patterns) {
-      if (pattern.test(trimmed)) {
-        return {
-          id: Date.now(),
-          from: "mila",
-          text: entry.answer,
-          chips: entry.chips,
-          whatsapp: entry.whatsapp,
-        };
+      if (pattern.test(input.trim())) {
+        return { id: Date.now(), from: "mila", text: entry.answer, chips: entry.chips, whatsapp: entry.whatsapp };
       }
     }
   }
-
   return { ...FALLBACK, id: Date.now() };
 }
+
+// ─── Lead capture steps ───────────────────────────────────────────────────────
+
+type LeadStep = null | "name" | "email" | "project" | "done";
+
+interface LeadData { name: string; email: string; project: string }
+
+const LEAD_MSGS = {
+  start: {
+    id: Date.now(),
+    from: "mila" as const,
+    text: "Great — I'll help you get a quote! 🎉 It only takes 3 quick questions.\n\n**What's your name?**",
+  },
+  email: (name: string) => ({
+    id: Date.now() + 1,
+    from: "mila" as const,
+    text: `Nice to meet you, **${name}**! 👋\n\n**What's your email address?** *(so we can follow up with a proposal)*`,
+  }),
+  project: (name: string) => ({
+    id: Date.now() + 2,
+    from: "mila" as const,
+    text: `Perfect. Last question, **${name}** —\n\n**Briefly describe your project.** What do you want to build, and what's your approximate budget?`,
+  }),
+  done: (lead: LeadData) => ({
+    id: Date.now() + 3,
+    from: "mila" as const,
+    text: `All set, **${lead.name}**! ✅ Your details are ready.\n\nClick the button below to send them straight to the Milespace team on WhatsApp — we'll get back to you with a tailored proposal within a few hours. 🚀`,
+    whatsapp: `Hi Milespace! I'd like a quote.\n\n👤 Name: ${lead.name}\n📧 Email: ${lead.email}\n📋 Project: ${lead.project}`,
+  }),
+};
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -250,7 +278,7 @@ const WELCOME: Message = {
   id: 1,
   from: "mila",
   text: "Hi! 👋 I'm **MILA** — Milespace's Intelligent Live Assistant.\n\nAsk me anything about our services, pricing, past projects, or timelines. For anything else, I'll connect you straight to the team on WhatsApp.",
-  chips: ["Services & pricing", "Web development", "AI & automation", "Contact us"],
+  chips: ["Services & pricing", "Web development", "AI & automation", "Get a quote"],
 };
 
 export function Chatbot() {
@@ -258,6 +286,8 @@ export function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
+  const [leadStep, setLeadStep] = useState<LeadStep>(null);
+  const [leadData, setLeadData] = useState<LeadData>({ name: "", email: "", project: "" });
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -269,37 +299,84 @@ export function Chatbot() {
     if (open) setTimeout(() => inputRef.current?.focus(), 300);
   }, [open]);
 
-  function send(text: string) {
-    const trimmed = text.trim();
-    if (!trimmed) return;
+  function startLead() {
+    setLeadStep("name");
+    setLeadData({ name: "", email: "", project: "" });
+    setTyping(true);
+    setTimeout(() => {
+      setTyping(false);
+      setMessages((m) => [...m, { ...LEAD_MSGS.start, id: Date.now() }]);
+    }, 500);
+  }
 
-    const userMsg: Message = { id: Date.now(), from: "user", text: trimmed };
+  function handleLeadInput(text: string) {
+    const userMsg: Message = { id: Date.now(), from: "user", text };
     setMessages((m) => [...m, userMsg]);
     setInput("");
     setTyping(true);
 
     setTimeout(() => {
+      setTyping(false);
+      if (leadStep === "name") {
+        const name = text.trim();
+        setLeadData((d) => ({ ...d, name }));
+        setLeadStep("email");
+        setMessages((m) => [...m, LEAD_MSGS.email(name)]);
+      } else if (leadStep === "email") {
+        setLeadData((d) => ({ ...d, email: text.trim() }));
+        setLeadStep("project");
+        setMessages((m) => [...m, LEAD_MSGS.project(leadData.name)]);
+      } else if (leadStep === "project") {
+        const updated = { ...leadData, project: text.trim() };
+        setLeadData(updated);
+        setLeadStep("done");
+        setMessages((m) => [...m, LEAD_MSGS.done(updated)]);
+      }
+    }, 600);
+  }
+
+  function send(text: string) {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+
+    if (leadStep && leadStep !== "done") {
+      handleLeadInput(trimmed);
+      return;
+    }
+
+    const userMsg: Message = { id: Date.now(), from: "user", text: trimmed };
+    setMessages((m) => [...m, userMsg]);
+    setInput("");
+
+    if (isQuoteIntent(trimmed)) {
+      startLead();
+      return;
+    }
+
+    setTyping(true);
+    setTimeout(() => {
       const reply = respond(trimmed);
       setTyping(false);
+      if (reply.text === "__LEAD__") { startLead(); return; }
       setMessages((m) => [...m, reply]);
     }, 650);
   }
 
   function handleChip(chip: string) {
-    if (chip === "Chat on WhatsApp") {
+    const action = CHIP_MAP[chip];
+    if (action === "__WA__") {
       window.open(waLink("Hi Milespace, I'd like to chat about a project."), "_blank");
       return;
     }
-    if (chip === "Read the blog") {
-      window.location.href = "/blog";
+    if (action === "__BLOG__") { window.location.href = "/blog"; return; }
+    if (chip === "View portfolio") { window.location.href = "/portfolio"; return; }
+    if (action === "__LEAD__") {
+      const userMsg: Message = { id: Date.now(), from: "user", text: chip };
+      setMessages((m) => [...m, userMsg]);
+      startLead();
       return;
     }
-    if (chip === "View portfolio") {
-      window.location.href = "/portfolio";
-      return;
-    }
-    const question = CHIP_MAP[chip] ?? chip;
-    send(question);
+    send(action ?? chip);
   }
 
   return (
