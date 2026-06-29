@@ -1,4 +1,4 @@
-export type ServiceCategory = 'Website Development' | 'App Development' | 'Custom Software' | 'Digital Marketing' | 'UI/UX Design';
+export type ServiceCategory = 'Website Development' | 'App Development' | 'Custom Software' | 'Digital Marketing' | 'UI/UX Design' | 'SEO & AI Optimization' | 'AI Integration & Automation';
 
 export interface PricingPackage {
   id: string;
@@ -304,6 +304,119 @@ export const pricingPackages: PricingPackage[] = [
       'User flow diagrams',
       'Interactive prototype',
       'Handoff files'
+    ]
+  },
+
+  // SEO & AI Optimization
+  {
+    id: 'seo-starter',
+    slug: 'seo-starter',
+    category: 'SEO & AI Optimization',
+    name: 'SEO Starter',
+    priceKES: 18000,
+    isMonthly: true,
+    features: [
+      'Full technical SEO audit',
+      'Up to 15 keywords tracked',
+      'On-page optimisation (up to 5 pages)',
+      'Google Business Profile setup & optimisation',
+      'Monthly rankings & traffic report',
+      'Core Web Vitals fixes',
+      'Basic schema markup',
+    ]
+  },
+  {
+    id: 'seo-growth',
+    slug: 'seo-growth',
+    category: 'SEO & AI Optimization',
+    name: 'SEO Growth',
+    priceKES: 35000,
+    isMonthly: true,
+    hasDiscount: true,
+    discountPercentage: 10,
+    features: [
+      'Everything in Starter',
+      'Up to 50 keywords tracked',
+      'On-page optimisation (up to 15 pages)',
+      '2 AI-optimised blog articles/month',
+      'Local SEO & citation building',
+      'Off-page link building (5 links/month)',
+      'Competitor gap analysis',
+      'AI search (SGE/Gemini) optimisation',
+      'Bi-weekly progress calls',
+    ]
+  },
+  {
+    id: 'seo-agency',
+    slug: 'seo-agency',
+    category: 'SEO & AI Optimization',
+    name: 'SEO Agency',
+    priceKES: 65000,
+    isMonthly: true,
+    features: [
+      'Everything in Growth',
+      'Unlimited keywords tracked',
+      '5 AI-optimised articles/month',
+      'Advanced link building (15 links/month)',
+      'Full content strategy & calendar',
+      'Landing page creation & optimisation',
+      'Google Ads SEO alignment',
+      'Weekly reports & dedicated Slack channel',
+      'Penalty recovery (if applicable)',
+    ]
+  },
+
+  // AI Integration & Automation
+  {
+    id: 'ai-starter',
+    slug: 'ai-starter',
+    category: 'AI Integration & Automation',
+    name: 'AI Starter',
+    priceKES: 45000,
+    features: [
+      'Single-channel AI chatbot (WhatsApp or web)',
+      'Up to 50 custom FAQ responses',
+      'Basic lead capture & routing',
+      'Integration with 1 existing tool (CRM, email, spreadsheet)',
+      'Arabic / English / Swahili language support',
+      '30 days post-launch support',
+    ]
+  },
+  {
+    id: 'ai-business',
+    slug: 'ai-business',
+    category: 'AI Integration & Automation',
+    name: 'AI Business',
+    priceKES: 120000,
+    hasDiscount: true,
+    discountPercentage: 10,
+    features: [
+      'Multi-channel AI agent (WhatsApp + web + email)',
+      'Custom knowledge base from your business data (RAG)',
+      'Lead qualification & automated follow-up sequences',
+      'Integration with up to 3 tools (CRM, M-Pesa, calendar, etc.)',
+      'Workflow automation (n8n / Make / Zapier)',
+      'AI-generated weekly summary reports',
+      'Admin dashboard to monitor conversations',
+      '60 days post-launch support',
+    ]
+  },
+  {
+    id: 'ai-enterprise',
+    slug: 'ai-enterprise',
+    category: 'AI Integration & Automation',
+    name: 'AI Enterprise',
+    priceKES: 280000,
+    features: [
+      'Everything in Business',
+      'Full end-to-end process automation audit',
+      'Custom LLM fine-tuning or dedicated RAG pipeline',
+      'Unlimited tool & API integrations',
+      'AI-powered analytics & predictive dashboards',
+      'Document OCR & automated processing',
+      'Dedicated AI agent with persona & brand voice',
+      'SLA with priority support',
+      '6 months post-launch support & iteration',
     ]
   }
 ];

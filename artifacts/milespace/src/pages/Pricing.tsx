@@ -27,7 +27,9 @@ export default function Pricing() {
     "App Development",
     "Custom Software",
     "Digital Marketing",
-    "UI/UX Design"
+    "UI/UX Design",
+    "SEO & AI Optimization",
+    "AI Integration & Automation",
   ];
 
   const formatPrice = (priceKES: number) => {
