@@ -61,6 +61,17 @@ export default function BlogPost() {
         </div>
       </section>
 
+      {/* Cover Image */}
+      {post.coverImage && (
+        <div className="w-full max-h-[420px] overflow-hidden">
+          <img
+            src={post.coverImage}
+            alt={post.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+
       {/* Article Body */}
       <section className="py-14 bg-background">
         <div className="container mx-auto px-4 md:px-8 max-w-3xl">

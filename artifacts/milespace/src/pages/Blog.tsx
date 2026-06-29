@@ -52,24 +52,35 @@ export default function Blog() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
                 >
-                  <Link href={`/blog/${post.slug}`} className="group block h-full rounded-2xl border border-border bg-card hover:border-primary/30 hover:shadow-lg transition-all duration-300 p-7">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Badge variant="secondary" className="text-xs font-semibold">{post.category}</Badge>
-                      <span className="text-muted-foreground text-xs flex items-center gap-1">
-                        <Clock size={12} /> {post.readTime} min read
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors leading-snug">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-5 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">{formatDate(post.date)}</span>
-                      <span className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Read article <ArrowRight size={14} />
-                      </span>
+                  <Link href={`/blog/${post.slug}`} className="group block h-full rounded-2xl border border-border bg-card hover:border-primary/30 hover:shadow-lg transition-all duration-300 overflow-hidden">
+                    {post.coverImage && (
+                      <div className="w-full h-48 overflow-hidden">
+                        <img
+                          src={post.coverImage}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    )}
+                    <div className="p-7">
+                      <div className="flex items-center gap-2 mb-4">
+                        <Badge variant="secondary" className="text-xs font-semibold">{post.category}</Badge>
+                        <span className="text-muted-foreground text-xs flex items-center gap-1">
+                          <Clock size={12} /> {post.readTime} min read
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors leading-snug">
+                        {post.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-5 line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-muted-foreground">{formatDate(post.date)}</span>
+                        <span className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                          Read article <ArrowRight size={14} />
+                        </span>
+                      </div>
                     </div>
                   </Link>
                 </motion.article>
