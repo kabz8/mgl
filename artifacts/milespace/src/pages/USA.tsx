@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
-import { DemoBookingSection } from "@/components/saas/DemoBookingSection";
 
 export default function USA() {
   usePageMetadata({
@@ -36,7 +35,7 @@ export default function USA() {
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="usa-request-estimate" data-cta="request-quote">
-                  <a href="#usa-demo-form">Request an Estimate</a>
+                  <a href={getWhatsAppLink("Hi Milespace, I'd like to request an estimate for a US project.")} target="_blank" rel="noopener noreferrer">Request an Estimate</a>
                 </Button>
               </div>
               <p className="mt-5 text-sm text-primary-foreground/70">Fast execution, transparent milestones, and scalable systems for growth-oriented teams.</p>
@@ -146,7 +145,7 @@ export default function USA() {
               <CardHeader><CardTitle className="text-2xl">Ideal Engagement Profile</CardTitle></CardHeader>
               <CardContent className="space-y-2 text-sm text-muted-foreground">
                 {[
-                  "SaaS teams needing additional execution capacity",
+                  "Product teams needing additional execution capacity",
                   "Founder-led companies moving from MVP to structured scale",
                   "Ops-heavy businesses needing custom internal tooling",
                   "Product teams shipping under tight timeline pressure",
@@ -195,7 +194,7 @@ export default function USA() {
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="usa-final-request-estimate" data-cta="request-quote">
-              <a href="#usa-demo-form">Request Estimate</a>
+              <a href={getWhatsAppLink("Hi Milespace, I'd like to request an estimate for a US project.")} target="_blank" rel="noopener noreferrer">Request Estimate</a>
             </Button>
           </div>
           <p className="mt-6 text-sm text-primary-foreground/70">
@@ -204,25 +203,6 @@ export default function USA() {
         </div>
       </section>
 
-      <DemoBookingSection
-        context="usa"
-        mode="project"
-        title="Book a USA Product Discovery Call"
-        description="Share your roadmap pressure, current bottlenecks, and expected outcomes. We will prepare a focused delivery proposal."
-        submitLabel="Request USA Discovery Call"
-        primarySelectLabel="Primary Initiative *"
-        primarySelectPlaceholder="Select initiative"
-        primarySelectOptions={["Build new SaaS feature set", "Redesign existing web app", "Scale backend and architecture", "Build internal operations platform", "Modernize legacy product"]}
-        secondarySelectLabel="Urgency Window *"
-        secondarySelectPlaceholder="Select timeline"
-        secondarySelectOptions={["Need kickoff in 1-2 weeks", "Kickoff this month", "Kickoff this quarter", "Exploring options"]}
-        organizationLabel="Company Name *"
-        organizationPlaceholder="Example: Nova Growth Labs"
-        teamLabel="Current Product Team Setup *"
-        teamPlaceholder="Example: PM, designer, 3 engineers"
-        messageLabel="What business metric should improve first? *"
-        messagePlaceholder="Describe the key metric, current bottleneck, and expected impact after delivery."
-      />
     </div>
   );
 }

@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { usePageMetadata } from "@/hooks/usePageMetadata";
-import { DemoBookingSection } from "@/components/saas/DemoBookingSection";
 
 export default function UK() {
   usePageMetadata({
@@ -35,7 +34,7 @@ export default function UK() {
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="uk-request-quote" data-cta="request-quote">
-                <a href="#uk-demo-form">Request a Project Quote</a>
+                <a href={getWhatsAppLink("Hi Milespace, I'd like to request a project quote for a UK project.")} target="_blank" rel="noopener noreferrer">Request a Project Quote</a>
               </Button>
             </div>
             <p className="mt-5 text-sm text-primary-foreground/70">
@@ -177,7 +176,7 @@ export default function UK() {
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="h-14 px-8 border-white/40 text-white hover:bg-white/10 hover:text-white font-semibold" id="uk-final-request-quote" data-cta="request-quote">
-              <a href="#uk-demo-form">Request Quote</a>
+              <a href={getWhatsAppLink("Hi Milespace, I'd like to request a project quote for a UK project.")} target="_blank" rel="noopener noreferrer">Request Quote</a>
             </Button>
           </div>
           <p className="mt-6 text-sm text-primary-foreground/70">
@@ -186,25 +185,6 @@ export default function UK() {
         </div>
       </section>
 
-      <DemoBookingSection
-        context="uk"
-        mode="project"
-        title="Start a UK Project Discovery Session"
-        description="Tell us what you need delivered, your timeline pressure, and your current blockers. We will return with a practical execution plan."
-        submitLabel="Request UK Delivery Plan"
-        primarySelectLabel="Project Type *"
-        primarySelectPlaceholder="Select project type"
-        primarySelectOptions={["Website + Conversion Upgrade", "Custom Internal System", "Client Portal / Dashboard", "Shopify + Ops Integration", "Legacy System Modernization"]}
-        secondarySelectLabel="Delivery Priority *"
-        secondarySelectPlaceholder="Select priority"
-        secondarySelectOptions={["Ship quickly", "Reduce operational risk", "Improve user experience", "Improve reporting visibility", "Need all three"]}
-        organizationLabel="Company / Organization Name *"
-        organizationPlaceholder="Example: Northfield Logistics Ltd"
-        teamLabel="Who will be involved on your side? *"
-        teamPlaceholder="Example: Founder, Operations Manager, 1 technical lead"
-        messageLabel="What has to be true after launch? *"
-        messagePlaceholder="Describe the business outcomes and non-negotiables for this project."
-      />
     </div>
   );
 }

@@ -14,9 +14,6 @@ import Contact from "@/pages/Contact";
 import Legal from "@/pages/Legal";
 import UK from "@/pages/UK";
 import USA from "@/pages/USA";
-import SaaS from "@/pages/SaaS";
-import SaaSChamaDesk from "@/pages/SaaSChamaDesk";
-import SaaSPOS from "@/pages/SaaSPOS";
 import CybersecurityPage from "@/pages/Cybersecurity";
 import ClientMailer from "@/pages/ClientMailer";
 import NotFound from "@/pages/not-found";
@@ -45,10 +42,6 @@ function Router() {
         <Route path="/contact" component={Contact} />
         <Route path="/uk" component={UK} />
         <Route path="/usa" component={USA} />
-        <Route path="/saas" component={SaaS} />
-        <Route path="/saas/chamadesk" component={SaaSChamaDesk} />
-        <Route path="/saas/milespace-chamadesk" component={SaaSChamaDesk} />
-        <Route path="/saas/pos" component={SaaSPOS} />
         <Route path="/cybersecurity" component={CybersecurityPage} />
         <Route path="/kabz" component={ClientMailer} />
         <Route path="/client-mailer" component={ClientMailer} />
