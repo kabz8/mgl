@@ -1,6 +1,41 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Fragment } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, MessageCircle, ExternalLink } from "lucide-react";
+
+function MilaText({ text }: { text: string }) {
+  const lines = text.split("\n");
+  return (
+    <>
+      {lines.map((line, li) => {
+        const parts: React.ReactNode[] = [];
+        const re = /\*\*(.+?)\*\*|\[([^\]]+)\]\(([^)]+)\)/g;
+        let last = 0;
+        let m: RegExpExecArray | null;
+        let key = 0;
+        while ((m = re.exec(line)) !== null) {
+          if (m.index > last) parts.push(<Fragment key={key++}>{line.slice(last, m.index)}</Fragment>);
+          if (m[1] !== undefined) {
+            parts.push(<strong key={key++}>{m[1]}</strong>);
+          } else {
+            parts.push(
+              <a key={key++} href={m[3]} className="underline text-primary hover:text-primary/80" target="_self" rel="noopener noreferrer">
+                {m[2]}
+              </a>
+            );
+          }
+          last = m.index + m[0].length;
+        }
+        if (last < line.length) parts.push(<Fragment key={key++}>{line.slice(last)}</Fragment>);
+        return (
+          <Fragment key={li}>
+            {parts.length > 0 ? parts : line}
+            {li < lines.length - 1 && "\n"}
+          </Fragment>
+        );
+      })}
+    </>
+  );
+}
 
 const WHATSAPP_NUMBER = "254720176247";
 
@@ -447,12 +482,9 @@ export function Chatbot() {
                         ? "bg-primary text-white rounded-br-sm"
                         : "bg-muted text-foreground rounded-bl-sm"
                     }`}
-                    dangerouslySetInnerHTML={{
-                      __html: msg.text
-                        .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-                        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="underline text-primary hover:text-primary/80" target="_self">$1</a>'),
-                    }}
-                  />
+                  >
+                    {msg.from === "user" ? msg.text : <MilaText text={msg.text} />}
+                  </div>
 
                   {/* WhatsApp button */}
                   {msg.whatsapp && (
