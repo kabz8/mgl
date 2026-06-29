@@ -2,10 +2,16 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
+import { SEO } from "@/components/SEO";
 
 export default function About() {
   return (
     <div className="flex flex-col w-full pb-16 md:pb-24">
+      <SEO
+        title="About Us — Milespace Digital Agency"
+        description="Learn about Milespace — a premium Kenyan digital agency building websites, apps, custom software, and AI solutions for ambitious businesses across Africa and beyond."
+        canonical="/about"
+      />
       {/* Page Header */}
       <section className="bg-primary text-primary-foreground py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-8">

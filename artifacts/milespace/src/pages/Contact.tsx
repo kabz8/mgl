@@ -8,6 +8,7 @@ import { MessageSquare } from "lucide-react";
 import { WHATSAPP_DIRECT_LINK } from "@/lib/whatsapp";
 import { submitLeadViaWhatsAppAndEmail } from "@/lib/leadSubmission";
 import { useToast } from "@/hooks/use-toast";
+import { SEO } from "@/components/SEO";
 import { motion } from "framer-motion";
 
 export default function Contact() {
@@ -73,6 +74,11 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col w-full pb-24 bg-background">
+      <SEO
+        title="Contact Us — Get a Free Quote"
+        description="Get in touch with Milespace. Request a quote for web development, app development, SEO, AI automation, or any digital service. Based in Nairobi, Kenya."
+        canonical="/contact"
+      />
       <section className="bg-primary text-primary-foreground py-20">
         <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">

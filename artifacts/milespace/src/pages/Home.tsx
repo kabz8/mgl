@@ -6,6 +6,7 @@ import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import { motion } from "framer-motion";
 import { IconTiles } from "@/components/marketing/IconTiles";
+import { SEO } from "@/components/SEO";
 
 function HomepageCybersecurityTeaser() {
   return (
@@ -51,6 +52,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full">
+      <SEO
+        title="Premium Digital Agency in Kenya"
+        description="Milespace is a premium Kenyan digital agency specialising in web development, mobile apps, custom software, SEO, AI automation, and digital marketing. Get a quote today."
+        canonical="/"
+      />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground py-16 md:py-24 lg:py-32">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] opacity-10 bg-cover bg-center mix-blend-overlay" />

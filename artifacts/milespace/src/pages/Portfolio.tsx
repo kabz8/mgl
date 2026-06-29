@@ -3,6 +3,7 @@ import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { SEO } from "@/components/SEO";
 
 export default function Portfolio() {
   const [filter, setFilter] = useState<'all' | 'website' | 'app' | 'software'>('all');
@@ -13,6 +14,11 @@ export default function Portfolio() {
 
   return (
     <div className="flex flex-col w-full pb-24 bg-background min-h-screen">
+      <SEO
+        title="Our Portfolio — Recent Projects"
+        description="See Milespace's portfolio of websites, mobile apps, POS systems, and custom software built for Kenyan and international clients."
+        canonical="/portfolio"
+      />
       <section className="bg-primary text-primary-foreground py-20">
         <div className="container mx-auto px-4 md:px-8 text-center max-w-3xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">

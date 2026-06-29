@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 import { blogPosts } from "@/data/blog";
 import { Badge } from "@/components/ui/badge";
+import { SEO } from "@/components/SEO";
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-KE", {
@@ -18,6 +19,11 @@ export default function Blog() {
 
   return (
     <div className="flex flex-col w-full pb-24">
+      <SEO
+        title="Blog — Digital Growth Insights"
+        description="Practical insights on web development, SEO, AI automation, and digital marketing for Kenyan businesses. Written by the Milespace team."
+        canonical="/blog"
+      />
       {/* Hero */}
       <section className="bg-primary text-primary-foreground py-20">
         <div className="container mx-auto px-4 md:px-8">

@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { SEO } from "@/components/SEO";
 import {
   AlertTriangle,
   Bug,
@@ -513,6 +514,11 @@ export default function CybersecurityPage() {
 
   return (
     <div className="flex w-full flex-col bg-[#07111C]">
+      <SEO
+        title="Cybersecurity Services in Kenya"
+        description="Enterprise-grade cybersecurity for Kenyan businesses. Threat monitoring, penetration testing, security audits, and incident response from Milespace."
+        canonical="/cybersecurity"
+      />
       <CyberHero />
       <ThreatCards />
       <CyberServices />

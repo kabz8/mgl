@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Layout } from "@/components/layout/Layout";
@@ -18,6 +19,7 @@ import CybersecurityPage from "@/pages/Cybersecurity";
 import ClientMailer from "@/pages/ClientMailer";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
+import ServiceDetail from "@/pages/ServiceDetail";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -45,6 +47,7 @@ function Router() {
         <Route path="/uk" component={UK} />
         <Route path="/usa" component={USA} />
         <Route path="/cybersecurity" component={CybersecurityPage} />
+        <Route path="/services/:slug" component={ServiceDetail} />
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/blog" component={Blog} />
         <Route path="/kabz" component={ClientMailer} />
@@ -58,14 +61,16 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <WouterRouter base={routerBase}>
-          <Router />
-        </WouterRouter>
-        <Toaster />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <WouterRouter base={routerBase}>
+            <Router />
+          </WouterRouter>
+          <Toaster />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }
 
