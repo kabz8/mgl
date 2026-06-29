@@ -12,12 +12,12 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: '1',
-    client: 'Azani Africa',
-    category: 'website',
-    description: 'A bold e-commerce and brand website for Azani Africa — a vibrant African fashion label celebrating culture through contemporary clothing designs.',
-    url: 'https://www.azaniafrica.com/',
+    client: 'Ornyx POS',
+    category: 'software',
+    description: 'A modern point-of-sale system built by Milespace — streamlining sales, inventory, staff management, and reporting for retail and hospitality businesses.',
+    url: 'https://ornyx.milespace.co.ke/',
     featured: true,
-    tags: ['Fashion', 'E-commerce', 'Africa'],
+    tags: ['POS', 'Software', 'Retail'],
   },
   {
     id: '2',
