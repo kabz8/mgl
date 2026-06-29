@@ -1,9 +1,10 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Clock, Tag } from "lucide-react";
+import { ArrowRight, Clock, Tag, Eye } from "lucide-react";
 import { blogPosts } from "@/data/blog";
 import { Badge } from "@/components/ui/badge";
 import { SEO } from "@/components/SEO";
+import { useBlogInteractions } from "@/hooks/useBlogInteractions";
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-KE", {
@@ -11,6 +12,16 @@ function formatDate(dateStr: string) {
     month: "long",
     day: "numeric",
   });
+}
+
+function PostViews({ slug }: { slug: string }) {
+  const { getStoredViews } = useBlogInteractions("");
+  const v = getStoredViews(slug);
+  return (
+    <span className="flex items-center gap-1 text-xs text-muted-foreground">
+      <Eye size={11} /> {v.toLocaleString()}
+    </span>
+  );
 }
 
 export default function Blog() {
@@ -76,7 +87,10 @@ export default function Blog() {
                         {post.excerpt}
                       </p>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-muted-foreground">{formatDate(post.date)}</span>
+                        <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                          <span>{formatDate(post.date)}</span>
+                          <PostViews slug={post.slug} />
+                        </div>
                         <span className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                           Read article <ArrowRight size={14} />
                         </span>
@@ -115,8 +129,9 @@ export default function Blog() {
                       <h3 className="font-bold text-foreground group-hover:text-primary transition-colors">{post.title}</h3>
                       <p className="text-muted-foreground text-sm mt-1 line-clamp-2">{post.excerpt}</p>
                     </div>
-                    <div className="flex items-center gap-6 shrink-0">
+                    <div className="flex items-center gap-4 shrink-0">
                       <span className="text-xs text-muted-foreground hidden sm:block">{formatDate(post.date)}</span>
+                      <PostViews slug={post.slug} />
                       <ArrowRight size={18} className="text-primary group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>

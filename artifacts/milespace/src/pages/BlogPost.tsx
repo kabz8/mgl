@@ -1,6 +1,6 @@
 import { useRoute, Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, Calendar, User, ArrowRight } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, User, ArrowRight, Eye, Heart, Share2, Bookmark, Check } from "lucide-react";
 import { blogPosts } from "@/data/blog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,7 @@ import { getWhatsAppLink } from "@/lib/whatsapp";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import NotFound from "@/pages/not-found";
+import { useBlogInteractions } from "@/hooks/useBlogInteractions";
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-KE", {
@@ -20,8 +21,9 @@ function formatDate(dateStr: string) {
 export default function BlogPost() {
   const [, navigate] = useLocation();
   const [, params] = useRoute("/blog/:slug");
-  const slug = params?.slug;
+  const slug = params?.slug ?? "";
   const post = blogPosts.find((p) => p.slug === slug);
+  const { views, liked, bookmarked, copied, toggleLike, toggleBookmark, share } = useBlogInteractions(slug);
 
   if (!post) return <NotFound />;
 
@@ -60,6 +62,7 @@ export default function BlogPost() {
               <span className="flex items-center gap-1.5"><User size={14} /> {post.author}</span>
               <span className="flex items-center gap-1.5"><Calendar size={14} /> {formatDate(post.date)}</span>
               <span className="flex items-center gap-1.5"><Clock size={14} /> {post.readTime} min read</span>
+              <span className="flex items-center gap-1.5"><Eye size={14} /> {views > 0 ? views.toLocaleString() : "—"} views</span>
             </div>
           </motion.div>
         </div>
@@ -103,6 +106,46 @@ export default function BlogPost() {
             {post.tags.map((tag) => (
               <Badge key={tag} variant="outline" className="text-sm px-3 py-1">{tag}</Badge>
             ))}
+          </div>
+
+          {/* Engagement bar */}
+          <div className="flex items-center justify-between gap-4 mt-8 pt-6 border-t border-border">
+            <div className="flex items-center gap-1">
+              <button
+                onClick={toggleLike}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  liked
+                    ? "bg-red-50 text-red-500 border border-red-200"
+                    : "bg-muted text-muted-foreground hover:bg-red-50 hover:text-red-500 border border-border"
+                }`}
+                aria-label={liked ? "Unlike" : "Like"}
+              >
+                <Heart size={15} className={liked ? "fill-red-500" : ""} />
+                {liked ? "Liked" : "Like"}
+              </button>
+
+              <button
+                onClick={() => share(post.title)}
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-muted text-muted-foreground hover:bg-primary hover:text-white border border-border transition-all duration-200"
+                aria-label="Share"
+              >
+                {copied ? <Check size={15} /> : <Share2 size={15} />}
+                {copied ? "Copied!" : "Share"}
+              </button>
+            </div>
+
+            <button
+              onClick={toggleBookmark}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
+                bookmarked
+                  ? "bg-primary/10 text-primary border-primary/30"
+                  : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary border-border"
+              }`}
+              aria-label={bookmarked ? "Remove bookmark" : "Bookmark"}
+            >
+              <Bookmark size={15} className={bookmarked ? "fill-primary" : ""} />
+              {bookmarked ? "Saved" : "Save"}
+            </button>
           </div>
         </div>
       </section>
