@@ -21,6 +21,7 @@ import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import ServiceDetail from "@/pages/ServiceDetail";
 import NotFound from "@/pages/not-found";
+import { Chatbot } from "@/components/Chatbot";
 
 const queryClient = new QueryClient();
 const routerBase = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -67,6 +68,7 @@ function App() {
           <WouterRouter base={routerBase}>
             <Router />
           </WouterRouter>
+          <Chatbot />
           <Toaster />
         </TooltipProvider>
       </QueryClientProvider>
